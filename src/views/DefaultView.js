@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { GMap, SideBar } from '../components';
+import { Link } from 'react-router';
 import { actions as counterActions } from '../redux/modules/counter';
-import styles from './HomeView.scss';
+import styles from './DefaultView.scss';
 
 // We define mapStateToProps where we'd normally use
 // the @connect decorator so the data requirements are clear upfront, but then
@@ -12,7 +12,7 @@ import styles from './HomeView.scss';
 const mapStateToProps = (state) => ({
   counter : state.counter
 });
-export class HomeView extends React.Component {
+export class DefaultView extends React.Component {
   static propTypes = {
     increment : React.PropTypes.func,
     counter   : React.PropTypes.number
@@ -20,12 +20,21 @@ export class HomeView extends React.Component {
 
   render () {
     return (
-      <div className={styles.fullscreen} >
-        <SideBar/>
-        <GMap/>
+      <div className='container text-center'>
+        <h1>Welcome to the React Redux Starter Kit</h1>
+        <h2>
+          Sample Counter:&nbsp;
+          <span className={styles['counter--green']}>{this.props.counter}</span>
+        </h2>
+        <button className='btn btn-default'
+                onClick={this.props.increment}>
+          Increment
+        </button>
+        <hr />
+        <Link to='/about'>I'm default, Go To About View</Link>
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps, counterActions)(HomeView);
+export default connect(mapStateToProps, counterActions)(DefaultView);

@@ -3,7 +3,7 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 
 const NavBar = () => (
-  <Navbar inverse>
+  <Navbar inverse fixedTop>
     <Navbar.Header>
       <Navbar.Brand>
         <a href='#'>React-Bootstrap</a>
