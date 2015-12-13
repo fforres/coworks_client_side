@@ -18,11 +18,11 @@ export const actions = {
 // ------------------------------------
 const initialState = {
   showSidebar:false,
-  dockSideBar:true
+  dockSideBar:false
 };
 
 export default createReducer(initialState, {
-  [TOGGLE_SIDEBAR] (state, action) {
+  [TOGGLE_SIDEBAR] (state) {
     return {...state, dockSideBar: !state.dockSideBar};
   }
 });
