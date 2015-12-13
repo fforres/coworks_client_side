@@ -31,7 +31,11 @@ export default {
     numero: '149',
     comuna: 'las condes',
     ciudad: 'santiago',
-    pais: 'chile'
+    pais: 'chile',
+    geo: {
+      lat:59.955413,
+      lng:30.337844
+    }
   },
   servicios: {
     'espacios_publicos': true,

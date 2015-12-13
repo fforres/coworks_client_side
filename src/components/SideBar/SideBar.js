@@ -1,23 +1,24 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import Sidebar from 'react-sidebar';
 import { Dropdown, Button, MenuItem } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { actions as sideBarActions } from '../../redux/modules/sideBar';
+import { actions as coworksActions } from '../../redux/modules/coworks';
 import { list } from '../../data';
 import SideBarList from './SideBarList/SideBarList';
 import style from './SideBar.scss';
 const mapStateToProps = (state) => {
   return {
-    showSidebar : state.sideBar.showSidebar || false,
-    dockSideBar : state.sideBar.dockSideBar  || false
+    showSidebar : state.sideBar.showSidebar,
+    dockSideBar : state.sideBar.dockSideBar
   };
 };
 
-class SideBar extends React.Component {
+class SideBar extends Component {
   static propTypes = {
-    showSidebar : React.PropTypes.bool,
-    dockSideBar : React.PropTypes.bool,
-    toggleSideBar : React.PropTypes.func
+    showSidebar : PropTypes.bool,
+    dockSideBar : PropTypes.bool,
+    toggleSideBar : PropTypes.func
   }
 
   componentDidMount () {
