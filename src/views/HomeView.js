@@ -9,10 +9,13 @@ import styles from './HomeView.scss';
 // export the decorated component after the main class definition so
 // the component can be tested w/ and w/o being connected.
 // See: http://rackt.github.io/redux/docs/recipes/WritingTests.html
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  counter : state.counter
+});
 export class HomeView extends React.Component {
   static propTypes = {
-    toggleSideBar : React.PropTypes.func
+    increment : React.PropTypes.func,
+    counter   : React.PropTypes.number
   }
 
   render () {
@@ -20,11 +23,6 @@ export class HomeView extends React.Component {
       <div className={styles.fullscreen} >
         <SideBar/>
         <GMap/>
-        <button className='btn btn-default'
-                onClick={this.props.toggleSideBar}>
-          Increment
-        </button>
-
       </div>
     );
   }
