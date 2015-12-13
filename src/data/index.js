@@ -3,15 +3,11 @@ import CoMunity from './CoMunity';
 import Conectas from './Conectas';
 
 const list = () => {
-  const l = [
+  return [
     CentroCorfo,
     CoMunity,
     Conectas
   ];
-
-  return l.map((el, i, as)=>{
-    return el;
-  });
 };
 
 module.exports = {

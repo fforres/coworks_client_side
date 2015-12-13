@@ -55,9 +55,7 @@ class GMap extends Component {
   shouldComponentUpdate = shouldPureComponentUpdate;
 
   render () {
-    console.log(this.props.coworks);
     const allPins = this.props.coworks.map((el, i, as)=>{
-      console.log(el.direccion.geo);
       return <Pin lat={el.direccion.geo.lat} lng={el.direccion.geo.lng} text={i} key={el._id}/>;
     });
     return (
