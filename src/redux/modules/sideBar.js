@@ -4,29 +4,23 @@ import createReducer from 'utils/createReducer';
 // Constants
 // ------------------------------------
 const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
-const SIDEBAR_DOCKED = 'SIDEBAR_DOCKED';
 
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const toggle = () => ({
-  type: TOGGLE_SIDEBAR
-});
-export const dock = () => ({
+export const toggleSideBar = () => ({
   type: TOGGLE_SIDEBAR
 });
 export const actions = {
-  toggle, dock
+  toggleSideBar
 };
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
-export default createReducer({}, {
+export default createReducer({showSidebar:true}, {
   [TOGGLE_SIDEBAR]: (state) => {
     state.showSidebar = !state.showSidebar;
-  },
-  [SIDEBAR_DOCKED]: (state) => {
-    state.sidebarDocked = !state.sidebarDocked;
+    return state;
   }
 });

@@ -1,33 +1,35 @@
 import React from 'react';
 import Sidebar from 'react-sidebar';
 import { connect } from 'react-redux';
-import { actions as sideBarActions } from '../../redux/modules/counter';
+import { actions as sidebarActions } from '../../redux/modules/counter';
 
-const mapStateToProps = (state) => ({
-  showSidebar : state.showSidebar,
-  sidebarDocked : state.sidebarDocked
-});
+const mapStateToProps = (state) => {
+  return {
+    showSidebar : state.showSidebar || false,
+    sidebarDocked : state.sidebarDocked  || false
+  };
+};
 
 class SideBar extends React.Component {
   static propTypes = {
     showSidebar : React.PropTypes.bool,
-    sidebarDocked : React.PropTypes.bool
+    sidebarDocked : React.PropTypes.bool,
+    toggleSideBar : React.PropTypes.func
   }
 
   componentDidMount () {
-    console.log(this);
   }
   render () {
-    const sidebarContent = <b>Sidebar content </b>;
-    console.log(this.props);
+    const sidebarContent = <p>Sidebar content </p>;
+    console.log(this);
     return (
       <Sidebar sidebar={sidebarContent}
                open={this.props.showSidebar}
                docked={this.props.sidebarDocked}
                onSetOpen={this.onSetSidebarOpen}>
-               <b>Main content</b>
+               <h1 onClick={this.props.toggleSideBar}>WE ARE DOING</h1>
       </Sidebar>
     );
   }
 }
-export default connect(mapStateToProps, sideBarActions)(SideBar);
+export default connect(mapStateToProps, sidebarActions)(SideBar);
