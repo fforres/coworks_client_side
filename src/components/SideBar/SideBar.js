@@ -2,7 +2,6 @@ import React from 'react';
 import Sidebar from 'react-sidebar';
 import { connect } from 'react-redux';
 import { actions as sideBarActions } from '../../redux/modules/sideBar';
-import acts from '../../redux/modules/counter';
 import { list } from '../../data';
 const mapStateToProps = (state) => {
   return {

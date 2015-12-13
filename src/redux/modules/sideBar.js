@@ -22,7 +22,7 @@ const initialState = {
 };
 
 export default createReducer(initialState, {
-  [TOGGLE_SIDEBAR] (state, action) {
+  [TOGGLE_SIDEBAR] (state) {
     return {...state, dockSideBar: !state.dockSideBar};
   }
 });

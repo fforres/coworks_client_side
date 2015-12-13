@@ -1,4 +1,4 @@
-import React, {PropTypes, Component} from 'react';
+import React, { Component } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 import GoogleMap from 'google-map-react';
 import Pin from './Pin.js';
