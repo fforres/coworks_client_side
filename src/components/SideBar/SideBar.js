@@ -1,43 +1,33 @@
 import React from 'react';
 import Sidebar from 'react-sidebar';
+import { connect } from 'react-redux';
+import { actions as sideBarActions } from '../../redux/modules/counter';
 
-const SideBar = React.createClass({
-  getInitialState () {
-    return {
-      sidebarOpen: false,
-      sidebarDocked: false
-    };
-  },
+const mapStateToProps = (state) => ({
+  showSidebar : state.showSidebar,
+  sidebarDocked : state.sidebarDocked
+});
 
-  componentWillMount: () => {
-    const mql = window.matchMedia(`(min-width: 800px)`);
-    mql.addListener(this.mediaQueryChanged);
-    this.setState({mql: mql, sidebarDocked: mql.matches});
-  },
+class SideBar extends React.Component {
+  static propTypes = {
+    showSidebar : React.PropTypes.bool,
+    sidebarDocked : React.PropTypes.bool
+  }
 
-  componentWillUnmount: () => {
-    this.state.mql.removeListener(this.mediaQueryChanged);
-  },
-
-  onSetSidebarOpen: (open) =>{
-    this.setState({sidebarOpen: this.state.mql.matches});
-  },
-
-  render: () => {
+  componentDidMount () {
+    console.log(this);
+  }
+  render () {
     const sidebarContent = <b>Sidebar content </b>;
+    console.log(this.props);
     return (
       <Sidebar sidebar={sidebarContent}
-               open={this.state.sidebarOpen}
-               docked={this.state.sidebarDocked}
+               open={this.props.showSidebar}
+               docked={this.props.sidebarDocked}
                onSetOpen={this.onSetSidebarOpen}>
                <b>Main content</b>
-        <b>Main content</b>
       </Sidebar>
     );
-  },
-
-  mediaQueryChanged: () => {
-    this.setState({sidebarDocked: this.state.mql.matches});
   }
-});
-export default SideBar;
+}
+export default connect(mapStateToProps, sideBarActions)(SideBar);
