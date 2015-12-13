@@ -1,244 +1,213 @@
-React Redux Starter Kit
+Coworks.cl
 =======================
+(Based on the cool framework [react-redux-starter-kit](https://github.com/davezuko/react-redux-starter-kit) by [@davezuko](https://github.com/davezuko))
 
-[![Join the chat at https://gitter.im/davezuko/react-redux-starter-kit](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/davezuko/react-redux-starter-kit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/davezuko/react-redux-starter-kit.svg?branch=master)](https://travis-ci.org/davezuko/react-redux-starter-kit?branch=master)
-[![dependencies](https://david-dm.org/davezuko/react-redux-starter-kit.svg)](https://david-dm.org/davezuko/react-redux-starter-kit)
-[![devDependency Status](https://david-dm.org/davezuko/react-redux-starter-kit/dev-status.svg)](https://david-dm.org/davezuko/react-redux-starter-kit#info=devDependencies)
+[![dependencies](https://david-dm.org/fforres/coworks_client_side.svg)](https://david-dm.org/fforres/coworks_client_side)
+[![devDependency Status](https://david-dm.org/fforres/coworks_client_side/dev-status.svg)](https://david-dm.org/fforres/coworks_client_side#info=devDependencies)
 
 
-> ### This Project Recently Upgraded to Babel 6!
-> Woohoo! If you'd like to try it out, you're welcome to build directly from the master branch. However, if troubleshooting issues with Babel isn't quite your thing, just pull the [stable v0.18.0 release](https://github.com/davezuko/react-redux-starter-kit/tree/v0.18.0) and continue on your way with Babel 5.
+> ## Coworks.cl :) !
+> Porque tenemos la necesidad de información sobre los distintos coworks disponibles para trabajar.
 
-This starter kit is designed to get you up and running with a bunch of awesome new front-end technologies, all on top of a configurable, feature-rich webpack build system that's already setup to provide hot reloading, CSS modules with Sass support, unit testing, code coverage reports, bundle splitting, and a whole lot more.
+> Si tienes alguna sugerencia, comentario, felicitaciones o reclamos, acá una pequeña lista de...
 
-The primary goal of this project is to remain as **unopinionated** as possible. Its purpose is not to dictate your project structure or to demonstrate a complete sample application, but to provide a set of tools intended to make front-end development robust, easy, and, most importantly, fun. Check out the full feature list below!
+Como ayudar
+----------------
+1. [Quiero ayudar!](#) - (Quieres ayudar con el desarrollo?)
+  - [Con Contenido](#aportar-con-contenido) - (Siempre necesitamos información actualizada!)
+  - [Con Desarrollo](#aportar-con-desarrollo) - (Porque somos geeks :-))
+    - [Requerimientos](#requerimientos) - (Que necesitas para ayudar)
+    - [Tecnologías](#tecnologias) - (Con que tecnologías trabajamos)
+1. [Como usar el proyecto](#como-usar)
+  - [Estuctura](#estructura)
+  - [Server](#server)
+  - [Estilos](#estilos)
+  - [Testing](#testing)
+  - [Utilities](#utilities)
+  - [Troubleshooting](#troubleshooting)
 
-Table of Contents
------------------
-1. [Requirements](#requirements)
-1. [Features](#features)
-1. [Getting Started](#getting-started)
-1. [Usage](#usage)
-1. [Structure](#structure)
-1. [Webpack](#webpack)
-1. [Server](#server)
-1. [Styles](#styles)
-1. [Testing](#testing)
-1. [Utilities](#utilities)
-1. [Deployment](#deployment)
-1. [Troubleshooting](#troubleshooting)
 
-Requirements
+
+
+
+Aportar Con Contenido
+---------------
+¿Tienes algun comentario sobre como hacer hacer este proyecto *mucho más mejor*?
+Puedes:
+-[Enviarnos una sugerencia](https://github.com/fforres/coworks_client_side/issues/new)
+-[Reportar un Bug](https://github.com/fforres/coworks_client_side/issues/new)
+O en su defecto
+-[Hablar en Twitter](https://www.twitter.com/fforres)
+-[Si quieres donarnos algo para mantener vivo el proyecto o los servidores](https://flattr.com/profile/fforres)
+
+Aportar Con Desarrollo
+---------------
+
+> ([Aquí](https://guides.github.com/activities/contributing-to-open-source/) una pequeña guía sobre como contribuir a un proyecto open-source)
+
+1. Forkea el repo:
+2. Clona tu repo:
+
+  ```shell
+  $ git clone {la direccion de tu repo, en mi caso es: https://github.com/fforres/coworks_client_side.git}
+  $ cd {nombre del repo}
+  $ npm install          # Instala los modulos necesarios, listados en /package.json (Son varios, así que puede ser lento)
+  $ npm start            # Iniciar el proyecto (AKA: Le t the magic happen :) )
+  ```
+3. (Momento de decidir)
+  * Desarrollando? Usa `npm start` para inciar un server de desarrollo y entra a `http://localhost:3000`.
+  * Compilando al disco? Usa `npm run compile`.  
+4. Realiza tus cambios, y envía un pull request! :)
+
+Requerimientos
 ------------
 
-Node `^5.0.0`
+  Node `^5.0.0` [Descárgalo acá](https://nodejs.org/en/download/)
 
-Features
+Tecnologías
 --------
 
 * [React](https://github.com/facebook/react) (`^0.14.0`)
   * Includes react-addons-test-utils (`^0.14.0`)
 * [Redux](https://github.com/gaearon/redux) (`^3.0.0`)
-  * react-redux (`^4.0.0`)
-  * redux-devtools
-    * use `npm run dev:nw` to display in a separate window.
-  * redux-thunk middleware
+  * [react-redux](https://github.com/rackt/react-redux) (`^4.0.0`)
+  * [redux-devtools](https://github.com/gaearon/redux-devtools) (`npm run dev:nw` para correrlo en otra ventana)
+  * [redux-thunk middleware](https://github.com/gaearon/redux-thunk)
 * [react-router](https://github.com/rackt/react-router) (`^1.0.0`)
 * [redux-simple-router](https://github.com/jlongster/redux-simple-router) (`^0.0.10`)
 * [Webpack](https://github.com/webpack/webpack)
-  * [CSS modules!](https://github.com/css-modules/css-modules)
-  * sass-loader
-  * postcss-loader with cssnano for style autoprefixing and minification
-  * Pre-configured folder aliases and globals
-  * Separate vendor-only bundle for common dependencies
-  * CSS extraction during production builds
-  * Loader support for fonts and images
-* [Express](https://github.com/strongloop/express)
-  * webpack-dev-middleware
-  * webpack-hot-middleware
-* [Karma](https://github.com/karma-runner/karma)
-  * Mocha w/ Chai, Sinon-Chai, and Chai-as-Promised
-  * PhantomJS
-  * Code coverage reports
+  * [CSS modules!](https://github.com/css-modules/css-modules) <3
+  * [sass-loader](https://github.com/jtangelder/sass-loader)
+  * [postcss-loader](https://github.com/postcss/postcss-loader) con cssnano para prefix de estilos y minificación
+  * Loaders para fonts e imagenes
+* [Express](https://github.com/strongloop/express) (Solo para el desarrollo, el entorno de producción es full client-side)
+  * [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware)
+  * [webpack-hot-middleware](https://github.com/glenjamin/webpack-hot-middleware)
+* [Karma](https://github.com/karma-runner/karma) (Tests!)
+  * [Mocha](https://mochajs.org/) w/ [Chai](http://chaijs.com/guide/installation/), [Sinon-Chai](http://chaijs.com/plugins/sinon-chai), and [Chai-as-Promised](https://github.com/domenic/chai-as-promised/)
+  * [PhantomJS](http://phantomjs.org/)
 * [Babel](https://github.com/babel/babel) (`^6.3.0`)
-  * `react-transform-hmr` for hot reloading
-  * `react-transform-catch-errors` with `redbox-react` for more visible error reporting
-  * Uses babel runtime rather than inline transformations
+  * [`react-transform-hmr`](https://github.com/gaearon/react-transform-hmr) para el hot-reloading
+  * [`react-transform-catch-errors`](https://github.com/gaearon/react-transform-catch-errors) con [`redbox-react`](https://github.com/KeywordBrain/redbox-react) para sentirse mal con el rojo de los errores :)
 * [ESLint](http://eslint.org)
-  * Includes [eslint-config-defaults](https://github.com/walmartlabs/eslint-config-defaults) (uses airbnb by default)
-  * Includes separate test-specific `.eslintrc` to work with Mocha and Chai
+  * Con [eslint-config-defaults](https://github.com/walmartlabs/eslint-config-defaults) (airbnb linter :))
+  * Un `.eslintrc` espcecífico para trabajar con Mocha and Chai.
 
-Getting Started
----------------
 
-Just clone the repo and install the necessary node modules:
-
-```shell
-$ git clone https://github.com/davezuko/react-redux-starter-kit.git
-$ cd react-redux-starter-kit
-$ npm install                   # Install Node modules listed in ./package.json (may take a while the first time)
-$ npm start                     # Compile and launch
-```
-
-Usage
+Como Usar
 -----
+**NOTA:** Este proyecto usa [debug](https://github.com/visionmedia/debug) para mejorar la  experiencia de debugging. Para ver todos los mensajes que pueda enviar el proeycto, setea la variable  `DEBUG` a `kit:*` (p.e. `DEBUG=kit:* npm start`)
 
-Before delving into the descriptions for each available npm script, here's a brief summary of the three which will most likely be your bread and butter:
+**Detalles de los comandos de NPM**
 
-* Doing live development? Use `npm start` to spin up the dev server.
-* Compiling the application to disk? Use `npm run compile`.
-* Deploying to an environment? `npm run deploy` can help with that.
+* `npm start` - Inicia el server de desarrollo en `localhost:3000`. HMR activado para eld esarrollo
+* `npm run compile` - Compila la app al disco (por defecto en `~/dist` ).
+* `npm run dev:nw` - Igual que `npm start`, pero abre `redux devtools` en una nueva ventana.
+* `npm run dev:no-debug` - Igual que `npm start`, pero sin `redux devtools`.
+* `npm run test` - Corre los test unitarios.
+* `npm run test:dev` - Corre Karma, y se queda obserando para re-lanzar los tests cuando existan cambios en el proyecto (No genera reportes) .
+* `npm run lint` - Corre ESLint contra el proyecto.
+* `npm run lint:tests` - * `npm run lint` - Corre ESLint contra los test.
+* `npm run deploy`- Corre Linter, Tests, y luego, si no falla, compila la aplicación al disco.
 
-**NOTE:** This package makes use of [debug](https://github.com/visionmedia/debug) to improve your debugging experience. To see all starter kit messages during the build process, set the `DEBUG` environment variable to `kit:*` (e.g. `DEBUG=kit:* npm start`).
-
-Great, now that introductions have been made here's everything in full detail:
-
-* `npm start` - Spins up express server to serve your app at `localhost:3000`. HMR will be enabled in development.
-* `npm run compile` - Compiles the application to disk (`~/dist` by default).
-* `npm run dev:nw` - Same as `npm start`, but opens the redux devtools in a new window.
-* `npm run dev:no-debug` - Same as `npm start` but disables redux devtools.
-* `npm run test` - Runs unit tests with Karma and generates a coverage report.
-* `npm run test:dev` - Runs Karma and watches for changes to re-run tests; does not generate coverage reports.
-* `npm run lint` - Runs ESLint against your source code.
-* `npm run lint:tests` - Runs ESLint against your tests.
-* `npm run deploy`- Runs linter, tests, and then, on success, compiles your application to disk.
-
-**NOTE:** Deploying to a specific environment? Make sure to specify your target `NODE_ENV` so webpack will use the correct configuration. For example: `NODE_ENV=production npm run compile` will compile your application with `~/build/webpack/production.js`.
+**NOTE:** Deployando a un entorno concreto? Recuerda especificaro `NODE_ENV` para que webpack use la configuracion correcta.
+Por ejemplo: `NODE_ENV=production npm run compile` compilará tu aplicación con `~/build/webpack/production.js`.
 
 ### Configuration
 
-Basic project configuration can be found in `~/config/index.js`. Here you'll be able to redefine your `src` and `dist` directories, add/remove aliases, tweak your vendor dependencies, and more. For the most part, you should be able to make changes in here _without ever having to touch the webpack build configuration_. If you need environment-specific overrides, create a file with the name of target `NODE_ENV` prefixed by an `_` in `~/config` (see `~/config/_production.js` for an example).
+Una configuracion basica del proyecto se puede encontrar en `~/config/index.js`. Ahí se puede setear los directorios `src` y `dist`, agregar y remover aliases, ajustar la preferencias de vendor, y ETC.
+(Si necesitas overrides específicos para un `NODE_ENV`, crea un archivo de nombre `NODE_ENV` con un prefijo  `_` en `~/config` (Por ejemplo, para un entorno `PREPROD`, el archivo se llamaría `~/config/_preprod.js`).
 
-Common configuration options:
+Configuraciones:
 
-* `dir_src` - application source code base path
-* `dir_dist` - path to build compiled application to
-* `server_host` - hostname for the express server
-* `server_port` - port for the express server
-* `compiler_css_modules` - whether or not to enable CSS modules
-* `compiler_source_maps` - whether or not to generate source maps
-* `compiler_vendor` - packages to separate into to the vendor bundle
+* `dir_src` - El source code de la aplicación
+* `dir_dist` - Path a la aplicación compilada
+* `server_host` - Host para el server de express
+* `server_port` - Puerto para el server de express
+* `compiler_css_modules` - Si se usarán CSS modules
+* `compiler_source_maps` - Si se generarán source maps
+* `compiler_vendor` - Packages que separaremos en un "Vendor" bundle
 
-Structure
+Estructura
 ---------
 
 The folder structure provided is only meant to serve as a guide, it is by no means prescriptive. It is something that has worked very well for me and my team, but use only what makes sense to you.
 
 ```
 .
-├── bin                      # Build/Start scripts
-├── build                    # All build-related configuration
-│   └── webpack              # Environment-specific configuration files for webpack
-├── config                   # Project configuration settings
-├── server                   # Express application (uses webpack middleware)
-│   └── app.js               # Server application entry point
-├── src                      # Application source code
-│   ├── components           # Generic React Components (generally Dumb components)
-│   ├── containers           # Components that provide context (e.g. Redux Provider)
-│   ├── layouts              # Components that dictate major page structure
-│   ├── redux                # Redux-specific pieces
-│   │   └── modules          # Collections of reducers/constants/actions
-│   ├── routes               # Application route definitions
-│   ├── styles               # Application-wide styles (generally settings)
-│   ├── utils                # Generic utilities
-│   ├── views                # Components that live at a route
-│   └── app.js               # Application bootstrap and rendering
-└── tests                    # Unit tests
+├── bin                      # Scripts de Compilacion/Construcción/Desarrollo
+├── build                    # Configuraciones de Build
+│   └── webpack              # Archivos específicos de  configuración para webpack
+├── config                   # Configuraciones del proyecto
+├── server                   # Aplicación de express (con webpack middleware)
+│   └── app.js               # Archivo de inicio del server de express
+├── src                      # Source code de la aplicación
+│   ├── components           # Componentes genéricos de React (Dumb components)
+│   ├── data                 # Archivos que emulan apis (DataSource)
+│   ├── containers           # Componentes que entregan Contexto (e.g. Redux Provider)
+│   ├── layouts              # Componentes que dictar la estructura de una página
+│   ├── redux                # Todo-lo-relacionado-con-redux
+│   │   └── modules          # Reducers/Constantes/Acciones
+│   ├── routes               # Rutas de la aplicación
+│   ├── styles               # Estilos globales de la app
+│   ├── utils                # Utilidades genéricas
+│   ├── views                # Componentes que viven en una ruta
+│   └── app.js               # Bootstraping y rendering de la aplicación
+└── tests                    # Tests
 ```
 
 ### Components vs. Views vs. Layouts
 
-**TL;DR:** They're all components.
+**TL;DR:** Todos son componentes.
+**Layout** Un componente que define la estructura de una página, cosas como: Barra de navegación, viewport, barra lateral, footer, espacio/contenedor del contenido. La mayoría de las aplicaciones suelen tener solo un layout, pero sin problemas pueden ser más y por eso es que existe la separación de estos.
+**Views** Componeentes que viven en las rutas, generalmente renderizados dentro de un **Layout**. Esto termina implicando que con esta estructura, cualquier cosa dentro de **Components** termina siendo un Dumb Component
 
-This distinction may not be important for you, but as an explanation: A **Layout** is something that describes an entire page structure, such as a fixed navigation, viewport, sidebar, and footer. Most applications will probably only have one layout, but keeping these components separate makes their intent clear. **Views** are components that live at routes, and are generally rendered within a **Layout**. What this ends up meaning is that, with this structure, nearly everything inside of **Components** ends up being a dumb component.
-
-Webpack
--------
-
-### Configuration
-The webpack compiler configuration is located in `~/build/webpack`. Here you'll find configurations for each environment; `development`, `production`, and `development_hot` exist out of the box. These configurations are selected based on your current `NODE_ENV`, with the exception of `development_hot` which will _always_ be used during live development.
-
-**Note**: There has been a conscious decision to keep development-specific configuration (such as hot-reloading) out of `.babelrc`. By doing this, it's possible to create cleaner development builds (such as for teams that have a `dev` -> `stage` -> `production` workflow) that don't, for example, constantly poll for HMR updates.
-
-So why not just disable HMR? Well, as a further explanation, enabling `react-transform-hmr` in `.babelrc` but building the project without HMR enabled (think of running tests with `NODE_ENV=development` but without a dev server) causes errors to be thrown, so this decision also alleviates that issue.
-
-### Vendor Bundle
-You can redefine which packages to treat as vendor dependencies by editing `compiler_vendor` in `~/config/index.js`. These default to:
-
-```js
-[
-  'history',
-  'react',
-  'react-redux',
-  'react-router',
-  'redux-simple-router',
-  'redux'
-]
-```
 
 ### Webpack Root Resolve
-Webpack is configured to make use of [resolve.root](http://webpack.github.io/docs/configuration.html#resolve-root), which lets you import local packages as if you were traversing from the root of your `~/src` directory. Here's an example:
+Webpack está configurado para usar:  [resolve.root](http://webpack.github.io/docs/configuration.html#resolve-root), que te deja importar packages locales como si estuvieras en la raiz de tu directorio  `~/src` Por ejemplo:
 
 ```js
-// current file: ~/src/views/some/nested/View.js
+// Si estamo por ejemplo en: ~/src/views/some/nested/View.js
 
-// What used to be this:
+// lo que era:
 import SomeComponent from '../../../components/SomeComponent';
 
-// Can now be this:
-import SomeComponent from 'components/SomeComponent'; // Hooray!
+// ahora es:
+import SomeComponent from 'components/SomeComponent'; // YEIII :D!
 ```
 
 ### Globals
 
-These are global variables available to you anywhere in your source code. If you wish to modify them, they can be found as the `globals` key in `~/config/index.js`.
+Existen algunas varibales globales en este proyecto, las que pueden ser encontradas dentro de `globals` en `~/config/index.js`.
 
-* `process.env.NODE_ENV` - the active `NODE_ENV` when the build started
-* `__DEV__` - True when `process.env.NODE_ENV` is `development`
-* `__PROD__` - True when `process.env.NODE_ENV` is `production`
+* `process.env.NODE_ENV` - El `NODE_ENV` cuando se inició el proyecto
+* `__DEV__` - true, cuando `process.env.NODE_ENV` es `development`
+* `__PROD__` - true, cuando `process.env.NODE_ENV` es `production`
 
-Server
+
+Estilos
 ------
 
-This starter kit comes packaged with an Express server. It's important to note that the sole purpose of this server is to provide `webpack-dev-middleware` and `webpack-hot-middleware` for hot module replacement. Using a custom Express app in place of webpack-dev-server will hopefully make it easier for users to extend the starter kit to include functionality such as back-end API's, isomorphic/universal rendering, and more -- all without bloating the base boilerplate. Because of this, it should be noted that the provided server is **not** production-ready. If you're deploying to production, take a look at [the deployment section](#deployment).
+Este proyecto acepta tanto `.scss` como `.css`, configuradas mediante [CSS Modules](https://github.com/css-modules/css-modules).
+Luego de ser importadas los estilos on procesados con  [PostCSS](https://github.com/postcss/postcss) para ser minificados y autoprefijados, luego serán extraidos a un un archivo `.css` durante la compilación a producción.
 
-Styles
-------
-
-Both `.scss` and `.css` file extensions are supported out of the box and are configured to use [CSS Modules](https://github.com/css-modules/css-modules). After being imported, styles will be processed with [PostCSS](https://github.com/postcss/postcss) for minification and autoprefixing, and will be extracted to a `.css` file during production builds.
-
-**NOTE:** If you're importing styles from a base styles directory (useful for generic, app-wide styles), you can make use of the `styles` alias, e.g.:
-
-```js
-// current file: ~/src/components/some/nested/component/index.jsx
-import 'styles/core.scss'; // this imports ~/src/styles/core.scss
-```
-
-Furthermore, this `styles` directory is aliased for sass imports, which further eliminates manual directory traversing; this is especially useful for importing variables/mixins.
-
-Here's an example:
-
-```scss
-// current file: ~/src/styles/some/nested/style.scss
-// what used to be this (where base is ~/src/styles/_base.scss):
-@import '../../base';
-
-// can now be this:
-@import 'base';
-```
 
 Testing
 -------
 
-To add a unit test, simply create a `.spec.js` file anywhere in `~/tests`. Karma will pick up on these files automatically, and Mocha and Chai will be available within your test without the need to import them.
+Para agregar un test unitario, solo agrega un archivo con un sufijo `.spec.js` dentro de  `~/tests` (`counter_reducer.spec.js`, por ejemplo). Karma lee todos los archivos automáticamente en la carpeta `~/tests`.
+Mocha y Chai están configurados para estar disponibles en esos archivos sin la necesidad de importarlos.
 
-Coverage reports will be compiled to `~/coverage` by default. If you wish to change what reporters are used and where reports are compiled, you can do so by modifying `coverage_reporters` in `~/config/index.js`.
+Los reportes de cobertura  serán compilados en `~/coverage` por defecto.
+Si deseas cambiar que reportes están usados y donde se compilan los reportes, puedes modificar `coverage_reporters` en `~/config/index.js`.
 
 Utilities
 ---------
 
-This boilerplate comes with a simple utility (thanks to [StevenLangbroek](https://github.com/StevenLangbroek)) to help speed up your Redux development process. In `~/client/utils` you'll find an export for `createReducer` designed to expedite the creation of reducers when they're defined via an object map rather than switch statements. As an example, what once looked like this:
+Hay una pequeña utilidad (Gracias a [StevenLangbroek](https://github.com/StevenLangbroek)) para acelerar el proceso de desarrollo con Redux.
+En `~/src/utils` hay un export de `createReducer` diseñado para ayudar en la creacion de reducers, definidos por Mapeo de Objetos en ves de un Switch.
+
+Lo que alguna ves se vió como esto:
 
 ```js
 import { TODO_CREATE } from 'constants/todo';
@@ -255,7 +224,7 @@ export default function todo (state = initialState, action) {
 }
 ```
 
-Can now look like this:
+Ahora puede verse así:
 
 ```js
 import { TODO_CREATE }   from 'constants/todo';
@@ -268,20 +237,14 @@ export default createReducer(initialState, {
 });
 ```
 
-Deployment
-----------
 
-Out of the box, this starter kit is deployable by serving the `~/dist` folder generated by `npm run compile` (make sure to specify your target `NODE_ENV` as well). This project does not concern itself with the details of server-side rendering or API structure, since that demands an opinionated structure that makes it difficult to extend the starter kit. However, if you do need help with more advanced deployment strategies, here are a few tips:
-
-If you are serving the application via a web server such as nginx, make sure to direct incoming routes to the root `~/dist/index.html` file and let react-router take care of the rest. The Express server that comes with the starter kit is able to be extended to serve as an API or whatever else you need, but that's entirely up to you.
-
-Have more questions? Feel free to submit an issue or join the Gitter chat!
-
-Troubleshooting
+Troubleshoot
 ---------------
 
-### `npm run dev:nw` produces `cannot read location of undefined.`
+### `npm run dev:nw` produce in `cannot read location of undefined.`
 
-This is most likely because the new window has been blocked by your popup blocker, so make sure it's disabled before trying again.
+Es probable que la nueva ventana para las dev-tools esté bloqueada por un popup blocker, o un blocker de publicidad, así que asegúrate de deshabilitarlo o agregar tu localhost a la whitelist.
 
-Reference: [issue 110](https://github.com/davezuko/react-redux-starter-kit/issues/110)
+Referencia: [issue 110](https://github.com/davezuko/react-redux-starter-kit/issues/110)
+
+(Based on the cool framework [react-redux-starter-kit](https://github.com/davezuko/react-redux-starter-kit) by [@davezuko](https://github.com/davezuko))

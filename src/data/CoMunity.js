@@ -18,11 +18,11 @@ export default {
     }
   },
   horarios: {
-    lunes:      {abierto: true,  apertura: '9:00', cierre:'19:00'},
-    martes:     {abierto: true,  apertura: '9:00', cierre:'19:00'},
-    miercoles:  {abierto: true,  apertura: '9:00', cierre:'19:00'},
-    jueves:     {abierto: true,  apertura: '9:00', cierre:'19:00'},
-    viernes:    {abierto: true,  apertura: '9:00', cierre:'19:00'},
+    lunes:      {abierto: true,   apertura: '9:00', cierre:'19:00'},
+    martes:     {abierto: true,   apertura: '9:00', cierre:'19:00'},
+    miercoles:  {abierto: true,   apertura: '9:00', cierre:'19:00'},
+    jueves:     {abierto: true,   apertura: '9:00', cierre:'19:00'},
+    viernes:    {abierto: true,   apertura: '9:00', cierre:'19:00'},
     sabado:     {abierto: false,  apertura: '', cierre:''},
     domingo:    {abierto: false,  apertura: '', cierre:''}
   },
