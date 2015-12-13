@@ -1,6 +1,6 @@
 export default {
-  _id:0,
-  nombre: '',
+  _id:2,
+  nombre: 'Conectas',
   url: 'http://www.conectas.cl/',
   descripcion: {
     larga:'Conectas es un espacio de coworking para que profesionales independientes, emprendedores y trabajadores de empresas, puedan reunirse y trabajar en un ambiente abierto, colaborativo y con excelente conectividad.',

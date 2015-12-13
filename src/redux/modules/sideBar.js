@@ -18,7 +18,7 @@ export const actions = {
 // ------------------------------------
 const initialState = {
   showSidebar:false,
-  dockSideBar:true
+  dockSideBar:false
 };
 
 export default createReducer(initialState, {
