@@ -4,7 +4,7 @@ import style from './Pin.scss';
 
 export default class MyGreatPlace extends Component {
   static propTypes = {
-    text: PropTypes.string
+    text: PropTypes.any.isRequired
   };
   static defaultProps = {};
 

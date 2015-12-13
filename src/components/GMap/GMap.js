@@ -4,16 +4,23 @@ import GoogleMap from 'google-map-react';
 import Pin from './Pin.js';
 class GMap extends Component {
   static propTypes = {
-    center: PropTypes.object,
+    center: PropTypes.shape({
+      lat: PropTypes.number.isRequired,
+      lng: PropTypes.number.isRequired
+    }),
     zoom: PropTypes.number,
-    onCenterChange: PropTypes.func,
-    greatPlaceCoords: PropTypes.object
-  }
+    coworks: React.PropTypes.arrayOf(
+      PropTypes.shape({
+        lat: PropTypes.number.isRequired,
+        lng: PropTypes.number.isRequired
+      })
+    )
+  };
 
   static defaultProps = {
     center: {lat: 59.938043, lng: 30.337157},
     zoom: 9,
-    greatPlaceCoords: {lat: 59.724465, lng: 30.080121}
+    coworks: [{lat: 59.724465, lng: 30.080121}, {lat: 59.955413, lng: 30.337844}]
   };
 
   constructor (props) {
@@ -23,8 +30,7 @@ class GMap extends Component {
   componentDidMount () {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((pos)=>{
-        console.log(pos);
-        this.props.center = {
+        const center = {
           lat: pos.coords.latitude,
           lng: pos.coords.longitude
         };
@@ -35,26 +41,20 @@ class GMap extends Component {
   shouldComponentUpdate = shouldPureComponentUpdate;
 
   render () {
+    const allPins = this.props.coworks.map((el, i, as)=>{
+      return <Pin lat={el.lat} lng={el.lng} text={i} key={i}/>;
+    });
     return (
        <GoogleMap
         defaultCenter={this.props.center}
         onBoundsChange={this._onBoundsChange}
         onChildClick={this._onChildClick}
         defaultZoom={this.props.zoom}>
-        <Pin lat={59.955413} lng={30.337844} text={'1'} /* Kreyser Avrora */ />
-        <Pin {...this.props.greatPlaceCoords} text={'2'} /* road circle */ />
+        {allPins}
       </GoogleMap>
     );
   }
 
-  _onBoundsChange = (center, zoom /* , bounds, marginBounds */) => {
-    this.props.onCenterChange(center);
-    // this.props.onZoomChange(zoom);
-  }
-
-  _onChildClick = (key, childProps) => {
-    this.props.onCenterChange([childProps.lat, childProps.lng]);
-  }
 }
 
 export default GMap;
