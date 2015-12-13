@@ -31,7 +31,11 @@ export default {
     numero: '91',
     comuna: 'providencia',
     ciudad: 'santiago',
-    pais: 'chile'
+    pais: 'chile',
+    geo: {
+      lat:59.849123,
+      lng:30.207123
+    }
   },
   servicios: {
     'espacios_publicos': true,

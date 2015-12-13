@@ -1,7 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 import GoogleMap from 'google-map-react';
+import { connect } from 'react-redux';
+import { actions as coworksActions } from '../../redux/modules/coworks';
 import Pin from './Pin.js';
+
+const mapStateToProps = (state) => {
+  return {
+    center: state.coworks.map.center,
+    zoom: state.coworks.map.zoom,
+    coworks : state.coworks.coworks
+  };
+};
+
 class GMap extends Component {
   static propTypes = {
     center: PropTypes.shape({
@@ -9,30 +20,33 @@ class GMap extends Component {
       lng: PropTypes.number.isRequired
     }),
     zoom: PropTypes.number,
-    coworks: React.PropTypes.arrayOf(
+    coworks: PropTypes.arrayOf(
       PropTypes.shape({
-        lat: PropTypes.number.isRequired,
-        lng: PropTypes.number.isRequired
+        direccion:  PropTypes.shape({
+          geo: PropTypes.shape({
+            lat: PropTypes.number.isRequired,
+            lng: PropTypes.number.isRequired
+          })
+        })
       })
-    )
-  };
-
-  static defaultProps = {
-    center: {lat: 59.938043, lng: 30.337157},
-    zoom: 9,
-    coworks: [{lat: 59.724465, lng: 30.080121}, {lat: 59.955413, lng: 30.337844}]
+    ),
+    requestCoworks: PropTypes.func
   };
 
   constructor (props) {
     super(props);
   }
 
+  componentWillMount () {
+    this.props.requestCoworks();
+  }
+
   componentDidMount () {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((pos)=>{
         const center = {
-          lat: pos.coords.latitude,
-          lng: pos.coords.longitude
+          lat: pos.coords.lat,
+          lng: pos.coords.lng
         };
       });
     }
@@ -41,13 +55,14 @@ class GMap extends Component {
   shouldComponentUpdate = shouldPureComponentUpdate;
 
   render () {
+    console.log(this.props.coworks);
     const allPins = this.props.coworks.map((el, i, as)=>{
-      return <Pin lat={el.lat} lng={el.lng} text={i} key={i}/>;
+      console.log(el.direccion.geo);
+      return <Pin lat={el.direccion.geo.lat} lng={el.direccion.geo.lng} text={i} key={el._id}/>;
     });
     return (
        <GoogleMap
         defaultCenter={this.props.center}
-        onBoundsChange={this._onBoundsChange}
         onChildClick={this._onChildClick}
         defaultZoom={this.props.zoom}>
         {allPins}
@@ -56,5 +71,4 @@ class GMap extends Component {
   }
 
 }
-
-export default GMap;
+export default connect(mapStateToProps, coworksActions)(GMap);

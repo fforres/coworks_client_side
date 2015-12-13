@@ -31,7 +31,11 @@ export default {
     numero: '',
     comuna: '',
     ciudad: '',
-    pais: ''
+    pais: '',
+    geo:{
+      lat:0,
+      lng:0
+    }
   },
   servicios: {
     'espacios_publicos': false,

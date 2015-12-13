@@ -31,7 +31,11 @@ export default {
     numero: '912',
     comuna: 'santiago',
     ciudad: 'santiago',
-    pais: 'chile'
+    pais: 'chile',
+    geo: {
+      lat:59.724465,
+      lng:30.080121
+    }
   },
   servicios: {
     'espacios_publicos': true,
