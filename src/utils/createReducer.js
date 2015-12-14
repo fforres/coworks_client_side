@@ -3,7 +3,6 @@ export function createReducer (initialState, fnMap) {
   return (state = initialState, action, ...rest) => {
     const { type, payload } = action;
     const handler = fnMap[type];
-
     return handler ? handler(state, payload, ...rest) : state;
   };
 }

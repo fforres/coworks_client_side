@@ -3,22 +3,23 @@ import Sidebar from 'react-sidebar';
 import { Dropdown, Button, MenuItem } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { actions as sideBarActions } from '../../redux/modules/sideBar';
-import { actions as coworksActions } from '../../redux/modules/coworks';
 import { list } from '../../data';
 import SideBarList from './SideBarList/SideBarList';
 import style from './SideBar.scss';
 const mapStateToProps = (state) => {
   return {
-    showSidebar : state.sideBar.showSidebar,
-    dockSideBar : state.sideBar.dockSideBar
+    isShown : state.sideBar.isShown,
+    isDocked : state.sideBar.isDocked
   };
 };
 
 class SideBar extends Component {
   static propTypes = {
-    showSidebar : PropTypes.bool,
-    dockSideBar : PropTypes.bool,
-    toggleSideBar : PropTypes.func
+    isShown : PropTypes.bool,
+    isDocked : PropTypes.bool,
+    toggleSideBar : PropTypes.func,
+    hideSideBar : PropTypes.func,
+    showSideBar : PropTypes.func
   }
 
   componentDidMount () {
@@ -26,7 +27,8 @@ class SideBar extends Component {
   render () {
     return (
       <Sidebar sidebar={<SideBarList/>}
-               docked={this.props.dockSideBar}
+               docked={this.props.isDocked}
+               open={this.props.isShown}
                onSetOpen={this.onSetSidebarOpen} >
        <Dropdown id='search-button'  bsSize='large' className={style['main-button']}>
          <Button bsStyle='info' onClick={this.props.toggleSideBar}>
@@ -34,7 +36,7 @@ class SideBar extends Component {
          </Button>
          <Dropdown.Toggle bsStyle='info'/>
          <Dropdown.Menu className={style.show + ' super-colors'}>
-           <MenuItem eventKey='1'>Action</MenuItem>
+           <MenuItem eventKey='1' onClick={this.props.showSideBar}>Action</MenuItem>
            <MenuItem eventKey='2'>Another action</MenuItem>
            <MenuItem eventKey='3'>Active Item</MenuItem>
            <MenuItem divider />

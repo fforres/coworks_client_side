@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { GMap, SideBar } from '../components';
-import { actions as counterActions } from '../redux/modules/counter';
+import { actions as coworksActions } from '../redux/modules/coworks';
 import styles from './HomeView.scss';
 
 // We define mapStateToProps where we'd normally use
@@ -14,10 +14,13 @@ const mapStateToProps = (state) => ({
 });
 export class HomeView extends React.Component {
   static propTypes = {
-    increment : React.PropTypes.func,
-    counter   : React.PropTypes.number
+    counter   : React.PropTypes.number,
+    requestCoworks   : React.PropTypes.func
   }
 
+  componentWillMount () {
+    this.props.requestCoworks();
+  }
   render () {
     return (
       <div className={styles.fullscreen} >
@@ -28,4 +31,4 @@ export class HomeView extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, counterActions)(HomeView);
+export default connect(mapStateToProps, coworksActions)(HomeView);
