@@ -6,3 +6,37 @@
   padding:10px;
   margin-top: -20px;
 }
+.item{
+  min-width: 200px;
+  vertical-align: middle;
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-right:5px;
+  padding-left:5px;
+  cursor: pointer;
+  color:black;
+  transition: background-color 500ms;
+}
+.item-hovered{
+  background-color: rgba(1,1,1,0.1)
+}
+.item-selected{
+  background-color: rgba(9, 8, 8, 0.31);
+}
+
+.item-number{
+  font-size: 1em;
+  margin-right: 10px;
+  transition: color 500ms;
+}
+.item-text{
+  font-size: 1.3em;
+  transition: color 500ms;
+}
+
+.item-link{
+  margin-top: 2px;
+  margin-left: 10px;
+  font-size: 1.1em;
+  float:right;
+}
