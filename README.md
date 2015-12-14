@@ -40,9 +40,48 @@ O en su defecto
 -[Hablar en Twitter](https://www.twitter.com/fforres)
 -[Si quieres donarnos algo para mantener vivo el proyecto o los servidores](https://flattr.com/profile/fforres)
 
+
+##### TODO  (Queda por realizar)
+- **Sidebar**
+  - [ ] Agregar boton de cerrado
+  - [ ] Mejorar estilo (Pretify)
+  - [ ] Agregar scrolling vertical
+  - [ ] Agregar Búsqueda/Filtrado
+  - [ ] Agregar barra de búsqueda
+  - [ ] Agregar información por coworks (Quizá un area desplegable?)
+- **MAPA**
+  - [ ] Centrado del mapa al clickear un pin
+  - [ ] Cambiar estilo de los PINS.
+  - [ ] Agregar desplegable con información de cowork seleccionado
+  - [ ] Agregar información on hover.
+  - [ ] Cambiar números por Nombre.
+- **API**
+  - [ ] Migrar a Server API (Firebase? RethinkDB?)
+- **GLOBAL**
+  - [ ] Agregar TopBar(?)
+  - [ ] Make Responsive
+
+
+##### Ya hecho (Aunque se puede mejorar)
+
+- [x] ~~Agregar mapa~~
+- [x] ~~Agregar sidebar~~
+- [x] ~~Agregar listado al sidebar~~
+- [x] ~~Agregar API local (.JSON files)~~
+- [x] ~~Agregar store al sidebar~~
+- [x] ~~Agregar store a los coworks~~
+- [x] ~~Fixear estilos del mapa y sidebar (No overlapping)~~
+- [x] ~~Agregar Readme~~
+
+###### also:
+- [x] ~~Recargar Condensadores de flujo~~
+- [x] ~~Rearticular Destornilladores Sónicos~~
+- [x] ~~Descombobular Apertura de Holocrones~~
+- [x] ~~Beber café~~
+
+
 Aportar Con Desarrollo
 ---------------
-
 > ([Aquí](https://guides.github.com/activities/contributing-to-open-source/) una pequeña guía sobre como contribuir a un proyecto open-source)
 
 1. Forkea el repo:
