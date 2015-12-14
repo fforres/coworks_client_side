@@ -1,7 +1,7 @@
 {
   "name": "react-redux-starter-kit",
-  "version": "0.18.0",
-  "description": "Get started with React, Redux, and React-Router!",
+  "version": "0.1.1",
+  "description": "Coworks for everyone! Curated coworks station content",
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf dist",
@@ -18,9 +18,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davezuko/react-redux-starter-kit.git"
+    "url": "git+https://github.com:fforres/coworks_client_side.git"
   },
-  "author": "David Zukowski <david@zuko.me> (http://zuko.me)",
+  "author": "Felipe Torres <felipe.torressepulveda@gmail.com> (http://fforr.es)",
   "license": "MIT",
   "dependencies": {
     "cssnano": "^3.3.2",
@@ -83,7 +83,7 @@
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.0",
     "redbox-react": "^1.0.4",
-    "redux-devtools": "3.0.0-beta-3",
+    "redux-devtools": "3.0.0",
     "redux-devtools-dock-monitor": "^1.0.0-beta-3",
     "redux-devtools-log-monitor": "^1.0.0-beta-3",
     "sass-loader": "^3.0.0",
