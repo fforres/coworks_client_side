@@ -27,12 +27,12 @@ const initialState = {
 
 export default createReducer(initialState, {
   [TOGGLE_SIDEBAR] (state) {
-    return {...state, isDocked: !state.isDocked};
+    return {...state, isShown: !state.isDocked};
   },
   [SHOW_SIDEBAR] (state) {
-    return {...state, isDocked: true};
+    return {...state, isShown: true};
   },
   [HIDE_SIDEBAR] (state) {
-    return {...state, isDocked: true};
+    return {...state, isShown: true};
   }
 });

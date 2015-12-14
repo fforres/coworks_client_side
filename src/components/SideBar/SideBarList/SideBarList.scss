@@ -7,7 +7,8 @@
   margin-top: -20px;
 }
 .item{
-  min-width: 200px;
+  max-width: 70vw;
+  min-width: 40vw;
   vertical-align: middle;
   padding-top:5px;
   padding-bottom:5px;
@@ -18,10 +19,10 @@
   transition: background-color 500ms;
 }
 .item-hovered{
-  background-color: rgba(1,1,1,0.1)
+  background-color: rgba(9, 8, 8, 0.31);
 }
 .item-selected{
-  background-color: rgba(9, 8, 8, 0.31);
+  background-color: rgba(1,1,1,0.1)
 }
 
 .item-number{

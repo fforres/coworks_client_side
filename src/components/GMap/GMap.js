@@ -1,15 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
-import GoogleMap from 'google-map-react';
 import { connect } from 'react-redux';
 import { actions as coworksActions } from '../../redux/modules/coworks';
-import Pin from './Pin.js';
+import GoogleMap from 'google-map-react';
+import style from './Pin.scss';
 
 const mapStateToProps = (state) => {
   return {
     center: state.coworks.map.center,
     zoom: state.coworks.map.zoom,
-    coworks : state.coworks.coworks
+    coworks : state.coworks.coworks,
+    selectedCowork: state.coworks.selected,
+    hoveredCowork: state.coworks.hovered
   };
 };
 
@@ -30,15 +32,13 @@ class GMap extends Component {
         })
       })
     ),
-    requestCoworks: PropTypes.func
+    requestCoworks: PropTypes.func,
+    selectedCowork: PropTypes.number.isRequired,
+    hoveredCowork: PropTypes.number.isRequired
   };
 
   constructor (props) {
     super(props);
-  }
-
-  componentWillMount () {
-    this.props.requestCoworks();
   }
 
   componentDidMount () {
@@ -56,7 +56,23 @@ class GMap extends Component {
 
   render () {
     const allPins = this.props.coworks.map((el, i, as)=>{
-      return <Pin lat={el.direccion.geo.lat} lng={el.direccion.geo.lng} text={i} key={el._id}/>;
+      const theClass = (() => {
+        const str = [style.pin];
+        if (el._id === this.props.hoveredCowork) {
+          str.push([style['pin-hover']]);
+        }
+        if (el._id === this.props.selectedCowork) {
+          str.push([style['pin-selected']]);
+        }
+        return str.join(' ');
+      })();
+
+
+      return (
+        <div className={theClass} lat={el.direccion.geo.lat} lng={el.direccion.geo.lng}  id={el._id} key={el._id}>
+           {el._id}
+        </div>
+      );
     });
     return (
        <GoogleMap

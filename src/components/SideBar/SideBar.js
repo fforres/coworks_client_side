@@ -28,6 +28,7 @@ class SideBar extends Component {
     return (
       <Sidebar sidebar={<SideBarList/>}
                docked={this.props.isDocked}
+               open={this.props.isShown}
                onSetOpen={this.onSetSidebarOpen} >
        <Dropdown id='search-button'  bsSize='large' className={style['main-button']}>
          <Button bsStyle='info' onClick={this.props.toggleSideBar}>
