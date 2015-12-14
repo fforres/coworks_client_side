@@ -2,6 +2,21 @@ Changelog
 =========
 
 
+0.1.2
+-----
+#### FIX
+* Creando Component ToggleButton, separando la lógica de mueste/cierre de sidebar
+* Cambio de Algunos CSS a FlexBox.
+
+0.1.1
+-----
+#### FIX
+* Fix dependencias de redux-devtools, removiendo beta.
+* Fix Package.json, name, versions, repos y demas
+* Fix CHANGELOG.md
+
+
+
 0.1.0
 -----
 #### FEATURES

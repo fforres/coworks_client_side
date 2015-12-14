@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { actions as coworksActions } from '../../../redux/modules/coworks';
 import { list } from '../../../data';
 import style from './SideBarList.scss';
+import ToggleButton from '../ToggleButton/ToggleButton';
 
 const mapStateToProps = (state) => {
   return {
@@ -70,9 +71,14 @@ class SideBarList extends Component {
     }, this);
     return (
       <div className={style.container}>
-        <h1>
-          Coworks.cl
-        </h1>
+        <div className={style.title}>
+          <h1 className={style.text}>
+            Coworks.cl
+          </h1>
+          <div className={style.button}>
+            <ToggleButton />
+          </div>
+        </div>
         {cwrks}
       </div>
     );

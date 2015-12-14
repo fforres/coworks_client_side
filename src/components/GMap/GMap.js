@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { actions as coworksActions } from '../../redux/modules/coworks';
 import GoogleMap from 'google-map-react';
 import style from './Pin.scss';
+import styleGMap from './GMap.scss';
 
 const mapStateToProps = (state) => {
   return {
@@ -75,12 +76,14 @@ class GMap extends Component {
       );
     });
     return (
-       <GoogleMap
-        defaultCenter={this.props.center}
-        onChildClick={this._onChildClick}
-        defaultZoom={this.props.zoom}>
-        {allPins}
-      </GoogleMap>
+      <div className={styleGMap.map}>
+        <GoogleMap
+          defaultCenter={this.props.center}
+          onChildClick={this._onChildClick}
+          defaultZoom={this.props.zoom}>
+          {allPins}
+        </GoogleMap>
+      </div>
     );
   }
 
