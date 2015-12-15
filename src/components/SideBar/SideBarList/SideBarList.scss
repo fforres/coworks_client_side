@@ -1,11 +1,14 @@
+@import '../styles/core.scss';
 .container{
-  background-color: white;
-  background-color: rgba(255, 255, 255, 0.99);
+  background-color: $navbar-default-bg;
   display: flex;
   flex-flow: column;
   height: 100%;
   width: 100%;
-  padding:10px;
+  padding-left:10px;
+  padding-right:10px;
+  padding-bottom:10px;
+  padding-top:50px;
 }
 .title{
   display:flex;
@@ -19,7 +22,7 @@
   overflow-y:auto;
 }
 .list{
-  background-color: white;
+  background-color: $navbar-default-bg;
 }
 
 .text{
@@ -37,19 +40,18 @@
   align-content: center;
   max-width: 70vw;
   min-width: 40vw;
-  padding-top:8px;
-  padding-bottom:8px;
-  padding-right:10px;
-  padding-left:10px;
+  padding: $list-group-item-padding;
   cursor: pointer;
   color:black;
   transition: background-color 500ms;
 }
 .item-hovered{
-  background-color: rgba(9, 8, 8, 0.31);
+  background-color: $list-group-link-hover-bg;
+  color:            $navbar-default-link-hover-color;
 }
 .item-selected{
-  background-color: rgba(1,1,1,0.1)
+  background-color: $navbar-default-link-active-bg;
+  color:            $navbar-default-link-active-color;
 }
 
 .item-number{

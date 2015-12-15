@@ -1,6 +1,7 @@
 // Settings go here
 html,
-body {
+body,
+#root {
   height: 100%;
   width: 100vw;
   height: 100vh;
@@ -8,6 +9,11 @@ body {
 body {
   margin: 0;
   padding: 0;
+}
+
+.fullviewport{
+  width: 100vw;
+  height: 100vh;
 }
 .fullscreen {
   height: 100%;

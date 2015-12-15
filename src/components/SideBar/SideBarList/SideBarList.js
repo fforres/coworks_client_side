@@ -76,7 +76,7 @@ class SideBarList extends Component {
             Coworks.cl
           </div>
           <div className={style.button}>
-            <ToggleButton />
+            <ToggleButton pullRight/>
           </div>
         </div>
         <div className={style['list-wrapper']}>
