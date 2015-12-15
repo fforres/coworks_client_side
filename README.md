@@ -34,12 +34,16 @@ Aportar Con Contenido
 ---------------
 ¿Tienes algun comentario sobre como hacer hacer este proyecto *mucho más mejor*?
 Puedes:
--[Enviarnos una sugerencia](https://github.com/fforres/coworks_client_side/issues/new)
--[Reportar un Bug](https://github.com/fforres/coworks_client_side/issues/new)
+- [Enviarnos una sugerencia](https://github.com/fforres/coworks_client_side/issues/new)
+- [Reportar un Bug](https://github.com/fforres/coworks_client_side/issues/new)
 O en su defecto
--[Hablar en Twitter](https://www.twitter.com/fforres)
--[Si quieres donarnos algo para mantener vivo el proyecto o los servidores](https://flattr.com/profile/fforres)
+- [Hablar en Twitter](https://www.twitter.com/fforres)
+- [Si quieres donarnos algo para mantener vivo el proyecto o los servidores](https://flattr.com/profile/fforres)
 
+
+
+Aportar Con Desarrollo
+---------------
 
 ##### TODO  (Queda por realizar)
 - **Sidebar**
@@ -79,9 +83,7 @@ O en su defecto
 - [x] ~~Descombobular Apertura de Holocrones~~
 - [x] ~~Beber café~~
 
-
-Aportar Con Desarrollo
----------------
+##### Como ayudar (Para geeks/nerds)
 > ([Aquí](https://guides.github.com/activities/contributing-to-open-source/) una pequeña guía sobre como contribuir a un proyecto open-source)
 
 1. Forkea el repo:
