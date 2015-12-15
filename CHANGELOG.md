@@ -1,14 +1,19 @@
 Changelog
 =========
 
+0.1.3 (IN PROGRESS)
 
-0.1.2 (In progress)
+0.1.2
 -----
+#### FEATURE
+* Agregado topbar
+* Agregado Estilo por SASS
 #### FIX
 * Creando Component ToggleButton, separando la lógica de mueste/cierre de sidebar
 * Cambio de Algunos CSS a FlexBox.
 * Agregado el scrolling de la lista lateral
 * Agregadas logica de show/hide y de dock/undock del sidebar
+* Agregadas lógica de boton de visualizacion (dropdown izquierda o derecha)
 
 0.1.1
 -----

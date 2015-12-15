@@ -1,6 +1,6 @@
 {
   "name": "react-redux-starter-kit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Coworks for everyone! Curated coworks station content",
   "main": "index.js",
   "scripts": {
