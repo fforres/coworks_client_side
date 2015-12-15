@@ -7,6 +7,8 @@ Changelog
 #### FIX
 * Creando Component ToggleButton, separando la lógica de mueste/cierre de sidebar
 * Cambio de Algunos CSS a FlexBox.
+* Agregado el scrolling de la lista lateral
+* Agregadas logica de show/hide y de dock/undock del sidebar
 
 0.1.1
 -----
