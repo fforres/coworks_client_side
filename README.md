@@ -43,7 +43,7 @@ O en su defecto
 
 ##### TODO  (Queda por realizar)
 - **Sidebar**
-  - [ ] Agregar boton de cerrado
+  - [x] Agregar boton de cerrado
   - [ ] Mejorar estilo (Pretify)
   - [ ] Agregar scrolling vertical
   - [ ] Agregar Búsqueda/Filtrado
