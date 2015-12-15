@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.1.2
+0.1.2 (In progress)
 -----
 #### FIX
 * Creando Component ToggleButton, separando la lógica de mueste/cierre de sidebar
