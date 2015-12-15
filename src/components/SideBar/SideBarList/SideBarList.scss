@@ -4,16 +4,16 @@
   height: 100%;
   width: 100%;
   padding:10px;
-  margin-top: -20px;
 }
 .title{
-      margin-top: 5px;
   display:flex;
   flex-flow:row;
   justify-content: space-between;
 }
 .text{
   align-content:stretch;
+  font-size: 2em;
+  margin: .67em 0;
 }
 .button{
   align-content:stretch;

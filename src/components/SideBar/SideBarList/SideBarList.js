@@ -72,9 +72,9 @@ class SideBarList extends Component {
     return (
       <div className={style.container}>
         <div className={style.title}>
-          <h1 className={style.text}>
+          <div className={style.text}>
             Coworks.cl
-          </h1>
+          </div>
           <div className={style.button}>
             <ToggleButton />
           </div>

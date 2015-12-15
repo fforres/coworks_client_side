@@ -3,7 +3,6 @@ import { Dropdown, Button, MenuItem } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { actions as sideBarActions } from '../../../redux/modules/sideBar';
 import style from './ToggleButtonStyle.scss';
-console.log(sideBarActions);
 const mapStateToProps = (state) => {
   return {
     isShown : state.sideBar.isShown,
