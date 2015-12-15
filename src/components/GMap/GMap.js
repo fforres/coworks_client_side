@@ -9,6 +9,7 @@ import styleGMap from './GMap.scss';
 const mapStateToProps = (state) => {
   return {
     center: state.coworks.map.center,
+    defaultCenter: state.coworks.map.defaultCenter,
     zoom: state.coworks.map.zoom,
     coworks : state.coworks.coworks,
     selectedCowork: state.coworks.selected,
@@ -19,6 +20,10 @@ const mapStateToProps = (state) => {
 class GMap extends Component {
   static propTypes = {
     center: PropTypes.shape({
+      lat: PropTypes.number.isRequired,
+      lng: PropTypes.number.isRequired
+    }),
+    defaultCenter: PropTypes.shape({
       lat: PropTypes.number.isRequired,
       lng: PropTypes.number.isRequired
     }),
@@ -34,6 +39,7 @@ class GMap extends Component {
       })
     ),
     requestCoworks: PropTypes.func,
+    updateMapCenter: PropTypes.func,
     selectedCowork: PropTypes.number.isRequired,
     hoveredCowork: PropTypes.number.isRequired
   };
@@ -43,14 +49,7 @@ class GMap extends Component {
   }
 
   componentDidMount () {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((pos)=>{
-        const center = {
-          lat: pos.coords.lat,
-          lng: pos.coords.lng
-        };
-      });
-    }
+    // this.props.updateMapCenter();
   }
 
   shouldComponentUpdate = shouldPureComponentUpdate;
@@ -68,7 +67,6 @@ class GMap extends Component {
         return str.join(' ');
       })();
 
-
       return (
         <div className={theClass} lat={el.direccion.geo.lat} lng={el.direccion.geo.lng}  id={el._id} key={el._id}>
            {el._id}
@@ -78,9 +76,11 @@ class GMap extends Component {
     return (
       <div className={styleGMap.map}>
         <GoogleMap
-          defaultCenter={this.props.center}
+          defaultCenter={this.props.defaultCenter}
           onChildClick={this._onChildClick}
-          defaultZoom={this.props.zoom}>
+          defaultZoom={this.props.zoom}
+          center={this.props.center}
+          >
           {allPins}
         </GoogleMap>
       </div>
