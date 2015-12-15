@@ -54,7 +54,7 @@ Aportar Con Desarrollo
   - [ ] Agregar barra de búsqueda
   - [ ] Agregar información por coworks (Quizá un area desplegable?)
 - **MAPA**
-  - [ ] Centrado del mapa al clickear un pin
+  - [x] ~~Centrado del mapa al clickear un pin~~
   - [ ] Cambiar estilo de los PINS.
   - [ ] Agregar desplegable con información de cowork seleccionado
   - [ ] Agregar información on hover.
@@ -62,7 +62,8 @@ Aportar Con Desarrollo
 - **API**
   - [ ] Migrar a Server API (Firebase? RethinkDB?)
 - **GLOBAL**
-  - [ ] Agregar TopBar(?)
+  - [x] ~~Agregar TopBar(?)~~
+  - [ ] Definir funcionalidades 
   - [ ] Make Responsive
 
 
