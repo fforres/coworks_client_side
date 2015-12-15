@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { GMap, SideBar } from '../components';
 import { actions as coworksActions } from '../redux/modules/coworks';
 import styles from './HomeView.scss';
+import { NavBar } from '../components';
 
 // We define mapStateToProps where we'd normally use
 // the @connect decorator so the data requirements are clear upfront, but then
@@ -24,8 +25,11 @@ export class HomeView extends React.Component {
   render () {
     return (
       <div className={styles.fullscreen} >
-        <SideBar/>
-        <GMap/>
+        <NavBar/>
+        <div className={styles['container-with-navbar']}>
+          <SideBar/>
+          <GMap/>
+        </div>
       </div>
     );
   }
