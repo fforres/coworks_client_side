@@ -2,6 +2,7 @@ export default {
   _id:1,
   nombre: 'Co-Munity',
   url: 'http://www.co-munity.co',
+  telefono:'',
   descripcion: {
     larga:'Somos una comunidad de emprendedores trabajando en productos y tecnologías que tendrán un impacto positivo en el mundo.Nuestro iluminado y amplio espacio de coworking permite el libre flujo de las ideas y colaboración. La ambientación está orientada a motivar la discusión y el desarrollo de ideas y negocios.',
     corta:'Somos una incubadora de Startups, una aceleradora de emprendedores, un centro de experimentación y un espacio de educación y eventos de emprendimiento e innovación.'

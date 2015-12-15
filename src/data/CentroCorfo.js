@@ -2,6 +2,7 @@ export default {
   _id:0,
   nombre: 'Centro Corfo',
   url: 'http://www.corfo.cl/centro-colaborativo/acerca-del-centro-colaborativo',
+  telefono:'+56226318200',
   descripcion: {
     larga:'Ponemos a tu disposición cómodas y modernas instalaciones que permiten realizarun trabajo individual y grupal, con acceso a Internet y colecciones especializadas que marcan tendencia en el ámbito de los negocios, la industria y la innovación, además de una agradable cafetería.',
     corta:'La Biblioteca recibe a un importante número de personas que como tú, buscan un espacio para intercambiar ideas y dar un impulso a sus proyectos'
