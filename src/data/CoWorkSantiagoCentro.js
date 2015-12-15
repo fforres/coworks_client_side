@@ -34,8 +34,8 @@ export default {
     ciudad: 'santiago',
     pais: 'chile',
     geo:{
-      lat:0,
-      lng:0
+      lat:59.949123,
+      lng:30.007123
     }
   },
   servicios: {
