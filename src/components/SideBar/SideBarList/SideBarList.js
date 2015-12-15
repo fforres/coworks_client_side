@@ -61,7 +61,7 @@ class SideBarList extends Component {
           }}>
             <span className={style['item-text']}>{el.nombre}</span>
             <div className={style['item-link']}>
-              <a href={el.url} target='_blank' >
+              <a href={el.url} className={style['item-link-action']} target='_blank' >
                 <i className='fa fa-fw fa-link'></i>
               </a>
             </div>
@@ -79,7 +79,11 @@ class SideBarList extends Component {
             <ToggleButton />
           </div>
         </div>
-        {cwrks}
+        <div className={style['list-wrapper']}>
+          <div className={style.list}>
+            {cwrks}
+          </div>
+        </div>
       </div>
     );
   }

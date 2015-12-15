@@ -1,6 +1,8 @@
 .container{
   background-color: white;
   background-color: rgba(255, 255, 255, 0.99);
+  display: flex;
+  flex-flow: column;
   height: 100%;
   width: 100%;
   padding:10px;
@@ -10,6 +12,16 @@
   flex-flow:row;
   justify-content: space-between;
 }
+.list-wrapper{
+  flex: 2 ;
+  padding-right: 15px;
+  overflow-x: hidden;
+  overflow-y:auto;
+}
+.list{
+  background-color: white;
+}
+
 .text{
   align-content:stretch;
   font-size: 2em;
@@ -22,12 +34,13 @@
   display:flex;
   flex-flow:row;
   justify-content: space-between;
+  align-content: center;
   max-width: 70vw;
   min-width: 40vw;
-  padding-top:5px;
-  padding-bottom:5px;
-  padding-right:5px;
-  padding-left:5px;
+  padding-top:8px;
+  padding-bottom:8px;
+  padding-right:10px;
+  padding-left:10px;
   cursor: pointer;
   color:black;
   transition: background-color 500ms;
@@ -45,12 +58,14 @@
   transition: color 500ms;
 }
 .item-text{
-  font-size: 1.3em;
+  font-size: 1.4em;
   transition: color 500ms;
 }
 
 .item-link{
-  margin-top: 2px;
   margin-left: 10px;
-  font-size: 1.1em;
+  font-size: 1.3em;
+}
+.item-link-action{
+  vertical-align: middle;
 }
