@@ -29,7 +29,8 @@ class SideBarList extends Component {
     hovered : PropTypes.number.isRequired,
     hoverEnterCowork:PropTypes.func,
     hoverLeaveCowork:PropTypes.func,
-    selectCowork:PropTypes.func
+    selectCowork:PropTypes.func,
+    updateMapCenter:PropTypes.func
   }
   componentDidMount () {
   }
@@ -58,7 +59,9 @@ class SideBarList extends Component {
           }}
           onClick={()=>{
             this.clickedItem(this, el._id);
-          }}>
+            this.centerMap(this, el);
+          }}
+          >
             <span className={style['item-text']}>{el.nombre}</span>
             <div className={style['item-link']}>
               <a href={el.url} className={style['item-link-action']} target='_blank' >
@@ -90,6 +93,9 @@ class SideBarList extends Component {
 
   clickedItem (el, id) {
     this.props.selectCowork(id);
+  }
+  centerMap (el, cwrk) {
+    this.props.updateMapCenter(cwrk.direccion.geo);
   }
   hoveredItem (el, id, isEnter) {
     if (isEnter) {
