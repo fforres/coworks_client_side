@@ -3,7 +3,7 @@ export default {
   nombre: '',
   url: '',
   descripcion: {
-    larga:''
+    larga:'',
     corta:''
   },
   precios: {

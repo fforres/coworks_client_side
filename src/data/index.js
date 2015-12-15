@@ -1,10 +1,23 @@
 import CentroCorfo from './CentroCorfo';
 import CoMunity from './CoMunity';
 import Conectas from './Conectas';
+import CoWorkElGolf from './CoWorkElGolf';
+import CoWorkEncomenderos from './CoWorkEncomenderos';
+import CoWorkSanJoaquin from './CoWorkSanJoaquin';
+import CoWorkSanSebastian from './CoWorkSanSebastian';
+import CoWorkSantiagoCentro from './CoWorkSantiagoCentro';
+import LaOfi from './LaOfi';
+
 const arrList = [
   CentroCorfo,
   CoMunity,
-  Conectas
+  Conectas,
+  CoWorkElGolf,
+  CoWorkEncomenderos,
+  CoWorkSanJoaquin,
+  CoWorkSanSebastian,
+  CoWorkSantiagoCentro,
+  LaOfi
 ];
 const list = () => {
   return arrList;
