@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
 class SideBar extends Component {
   static propTypes = {
     isShown : PropTypes.bool,
+    pullRight: PropTypes.bool,
     isDocked : PropTypes.bool,
     toggleShow : PropTypes.func,
     showShow: PropTypes.func,
@@ -22,20 +23,37 @@ class SideBar extends Component {
   componentDidMount () {
   }
   render () {
-    return (
-       <Dropdown id='search-button'  bsSize='large' className={style['main-button']}>
-         <Button bsStyle='info' onClick={this.props.toggleShow}>
-           <i className='fa fa-fw fa-search'></i>
-         </Button>
-         <Dropdown.Toggle bsStyle='info'/>
-         <Dropdown.Menu className={style.show + ' super-colors'}>
-           <MenuItem eventKey='1' onClick={this.props.showShow}>Show</MenuItem>
-           <MenuItem eventKey='2' onClick={this.props.hideShow}>Hide</MenuItem>
-           <MenuItem divider />
-           <MenuItem eventKey='4'>DoNothing</MenuItem>
-         </Dropdown.Menu>
-       </Dropdown>
-    );
+    if (this.props.pullRight) {
+      return (
+         <Dropdown id='search-button'  bsSize='large' className={style['main-button']} pullRight>
+           <Button bsStyle='info' onClick={this.props.toggleShow}>
+             <i className='fa fa-fw fa-search'></i>
+           </Button>
+           <Dropdown.Toggle bsStyle='info' />
+           <Dropdown.Menu className={style.show + ' super-colors'}>
+             <MenuItem eventKey='1' onClick={this.props.showShow}>Show</MenuItem>
+             <MenuItem eventKey='2' onClick={this.props.hideShow}>Hide</MenuItem>
+             <MenuItem divider />
+             <MenuItem eventKey='4'>DoNothing</MenuItem>
+           </Dropdown.Menu>
+         </Dropdown>
+      );
+    } else {
+      return (
+         <Dropdown id='search-button'  bsSize='large' className={style['main-button']}>
+           <Button bsStyle='info' onClick={this.props.toggleShow}>
+             <i className='fa fa-fw fa-search'></i>
+           </Button>
+           <Dropdown.Toggle bsStyle='info' />
+           <Dropdown.Menu className={style.show + ' super-colors'}>
+             <MenuItem eventKey='1' onClick={this.props.showShow}>Show</MenuItem>
+             <MenuItem eventKey='2' onClick={this.props.hideShow}>Hide</MenuItem>
+             <MenuItem divider />
+             <MenuItem eventKey='4'>DoNothing</MenuItem>
+           </Dropdown.Menu>
+         </Dropdown>
+      );
+    }
   }
 }
 export default connect(mapStateToProps, sideBarActions)(SideBar);
