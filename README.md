@@ -47,9 +47,9 @@ Aportar Con Desarrollo
 
 ##### TODO  (Queda por realizar)
 - **Sidebar**
-  - [x] Agregar boton de cerrado
+  - [x] ~~Agregar boton de cerrado
   - [ ] Mejorar estilo (Pretify)
-  - [ ] Agregar scrolling vertical
+  - [x] ~~Agregar scrolling vertical~~
   - [ ] Agregar Búsqueda/Filtrado
   - [ ] Agregar barra de búsqueda
   - [ ] Agregar información por coworks (Quizá un area desplegable?)
