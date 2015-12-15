@@ -2,6 +2,8 @@ Changelog
 =========
 
 0.1.3 (IN PROGRESS)
+-----
+* Logica de recentrado de mapas, en el click del pin, en el click de sidebar, en el click de navbar
 
 0.1.2
 -----
