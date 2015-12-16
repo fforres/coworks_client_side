@@ -52,7 +52,7 @@ Aportar Con Desarrollo
   - [x] ~~Agregar scrolling vertical~~
   - [ ] Agregar Búsqueda/Filtrado
   - [ ] Agregar barra de búsqueda
-  - [ ] Agregar información por coworks (Quizá un area desplegable?)
+  - [x] ~~Agregar información por coworks (Quizá un area desplegable?)~~
 - **MAPA**
   - [x] ~~Centrado del mapa al clickear un pin~~
   - [ ] Cambiar estilo de los pins.
@@ -64,7 +64,7 @@ Aportar Con Desarrollo
   - [ ] Migrar a Server API (Firebase? RethinkDB?)
 - **GLOBAL**
   - [x] ~~Agregar TopBar(?)~~
-  - [ ] Definir funcionalidades 
+  - [ ] Definir funcionalidades
   - [ ] Make Responsive
 
 
