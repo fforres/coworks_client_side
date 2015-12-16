@@ -40,10 +40,10 @@ class SideBarList extends Component {
       const theClass = (()=>{
         const str = [style.item];
         if (this.props.selected === el._id) {
-          str.push(style['item-selected']);
+          str.push(style['item--selected']);
         }
         if (this.props.hovered === el._id) {
-          str.push(style['item-hovered']);
+          str.push(style['item--hovered']);
         }
         return str.join(' ');
       })();
@@ -62,11 +62,38 @@ class SideBarList extends Component {
             this.centerMap(this, el);
           }}
           >
-            <span className={style['item-text']}>{el.nombre}</span>
-            <div className={style['item-link']}>
-              <a href={el.url} className={style['item-link-action']} target='_blank' >
-                <i className='fa fa-fw fa-link'></i>
-              </a>
+            <div className={style['item-header']}>
+              <span className={style['item-text']}>{el.nombre}</span>
+              <div className={style['item-link']}>
+                <a href={el.url} className={style['item-link-action']} target='_blank' >
+                  <i className='fa fa-fw fa-link'></i>
+                </a>
+              </div>
+            </div>
+            <div className={style['item-body']}>
+              <div className={style['item-body-element']}>
+                <div>Teléfono:</div>
+                <a href={'tel:' + el.telefono}>
+                  <i className='fa fa-fw fa-mobile'></i>
+                  <span>{el.telefono}</span>
+                </a>
+              </div>
+
+              <div className={style['item-body-element']}>
+                <div>Direccion:</div>
+                <div>
+                  <i className='fa fa-fw fa-map'></i>
+                  <span className={style['item-body-element-direccion']}>
+                    <span>
+                      {el.direccion.calle}
+                    </span>
+                    <span>
+                      {' ' + el.direccion.numero}
+                    </span>
+                  </span>
+                </div>
+              </div>
+
             </div>
         </div>
       );
