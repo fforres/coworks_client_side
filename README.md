@@ -55,7 +55,8 @@ Aportar Con Desarrollo
   - [ ] Agregar información por coworks (Quizá un area desplegable?)
 - **MAPA**
   - [x] ~~Centrado del mapa al clickear un pin~~
-  - [ ] Cambiar estilo de los PINS.
+  - [ ] Cambiar estilo de los pins.
+  - [ ] Agregar "agrupado" de pins.
   - [ ] Agregar desplegable con información de cowork seleccionado
   - [ ] Agregar información on hover.
   - [ ] Cambiar números por Nombre.
