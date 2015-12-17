@@ -20,6 +20,7 @@ const arrList = [
   LaOfi
 ];
 const list = () => {
+  console.log(JSON.stringify(arrList) );
   return arrList;
 };
 

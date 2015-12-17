@@ -1,4 +1,4 @@
-export default {
+{
   _id:0,
   nombre: '',
   url: '',
@@ -45,4 +45,4 @@ export default {
     'wifi':false,
     'salas_de_reuniones':false
   }
-};
+}
