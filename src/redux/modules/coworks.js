@@ -42,7 +42,6 @@ export const actions = {
 // ------------------------------------
 // Reducer
 // ------------------------------------
-
 const initialState = {
   coworks: {},
   coworksFiltered: {},
