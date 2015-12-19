@@ -1,5 +1,4 @@
 export default {
-  _id:2,
   nombre: 'Conectas',
   url: 'http://www.conectas.cl/',
   telefono:'+56225031826',
@@ -41,7 +40,7 @@ export default {
   servicios: {
     'espacios_publicos': true,
     'mentorias':false,
-    '24/7':false,
+    '24_7':false,
     'cafeteria': true,
     'wifi':true,
     'salas_de_reuniones':true

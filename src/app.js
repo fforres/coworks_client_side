@@ -8,7 +8,6 @@ import configureStore         from './redux/configureStore';
 
 const history = createBrowserHistory();
 const store   = configureStore(window.__INITIAL_STATE__, __DEBUG__);
-
 syncReduxAndRouter(history, store, (state) => state.router);
 
 // We render the DevTools window here rather than in the Root component
@@ -18,6 +17,7 @@ syncReduxAndRouter(history, store, (state) => state.router);
 if (__DEBUG__ && __DEBUG_NW__) {
   require('utils/createDevToolsWindow').default(store);
 }
+require('utils/firebase/firebaseReduxSubscriber').default(store);
 
 // Render the React application to the DOM
 ReactDOM.render(

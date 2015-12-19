@@ -1,5 +1,4 @@
 export default {
-  _id:0,
   nombre: 'Centro Corfo',
   url: 'http://www.corfo.cl/centro-colaborativo/acerca-del-centro-colaborativo',
   telefono:'+56226318200',
@@ -41,7 +40,7 @@ export default {
   servicios: {
     'espacios_publicos': true,
     'mentorias':false,
-    '24/7':false,
+    '24_7':false,
     'cafeteria': true,
     'wifi':true,
     'salas_de_reuniones':true

@@ -4,6 +4,8 @@ import { actions as coworksActions } from '../../../redux/modules/coworks';
 import { list } from '../../../data';
 import style from './SideBarList.scss';
 import ToggleButton from '../ToggleButton/ToggleButton';
+import firebaseComponent from '../../../utils/firebase/firebaseComponent.js';
+
 
 const mapStateToProps = (state) => {
   return {
@@ -11,6 +13,14 @@ const mapStateToProps = (state) => {
     selected : state.coworks.selected,
     hovered : state.coworks.hovered
   };
+};
+
+const mapFireBaseEventsToStore = () => {
+  return [{
+    address : 'coworks',
+    type : 'value',
+    action : coworksActions.addCowork().type
+  }];
 };
 
 class SideBarList extends Component {
@@ -100,21 +110,21 @@ class SideBarList extends Component {
       // Binding this, para acceder al contexto componente de react dentro del map
     }, this);
     return (
-      <div className={style.container}>
-        <div className={style.title}>
-          <div className={style.text}>
-            Coworks.cl
+        <div className={style.container}>
+          <div className={style.title}>
+            <div className={style.text}>
+              Coworks.cl
+            </div>
+            <div className={style.button}>
+              <ToggleButton pullRight/>
+            </div>
           </div>
-          <div className={style.button}>
-            <ToggleButton pullRight/>
+          <div className={style['list-wrapper']}>
+            <div className={style.list}>
+              {cwrks}
+            </div>
           </div>
         </div>
-        <div className={style['list-wrapper']}>
-          <div className={style.list}>
-            {cwrks}
-          </div>
-        </div>
-      </div>
     );
   }
 
@@ -131,6 +141,5 @@ class SideBarList extends Component {
       this.props.hoverLeaveCowork(id);
     }
   }
-
 }
-export default connect(mapStateToProps, coworksActions)(SideBarList);
+export default connect(mapStateToProps, coworksActions)(firebaseComponent(mapFireBaseEventsToStore, SideBarList));

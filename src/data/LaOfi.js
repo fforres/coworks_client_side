@@ -1,5 +1,4 @@
 export default {
-  _id:8,
   nombre: 'La Ofi',
   url: 'http://www.coworkinglaofi.cl/',
   telefono:'+56229854768',
@@ -41,7 +40,7 @@ export default {
   servicios: {
     'espacios_publicos': true,
     'mentorias':false,
-    '24/7':false,
+    '24_7':false,
     'cafeteria': true,
     'wifi':true,
     'salas_de_reuniones':true

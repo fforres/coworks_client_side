@@ -3,17 +3,21 @@ import createReducer from 'utils/createReducer';
 // ------------------------------------
 // Constants
 // ------------------------------------
-const UPDATE_MAP_CENTER = 'UPDATE_MAP_CENTER';
-const REQUEST_COWORKS = 'REQUEST_COWORKS';
-const SELECT_COWORK = 'SELECT_COWORK';
-const HOVER_ENTER_COWORK = 'HOVER_ENTER_COWORK';
-const HOVER_LEAVE_COWORK = 'HOVER_LEAVE_COWORK';
+const UPDATE_MAP_CENTER   =   'UPDATE_MAP_CENTER';
+const REQUEST_COWORKS     =   'REQUEST_COWORKS';
+const ADD_COWORK          =   'ADD_COWORK';
+const SELECT_COWORK       =   'SELECT_COWORK';
+const HOVER_ENTER_COWORK  =   'HOVER_ENTER_COWORK';
+const HOVER_LEAVE_COWORK  =   'HOVER_LEAVE_COWORK';
 
 // ------------------------------------
 // Actions
 // ------------------------------------
 export const requestCoworks = () => ({
   type: REQUEST_COWORKS
+});
+export const addCowork = () => ({
+  type: ADD_COWORK
 });
 export const selectCowork = (id) => ({
   type: SELECT_COWORK,
@@ -32,7 +36,7 @@ export const updateMapCenter = (pos) => ({
   payload: pos
 });
 export const actions = {
-  requestCoworks, selectCowork, hoverEnterCowork, hoverLeaveCowork, updateMapCenter
+  requestCoworks, selectCowork, hoverEnterCowork, hoverLeaveCowork, updateMapCenter, addCowork
 };
 
 // ------------------------------------
@@ -58,9 +62,18 @@ const initialState = {
 };
 
 export default createReducer(initialState, {
-  [REQUEST_COWORKS] (state) {
-    const { list } = require('../../data');
-    return {...state, coworks: list()};
+  [REQUEST_COWORKS] (state, payload = null) {
+    if (payload !== null ) {
+      return { ...state, coworks: payload };
+    }
+    return state;
+  },
+  [ADD_COWORK] (state, payload = null) {
+    if (payload !== null ) {
+      const newCoworks = [...state.coworks, payload];
+      return { ...state, coworks: newCoworks };
+    }
+    return state;
   },
   [SELECT_COWORK] (state, payload) {
     // payload = ID del elemento Hovereado
