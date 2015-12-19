@@ -57,11 +57,11 @@ Aportar Con Desarrollo
   - [x] ~~Centrado del mapa al clickear un pin~~
   - [ ] Cambiar estilo de los pins.
   - [ ] Agregar "agrupado" de pins.
-  - [ ] Agregar desplegable con información de cowork seleccionado
+  - [X] ~~Agregar desplegable con información de cowork seleccionado~~
   - [ ] Agregar información on hover.
-  - [ ] Cambiar números por Nombre.
+  - [X] ~~Cambiar números por Identificador.~~
 - **API**
-  - [ ] Migrar a Server API (Firebase? RethinkDB?)
+  - [X] ~~Migrar a API a FireBase~~
 - **GLOBAL**
   - [x] ~~Agregar TopBar(?)~~
   - [ ] Definir funcionalidades

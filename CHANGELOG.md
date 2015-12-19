@@ -1,10 +1,20 @@
 Changelog
 =========
-
-0.1.3 (IN PROGRESS)
+0.1.4 (IN PROGRESS)
 -----
+#### FEATURE
+#### FIX
+
+
+0.1.3
+-----
+#### FEATURE
 * Logica de recentrado de mapas, en el click del pin, en el click de sidebar, en el click de navbar
 * Agregando area desplegable al sidebar
+* Implementación de FireBase
+* Migración del backend a Firebase
+#### FIX
+* Cambio de identificación de Coworks
 
 0.1.2
 -----
