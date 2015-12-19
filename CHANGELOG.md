@@ -5,7 +5,7 @@ Changelog
 -----
 * Logica de recentrado de mapas, en el click del pin, en el click de sidebar, en el click de navbar
 * Agregando area desplegable al sidebar
-* https://github.com/erikras/react-redux-universal-hot-example/issues/252
+
 0.1.2
 -----
 #### FEATURE
