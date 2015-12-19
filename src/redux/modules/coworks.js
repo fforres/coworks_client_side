@@ -44,10 +44,10 @@ export const actions = {
 // ------------------------------------
 
 const initialState = {
-  coworks: [],
-  coworksFiltered: [],
-  selected: -1,
-  hovered: -1,
+  coworks: {},
+  coworksFiltered: {},
+  selected: '',
+  hovered: '',
   map: {
     zoom: 9,
     center: {
@@ -70,8 +70,7 @@ export default createReducer(initialState, {
   },
   [ADD_COWORK] (state, payload = null) {
     if (payload !== null ) {
-      const newCoworks = [...state.coworks, payload];
-      return { ...state, coworks: newCoworks };
+      return { ...state, coworks: Object.assign({}, {...state.coworks}, {...payload})};
     }
     return state;
   },

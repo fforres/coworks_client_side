@@ -28,20 +28,11 @@ class GMap extends Component {
       lng: PropTypes.number.isRequired
     }),
     zoom: PropTypes.number,
-    coworks: PropTypes.arrayOf(
-      PropTypes.shape({
-        direccion:  PropTypes.shape({
-          geo: PropTypes.shape({
-            lat: PropTypes.number.isRequired,
-            lng: PropTypes.number.isRequired
-          })
-        })
-      })
-    ),
+    coworks: PropTypes.any,
     requestCoworks: PropTypes.func,
     updateMapCenter: PropTypes.func,
-    selectedCowork: PropTypes.number.isRequired,
-    hoveredCowork: PropTypes.number.isRequired
+    selectedCowork: PropTypes.string.isRequired,
+    hoveredCowork: PropTypes.string.isRequired
   };
 
   constructor (props) {
@@ -49,38 +40,39 @@ class GMap extends Component {
   }
 
   componentDidMount () {
-    // this.props.updateMapCenter();
+    // props.updateMapCenter();
   }
 
   shouldComponentUpdate = shouldPureComponentUpdate;
 
   render () {
-    const allPins = this.props.coworks.map((el, i, as)=>{
-      console.log(el);
+    const { props } = this;
+    const allPins = Object.keys(props.coworks).map((el, i, as)=>{
+      const _id = el;
+      const Element = props.coworks[el];
       const theClass = (() => {
         const str = [style.pin];
-        if (el._id === this.props.hoveredCowork) {
+        if (_id === props.hoveredCowork) {
           str.push([style['pin-hover']]);
         }
-        if (el._id === this.props.selectedCowork) {
+        if (_id === props.selectedCowork) {
           str.push([style['pin-selected']]);
         }
         return str.join(' ');
       })();
-
       return (
-        <div className={theClass} lat={el.direccion.geo.lat} lng={el.direccion.geo.lng}  id={el._id} key={el._id}>
-           {el._id}
+        <div className={theClass} lat={Element.direccion.geo.lat} lng={Element.direccion.geo.lng}  id={_id} key={_id}>
+           C
         </div>
       );
     });
     return (
       <div className={styleGMap.map}>
         <GoogleMap
-          defaultCenter={this.props.defaultCenter}
+          defaultCenter={props.defaultCenter}
           onChildClick={this._onChildClick}
-          defaultZoom={this.props.zoom}
-          center={this.props.center}
+          defaultZoom={props.zoom}
+          center={props.center}
           >
           {allPins}
         </GoogleMap>

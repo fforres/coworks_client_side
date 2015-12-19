@@ -1,3 +1,3 @@
 export default {
-  appUrl: 'http://coworkscl.firebaseio.com'
+  appUrl: 'https://coworkscl.firebaseio.com'
 };

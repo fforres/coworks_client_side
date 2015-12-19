@@ -23,6 +23,7 @@ function fireBaseComponent (mapping, Component) {
         this.addListeners(el, config);
       });
       window.postRef = config.ref.child('coworks');
+      window.ref = config.ref;
     },
     componentDidUpdate () {
     },
