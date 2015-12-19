@@ -16,6 +16,7 @@ export const actions = {
 // ------------------------------------
 // Reducer
 // ------------------------------------
-export default createReducer(0, {
+const initialState = 0;
+export default createReducer(initialState, {
   [COUNTER_INCREMENT] : (state) => state + 1
 });

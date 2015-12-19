@@ -20,7 +20,7 @@ export class HomeView extends React.Component {
   }
 
   componentWillMount () {
-    this.props.requestCoworks();
+    // this.props.requestCoworks();
   }
   render () {
     return (

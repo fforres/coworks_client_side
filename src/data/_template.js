@@ -40,7 +40,7 @@ export default {
   servicios: {
     'espacios_publicos': false,
     'mentorias':false,
-    '24/7':false,
+    '24_7':false,
     'cafeteria': false,
     'wifi':false,
     'salas_de_reuniones':false

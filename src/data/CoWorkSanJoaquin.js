@@ -1,5 +1,4 @@
 export default {
-  _id:5,
   nombre: 'Co-Work - San Joaquin',
   url: 'http://www.coworklatam.com/',
   telefono:'+56985135860',
@@ -41,7 +40,7 @@ export default {
   servicios: {
     'espacios_publicos': true,
     'mentorias':true,
-    '24/7':true,
+    '24_7':true,
     'cafeteria': true,
     'wifi':true,
     'salas_de_reuniones':true

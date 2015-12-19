@@ -4,6 +4,8 @@ import { actions as coworksActions } from '../../../redux/modules/coworks';
 import { list } from '../../../data';
 import style from './SideBarList.scss';
 import ToggleButton from '../ToggleButton/ToggleButton';
+import firebaseComponent from '../../../utils/firebase/firebaseComponent.js';
+
 
 const mapStateToProps = (state) => {
   return {
@@ -13,20 +15,19 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapFireBaseEventsToStore = () => {
+  return [{
+    address : 'coworks',
+    type : 'value',
+    action : coworksActions.addCowork().type
+  }];
+};
+
 class SideBarList extends Component {
   static propTypes = {
-    coworks: PropTypes.arrayOf(
-      PropTypes.shape({
-        direccion:  PropTypes.shape({
-          geo: PropTypes.shape({
-            lat: PropTypes.number.isRequired,
-            lng: PropTypes.number.isRequired
-          })
-        })
-      })
-    ),
-    selected : PropTypes.number.isRequired,
-    hovered : PropTypes.number.isRequired,
+    coworks: PropTypes.any,
+    selected : PropTypes.string.isRequired,
+    hovered : PropTypes.string.isRequired,
     hoverEnterCowork:PropTypes.func,
     hoverLeaveCowork:PropTypes.func,
     selectCowork:PropTypes.func,
@@ -35,37 +36,39 @@ class SideBarList extends Component {
   componentDidMount () {
   }
   render () {
-    const cwrks = this.props.coworks.map((el, i, as)=>{
+    const cwrks = Object.keys(this.props.coworks).map((el, i, as)=>{
+      const _id = el;
+      const Element = this.props.coworks[el];
       // Play with classes to show who is selected or hovered
       const theClass = (()=>{
         const str = [style.item];
-        if (this.props.selected === el._id) {
+        if (this.props.selected === _id) {
           str.push(style['item--selected']);
         }
-        if (this.props.hovered === el._id) {
+        if (this.props.hovered === _id) {
           str.push(style['item--hovered']);
         }
         return str.join(' ');
       })();
       return (
         <div
-          key={el._id}
+          key={_id}
           className={theClass}
           onMouseEnter={()=>{
-            this.hoveredItem(this, el._id, true);
+            this.hoveredItem(this, _id, true);
           }}
           onMouseLeave={()=>{
-            this.hoveredItem(this, el._id, false);
+            this.hoveredItem(this, _id, false);
           }}
           onClick={()=>{
-            this.clickedItem(this, el._id);
+            this.clickedItem(this, _id);
             this.centerMap(this, el);
           }}
           >
             <div className={style['item-header']}>
-              <span className={style['item-text']}>{el.nombre}</span>
+              <span className={style['item-text']}>{Element.nombre}</span>
               <div className={style['item-link']}>
-                <a href={el.url} className={style['item-link-action']} target='_blank' >
+                <a href={Element.url} className={style['item-link-action']} target='_blank' >
                   <i className='fa fa-fw fa-link'></i>
                 </a>
               </div>
@@ -73,9 +76,9 @@ class SideBarList extends Component {
             <div className={style['item-body']}>
               <div className={style['item-body-element']}>
                 <div>Teléfono:</div>
-                <a href={'tel:' + el.telefono}>
+                <a href={'tel:' + Element.telefono}>
                   <i className='fa fa-fw fa-mobile'></i>
-                  <span>{el.telefono}</span>
+                  <span>{Element.telefono}</span>
                 </a>
               </div>
 
@@ -85,10 +88,10 @@ class SideBarList extends Component {
                   <i className='fa fa-fw fa-map'></i>
                   <span className={style['item-body-element-direccion']}>
                     <span>
-                      {el.direccion.calle}
+                      {Element.direccion.calle}
                     </span>
                     <span>
-                      {' ' + el.direccion.numero}
+                      {' ' + Element.direccion.numero}
                     </span>
                   </span>
                 </div>
@@ -100,21 +103,21 @@ class SideBarList extends Component {
       // Binding this, para acceder al contexto componente de react dentro del map
     }, this);
     return (
-      <div className={style.container}>
-        <div className={style.title}>
-          <div className={style.text}>
-            Coworks.cl
+        <div className={style.container}>
+          <div className={style.title}>
+            <div className={style.text}>
+              Coworks.cl
+            </div>
+            <div className={style.button}>
+              <ToggleButton pullRight/>
+            </div>
           </div>
-          <div className={style.button}>
-            <ToggleButton pullRight/>
+          <div className={style['list-wrapper']}>
+            <div className={style.list}>
+              {cwrks}
+            </div>
           </div>
         </div>
-        <div className={style['list-wrapper']}>
-          <div className={style.list}>
-            {cwrks}
-          </div>
-        </div>
-      </div>
     );
   }
 
@@ -131,6 +134,5 @@ class SideBarList extends Component {
       this.props.hoverLeaveCowork(id);
     }
   }
-
 }
-export default connect(mapStateToProps, coworksActions)(SideBarList);
+export default connect(mapStateToProps, coworksActions)(firebaseComponent(mapFireBaseEventsToStore, SideBarList));

@@ -1,5 +1,4 @@
 export default {
-  _id:1,
   nombre: 'Co-Munity',
   url: 'http://www.co-munity.co',
   telefono:'',
@@ -41,7 +40,7 @@ export default {
   servicios: {
     'espacios_publicos': true,
     'mentorias':true,
-    '24/7':true,
+    '24_7':true,
     'cafeteria': false,
     'wifi':true,
     'salas_de_reuniones':false
