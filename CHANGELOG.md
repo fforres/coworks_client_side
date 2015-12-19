@@ -11,10 +11,12 @@ Changelog
 #### FEATURE
 * Logica de recentrado de mapas, en el click del pin, en el click de sidebar, en el click de navbar
 * Agregando area desplegable al sidebar
+<<<<<<< HEAD
 * Implementación de FireBase
 * Migración del backend a Firebase
 #### FIX
 * Cambio de identificación de Coworks
+=======
 
 0.1.2
 -----
