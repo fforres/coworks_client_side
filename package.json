@@ -8,7 +8,7 @@
     "lint": "eslint ./src/**/*.js",
     "lint:tests": "eslint ./tests/**/*.spec.js",
     "compile": "node -r dotenv/config --harmony bin/compile",
-    "start": "npm run dev",
+    "start": "npm run dev:nw",
     "dev": "node -r dotenv/config bin/server --hot",
     "dev:nw": "npm run dev -- --nw",
     "dev:no-debug": "npm run dev -- --no_debug",

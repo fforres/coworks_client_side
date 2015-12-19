@@ -1,22 +1,54 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { actions as accountActions } from '../../redux/modules/account';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button, SplitButton, DropdownButton } from 'react-bootstrap';
 import { actions as coworksActions } from '../../redux/modules/coworks';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import LoginModal from '../LoginModal/LoginModal.js';
 
 const mapStateToProps = (state) => {
   return {
-    coworks : state.coworks.coworks,
-    selected : state.coworks.selected,
-    hovered : state.coworks.hovered
+    loggedIn : state.account.loggedIn,
+    isModalShown : state.account.isModalShown,
+    userData : state.account.userData
   };
 };
 
+const mapStateToPropsActions = (state) => {
+  return {};
+};
+
+
 class NavBar extends Component {
   static propTypes = {
-    updateMapCenter: PropTypes.func
+    updateMapCenter : PropTypes.func,
+    showLoginModal  : PropTypes.func,
+    hideLoginModal  : PropTypes.func,
+    logIn           : PropTypes.func,
+    loggedIn        : PropTypes.bool.isRequired
   }
 
   render () {
+    const logInSnippet = () => {
+      if (!this.props.loggedIn) {
+        return (
+          <Navbar.Form pullLeft>
+            <Button onClick={()=>{
+              this.props.showLoginModal();
+            }}> Ingresa </Button>
+          </Navbar.Form>
+        );
+      } else {
+        return (
+          <DropdownButton bsStyle='default' title='Default' key={'i'} id={'dropdown-basic-0'}>
+            <MenuItem eventKey={1.1}>Action</MenuItem>
+            <MenuItem eventKey={1.2}>Another action</MenuItem>
+            <MenuItem eventKey={1.3} active>Active Item</MenuItem>
+            <MenuItem divider />
+            <MenuItem eventKey={1.5}>Separated link</MenuItem>
+           </DropdownButton>
+        );
+      }
+    };
     return (
       <Navbar fixedTop>
         <Navbar.Header>
@@ -43,6 +75,7 @@ class NavBar extends Component {
             <NavItem eventKey={2} href='#' onClick={()=>{this.centerMe();}}>
               <i className='fa fa-fw fa-location-arrow'/>
             </NavItem>
+            {logInSnippet()}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -69,4 +102,9 @@ class NavBar extends Component {
   }
 }
 
-export default connect(mapStateToProps, coworksActions)(NavBar);
+
+export default connect(mapStateToProps, coworksActions)(
+  connect(mapStateToProps, accountActions)(
+    NavBar
+  )
+);
