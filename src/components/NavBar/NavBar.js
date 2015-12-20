@@ -4,7 +4,7 @@ import { actions as accountActions } from '../../redux/modules/account';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button, SplitButton, DropdownButton } from 'react-bootstrap';
 import { actions as coworksActions } from '../../redux/modules/coworks';
 import LoginModal from '../LoginModal/LoginModal.js';
-
+import UserNugget from './UserNugget/UserNugget.js';
 const mapStateToProps = (state) => {
   return {
     loggedIn : state.account.loggedIn,
@@ -23,6 +23,7 @@ class NavBar extends Component {
     updateMapCenter : PropTypes.func,
     showLoginModal  : PropTypes.func,
     hideLoginModal  : PropTypes.func,
+    userData        : PropTypes.object,
     logIn           : PropTypes.func,
     loggedIn        : PropTypes.bool.isRequired
   }
@@ -39,13 +40,7 @@ class NavBar extends Component {
         );
       } else {
         return (
-          <DropdownButton bsStyle='default' title='Default' key={'i'} id={'dropdown-basic-0'}>
-            <MenuItem eventKey={1.1}>Action</MenuItem>
-            <MenuItem eventKey={1.2}>Another action</MenuItem>
-            <MenuItem eventKey={1.3} active>Active Item</MenuItem>
-            <MenuItem divider />
-            <MenuItem eventKey={1.5}>Separated link</MenuItem>
-           </DropdownButton>
+          <UserNugget {...this.props.userData} />
         );
       }
     };
