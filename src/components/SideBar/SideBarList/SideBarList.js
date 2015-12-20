@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { actions as coworksActions } from '../../../redux/modules/coworks';
-import { list } from '../../../data';
 import style from './SideBarList.scss';
 import ToggleButton from '../ToggleButton/ToggleButton';
 import firebaseComponent from '../../../utils/firebase/firebaseComponent.js';

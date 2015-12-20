@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { config } from './firebaseReduxSubscriber';
-import { list } from '../../data/index.js';
 const theTypeOf = (a) => {
   return Object.prototype.toString.call(a).slice(8, -1).toLowerCase();
 };
@@ -15,7 +14,6 @@ function fireBaseComponent (mapping, Component) {
     },
     componentWillMount () {
       let state = mapping;
-      window.theList = list();
       if (theTypeOf(mapping) === 'function' ) {
         state = mapping();
       }

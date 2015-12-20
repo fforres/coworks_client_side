@@ -3,7 +3,10 @@ Changelog
 0.1.4 (IN PROGRESS)
 -----
 #### FEATURE
+* Agregando Login con Facebook
+* Agregando nugget de usuario cuando el usuario está registrado
 #### FIX
+* Limpiando proyecto, eliminando local Data.
 
 
 0.1.3
