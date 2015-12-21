@@ -47,35 +47,37 @@ Aportar Con Desarrollo
 
 ##### TODO  (Queda por realizar)
 - **Sidebar**
-  - [x] ~~Agregar boton de cerrado
-  - [ ] Mejorar estilo (Pretify)
-  - [x] ~~Agregar scrolling vertical~~
+  - [ ] Cambiar SideBar
+  - [ ] Agregar Categorías (Y categorías de Pins)
+  - [ ] Mejorar estilo (Prettify)
   - [ ] Agregar Búsqueda/Filtrado
   - [ ] Agregar barra de búsqueda
-  - [ ] Agregar información por coworks (Quizá un area desplegable?)
 - **MAPA**
-  - [ ] Centrado del mapa al clickear un pin
-  - [ ] Cambiar estilo de los PINS.
-  - [ ] Agregar desplegable con información de cowork seleccionado
+  - [ ] Cambiar estilos de pins.
+  - [ ] Agregar "agrupado" de pins.
   - [ ] Agregar información on hover.
-  - [ ] Cambiar números por Nombre.
 - **API**
-  - [ ] Migrar a Server API (Firebase? RethinkDB?)
+  - [ ] Agregar roles de usuario (ACL)
 - **GLOBAL**
-  - [ ] Agregar TopBar(?)
-  - [ ] Make Responsive
+  - [ ] Make Responsive Better
+  - [ ] ** Revisar inmutabilidad de los estados **
 
 
 ##### Ya hecho (Aunque se puede mejorar)
-
-- [x] ~~Agregar mapa~~
-- [x] ~~Agregar sidebar~~
-- [x] ~~Agregar listado al sidebar~~
-- [x] ~~Agregar API local (.JSON files)~~
-- [x] ~~Agregar store al sidebar~~
-- [x] ~~Agregar store a los coworks~~
-- [x] ~~Fixear estilos del mapa y sidebar (No overlapping)~~
-- [x] ~~Agregar Readme~~
+- **API**
+- [x] ~~Migrar a API a FireBase~~
+- **GLOBAL**
+- [x] ~~Agregar usuarios y sesión~~
+- [x] ~~Agregar persistencia de Estado~~
+- [x] ~~Agregar TopBar(?)~~
+- **MAPA**
+- [x] ~~Cambiar números por Identificador.~~
+- [x] ~~Centrado del mapa al clickear un pin~~
+- [x] ~~Agregar desplegable con información de cowork seleccionado~~
+- **Sidebar**
+- [x] ~~Agregar boton de cerrado~~
+- [x] ~~Agregar scrolling vertical~~
+- [x] ~~Agregar información por coworks (Quizá un area desplegable?)~~
 
 ###### also:
 - [x] ~~Recargar Condensadores de flujo~~
