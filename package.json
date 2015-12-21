@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-starter-kit",
-  "version": "0.1.2",
-  "description": "Coworks for everyone! Curated coworks station content",
+  "name": "Opensource Maps",
+  "version": "0.1.4",
+  "description": "GeoLocated Data for everyone! Curated & social custom maps",
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf dist",
