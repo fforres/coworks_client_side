@@ -124,7 +124,7 @@ class SideBarList extends Component {
     this.props.selectCowork(id);
   }
   centerMap (el, cwrk) {
-    this.props.updateMapCenter(cwrk.direccion.geo);
+    this.props.updateMapCenter(this.props.coworks[cwrk].direccion.geo);
   }
   hoveredItem (el, id, isEnter) {
     if (isEnter) {

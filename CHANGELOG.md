@@ -1,10 +1,15 @@
 Changelog
 =========
-0.1.4 (IN PROGRESS)
+0.1.5 (IN PROGRESS)
+-----
+
+0.1.4
 -----
 #### FEATURE
 * Agregando Login con Facebook
 * Agregando nugget de usuario cuando el usuario está registrado
+* Agregando Persistencia del estado.
+* Agregando sesion.
 #### FIX
 * Limpiando proyecto, eliminando local Data.
 
