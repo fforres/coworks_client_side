@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { actions as accountActions } from '../../redux/modules/account';
 import { Modal, Button } from 'react-bootstrap';
 import style from './LoginModal.scss';
+import LoginForm from './LoginForm.js';
 import { config } from 'utils/firebase/firebaseReduxSubscriber';
 const Ref = config.ref;
 const mapStateToProps = (state) => {
@@ -66,19 +67,7 @@ class NavBar extends Component {
 
               <div className='col-xs-12 '>
                 <div className='col-xs-12 col-sm-6 col-sm-offset-3'>
-                  <form className='omb_loginForm' action='' autoComplete='off' method='POST'>
-                    <div className='input-group'>
-                      <span className='input-group-addon'><i className='fa fa-user'></i></span>
-                      <input type='text' className='form-control' name='username' placeholder='email address' autoFocus/>
-                    </div>
-                    <span className='help-block'></span>
-                    <div className='input-group'>
-                      <span className='input-group-addon'><i className='fa fa-lock'></i></span>
-                      <input  type='password' className='form-control' name='password' placeholder='Password'/>
-                    </div>
-                    <span className='help-block'></span>
-                    <button className='btn btn-lg btn-primary btn-block' type='submit'>Login</button>
-                  </form>
+                    <LoginForm />
                 </div>
               </div>
 
