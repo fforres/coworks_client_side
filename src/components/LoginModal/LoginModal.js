@@ -69,7 +69,7 @@ class NavBar extends Component {
                   <form className='omb_loginForm' action='' autoComplete='off' method='POST'>
                     <div className='input-group'>
                       <span className='input-group-addon'><i className='fa fa-user'></i></span>
-                      <input type='text' className='form-control' name='username' placeholder='email address'/>
+                      <input type='text' className='form-control' name='username' placeholder='email address' autoFocus/>
                     </div>
                     <span className='help-block'></span>
                     <div className='input-group'>
