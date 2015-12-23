@@ -2,9 +2,8 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { MenuItem } from 'react-bootstrap';
 import style from './CustomMenu.scss';
-import { actions as accountActions } from 'redux/modules/account';
-
-// console.log(accountActions);
+import { actions as accountActions } from 'redux/modules/account/account';
+import { config } from 'utils/firebase/firebaseReduxSubscriber';
 
 const mapStateToProps = (state) => {
   return {
@@ -57,6 +56,7 @@ class DropDown extends Component {
   }
 
   logOut () {
+    config.ref.unauth();
     this.props.logOut();
   }
 }

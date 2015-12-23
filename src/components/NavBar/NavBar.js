@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { actions as accountActions } from '../../redux/modules/account';
+import { actions as accountActions } from '../../redux/modules/account/account';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button, SplitButton, DropdownButton } from 'react-bootstrap';
 import { actions as coworksActions } from '../../redux/modules/coworks';
 import LoginModal from '../LoginModal/LoginModal.js';

@@ -22,11 +22,10 @@ class NavBar extends Component {
     showLoginModal: PropTypes.func,
     hideLoginModal: PropTypes.func,
     registerUser : PropTypes.func,
-    loginLocal : PropTypes.func,
     Ref : PropTypes.func
   }
 
-  componentWillMount () {
+  componentDidMount () {
   }
 
   render () {
@@ -38,37 +37,25 @@ class NavBar extends Component {
         <Input type='password' placeholder='Contraseña' wrapperClassName={style.show_in_modal} addonBefore={lockIcon} ref='password' />
         <button className='btn btn-lg btn-primary btn-block' onClick={(e)=>{
           e.preventDefault();
-          this.localLogin(Ref);
-        }}>Ingresa</button>
+          this.localRegister(Ref);
+        }}>Regístrate</button>
       </form>
     );
   }
 
-  localLogin (r) {
-    r.authWithPassword({
+  localRegister (r) {
+    r.createUser({
       email: this.refs.username.refs.input.value,
       password: this.refs.password.refs.input.value
-    }, (error, authData) => {
+    }, (error, userData) => {
       if (error) {
-        switch (error.code) {
-        case 'INVALID_EMAIL':
-          console.log('The specified user account email is invalid.');
-          break;
-        case 'INVALID_PASSWORD':
-          console.log('The specified user account password is incorrect.');
-          break;
-        case 'INVALID_USER':
-          console.log('The specified user account does not exist.');
-          break;
-        default:
-          console.log('Error logging user in:', error);
-        }
+        console.log('Error creating user: ', error);
       } else {
-        console.log('Authenticated successfully with payload:', authData);
-        this.props.loginLocal(authData);
+        console.log('Successfully created user account with uid: ', userData.uid);
       }
     });
   }
+
 }
 
 export default connect( mapStateToProps, modalActions)(
