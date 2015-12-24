@@ -5,10 +5,12 @@ import { syncReduxAndRouter } from 'redux-simple-router';
 import routes                 from './routes';
 import Root                   from './containers/Root';
 import configureStore         from './redux/configureStore';
-import { getStoredState, autoRehydrate, persistStore } from 'redux-persist';
+import { getStoredState, persistStore } from 'redux-persist';
+import { setDispatcher }      from './utils/firebase/config';
 
 const persistConfig = {
-  skipRestore: true
+  skipRestore: true,
+  blacklist: ['notifications']
 };
 // Render the React application to the DOM
 getStoredState(persistConfig, (err, initialState) => {
@@ -22,7 +24,7 @@ getStoredState(persistConfig, (err, initialState) => {
   if (__DEBUG__ && __DEBUG_NW__) {
     require('utils/createDevToolsWindow').default(store);
   }
-  require('utils/firebase/firebaseReduxSubscriber').default(store);
+  setDispatcher(store);
   persistStore(store, persistConfig);
   ReactDOM.render(
     <Root history={history} routes={routes} store={store} />,

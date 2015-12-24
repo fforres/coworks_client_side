@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { MenuItem } from 'react-bootstrap';
 import style from './CustomMenu.scss';
 import { actions as accountActions } from 'redux/modules/account/account';
-import { config } from 'utils/firebase/firebaseReduxSubscriber';
+import { Ref } from 'utils/firebase/firebaseComponent';
 
 const mapStateToProps = (state) => {
   return {
@@ -59,7 +59,7 @@ class DropDown extends Component {
   }
 
   logOut () {
-    config.ref.unauth();
+    Ref.unauth();
     this.props.logOut();
   }
 }

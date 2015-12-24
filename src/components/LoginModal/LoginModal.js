@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { actions as accountActions } from '../../redux/modules/account/account';
 import { actions as modalActions } from '../../redux/modules/account/modal';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import style from './LoginModal.scss';
 import LoginForm from './LoginForm.js';
 import RegisterForm from './RegisterForm.js';
@@ -105,7 +105,7 @@ class NavBar extends Component {
       }
     });
   }
-  toggleLoginForm (e) {
+  toggleLoginForm () {
     this.props.toggleLoginForm();
   }
 }

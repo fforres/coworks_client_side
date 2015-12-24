@@ -36,10 +36,10 @@ const initialState = {
   }
 };
 export default createReducer(initialState, {
-  [LOG_OUT]  (state, payload = null) {
+  [LOG_OUT]  () {
     return initialState;
   },
-  [SHOW_LOGIN_MODAL]  (state, payload = null) {
+  [SHOW_LOGIN_MODAL]  (state) {
     const ob = {};
     if (!state.loggedIn) {
       ob.isModalShown = true;
@@ -48,7 +48,7 @@ export default createReducer(initialState, {
     }
     return Object.assign({}, {...state}, {...ob});
   },
-  [HIDE_LOGIN_MODAL]  (state, payload = null) {
+  [HIDE_LOGIN_MODAL]  (state) {
     const ob = {};
     ob.isModalShown = false;
     return Object.assign({}, {...state}, {...ob});

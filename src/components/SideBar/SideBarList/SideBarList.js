@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { actions as coworksActions } from '../../../redux/modules/coworks';
+import { actions as coworksActions } from 'redux/modules/coworks';
 import style from './SideBarList.scss';
 import ToggleButton from '../ToggleButton/ToggleButton';
-import firebaseComponent from '../../../utils/firebase/firebaseComponent.js';
+import { fireBaseComponent } from 'utils/firebase/firebaseComponent.js';
 
 
 const mapStateToProps = (state) => {
@@ -35,7 +35,7 @@ class SideBarList extends Component {
   componentDidMount () {
   }
   render () {
-    const cwrks = Object.keys(this.props.coworks).map((el, i, as)=>{
+    const cwrks = Object.keys(this.props.coworks).map((el, i)=>{
       const _id = el;
       const Element = this.props.coworks[el];
       // Play with classes to show who is selected or hovered
@@ -134,4 +134,6 @@ class SideBarList extends Component {
     }
   }
 }
-export default connect(mapStateToProps, coworksActions)(firebaseComponent(mapFireBaseEventsToStore, SideBarList));
+export default connect(mapStateToProps, coworksActions)(
+  fireBaseComponent(mapFireBaseEventsToStore, SideBarList)
+);

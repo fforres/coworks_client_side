@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { actions as accountActions } from '../../redux/modules/account/account';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button, SplitButton, DropdownButton } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button } from 'react-bootstrap';
 import { actions as coworksActions } from '../../redux/modules/coworks';
-import LoginModal from '../LoginModal/LoginModal.js';
 import UserNugget from './UserNugget/UserNugget.js';
 const mapStateToProps = (state) => {
   return {
@@ -13,19 +12,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapStateToPropsActions = (state) => {
-  return {};
-};
-
-
 class NavBar extends Component {
   static propTypes = {
-    updateMapCenter : PropTypes.func,
-    showLoginModal  : PropTypes.func,
-    hideLoginModal  : PropTypes.func,
-    userData        : PropTypes.object,
-    logIn           : PropTypes.func,
-    loggedIn        : PropTypes.bool.isRequired
+    updateMapCenter   : PropTypes.func,
+    showLoginModal    : PropTypes.func,
+    userData          : PropTypes.object,
+    logIn             : PropTypes.func,
+    loggedIn          : PropTypes.bool.isRequired
   }
 
   render () {
@@ -76,7 +69,6 @@ class NavBar extends Component {
       </Navbar>
     );
   }
-
   centerMe () {
     if (navigator.geolocation) {
       const options = {
@@ -91,6 +83,7 @@ class NavBar extends Component {
         });
       };
       const error = (err) => {
+        console.log(err);
       };
       navigator.geolocation.getCurrentPosition(success, error, options);
     }

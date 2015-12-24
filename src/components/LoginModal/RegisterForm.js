@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { actions as accountActions } from 'redux/modules/account/account';
 import { actions as modalActions } from 'redux/modules/account/modal';
-import { Modal, Button, Input } from 'react-bootstrap';
+import { Input } from 'react-bootstrap';
 import style from './LoginModal.scss';
 import { Ref } from 'utils/firebase/firebaseComponent';
 

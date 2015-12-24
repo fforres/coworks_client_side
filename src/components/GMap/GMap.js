@@ -47,7 +47,7 @@ class GMap extends Component {
 
   render () {
     const { props } = this;
-    const allPins = Object.keys(props.coworks).map((el, i, as)=>{
+    const allPins = Object.keys(props.coworks).map((el) => {
       const _id = el;
       const Element = props.coworks[el];
       const theClass = (() => {
