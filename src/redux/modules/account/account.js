@@ -16,7 +16,7 @@ export const logOut = (data) => ({ type : LOG_OUT, payload:data });
 export const hideLoginModal = () => ({ type : HIDE_LOGIN_MODAL });
 export const showLoginModal = () => ({ type : SHOW_LOGIN_MODAL });
 
-export const loginLocal = () =>  ({ type : LOGIN_LOCAL });
+export const loginLocal = (data) =>  ({ type : LOGIN_LOCAL, payload: data });
 export const actions = {
   logIn,
   logOut,

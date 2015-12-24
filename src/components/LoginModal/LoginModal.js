@@ -6,9 +6,7 @@ import { Modal, Button } from 'react-bootstrap';
 import style from './LoginModal.scss';
 import LoginForm from './LoginForm.js';
 import RegisterForm from './RegisterForm.js';
-import { config } from 'utils/firebase/firebaseReduxSubscriber';
-const Ref = config.ref;
-console.log(Ref);
+import { Ref } from 'utils/firebase/firebaseComponent';
 
 const mapStateToProps = (state) => {
   return {
@@ -36,9 +34,9 @@ class NavBar extends Component {
   render () {
     const theForm = ()=>{
       if (this.props.logInFormShown) {
-        return (<LoginForm ref={Ref}/>);
+        return (<LoginForm/>);
       } else {
-        return (<RegisterForm ref={Ref}/>);
+        return (<RegisterForm/>);
       }
     };
 
@@ -101,7 +99,7 @@ class NavBar extends Component {
   }
   doLogin (provider) {
     const props = {...this.props};
-    ref.authWithOAuthPopup(provider, (err, data) => {
+    Ref.authWithOAuthPopup(provider, (err, data) => {
       if (!err) {
         props.logIn(data);
       }

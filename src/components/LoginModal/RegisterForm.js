@@ -3,10 +3,8 @@ import { connect } from 'react-redux';
 import { actions as accountActions } from 'redux/modules/account/account';
 import { actions as modalActions } from 'redux/modules/account/modal';
 import { Modal, Button, Input } from 'react-bootstrap';
-import { config } from 'utils/firebase/firebaseReduxSubscriber';
 import style from './LoginModal.scss';
-const Ref = config.ref;
-console.log(config);
+import { Ref } from 'utils/firebase/firebaseComponent';
 
 const mapStateToProps = (state) => {
   return {
@@ -21,8 +19,7 @@ class NavBar extends Component {
     isModalShown: PropTypes.bool,
     showLoginModal: PropTypes.func,
     hideLoginModal: PropTypes.func,
-    registerUser : PropTypes.func,
-    Ref : PropTypes.func
+    registerUser : PropTypes.func
   }
 
   componentDidMount () {
@@ -37,14 +34,14 @@ class NavBar extends Component {
         <Input type='password' placeholder='Contraseña' wrapperClassName={style.show_in_modal} addonBefore={lockIcon} ref='password' />
         <button className='btn btn-lg btn-primary btn-block' onClick={(e)=>{
           e.preventDefault();
-          this.localRegister(Ref);
+          this.localRegister();
         }}>Regístrate</button>
       </form>
     );
   }
 
-  localRegister (r) {
-    r.createUser({
+  localRegister () {
+    Ref.createUser({
       email: this.refs.username.refs.input.value,
       password: this.refs.password.refs.input.value
     }, (error, userData) => {

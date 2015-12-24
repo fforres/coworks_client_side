@@ -3,10 +3,8 @@ import { connect } from 'react-redux';
 import { actions as accountActions } from 'redux/modules/account/account';
 import { actions as modalActions } from 'redux/modules/account/modal';
 import { Modal, Button, Input } from 'react-bootstrap';
-import { config } from 'utils/firebase/firebaseReduxSubscriber';
 import style from './LoginModal.scss';
-const Ref = config.ref;
-console.log(config);
+import { Ref } from 'utils/firebase/firebaseComponent';
 
 const mapStateToProps = (state) => {
   return {
@@ -22,8 +20,7 @@ class NavBar extends Component {
     showLoginModal: PropTypes.func,
     hideLoginModal: PropTypes.func,
     registerUser : PropTypes.func,
-    loginLocal : PropTypes.func,
-    Ref : PropTypes.func
+    loginLocal : PropTypes.func
   }
 
   componentWillMount () {
@@ -36,16 +33,17 @@ class NavBar extends Component {
       <form>
         <Input type='text' placeholder='Usuario' wrapperClassName={style.show_in_modal} addonBefore={userIcon} ref='username' />
         <Input type='password' placeholder='Contraseña' wrapperClassName={style.show_in_modal} addonBefore={lockIcon} ref='password' />
-        <button className='btn btn-lg btn-primary btn-block' onClick={(e)=>{
-          e.preventDefault();
-          this.localLogin(Ref);
-        }}>Ingresa</button>
+        <button className='btn btn-lg btn-primary btn-block'
+          onClick={(e)=>{
+            e.preventDefault();
+            this.localLogin();
+          }}>Ingresa</button>
       </form>
     );
   }
 
-  localLogin (r) {
-    r.authWithPassword({
+  localLogin () {
+    Ref.authWithPassword({
       email: this.refs.username.refs.input.value,
       password: this.refs.password.refs.input.value
     }, (error, authData) => {

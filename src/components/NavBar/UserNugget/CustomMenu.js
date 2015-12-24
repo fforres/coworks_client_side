@@ -30,15 +30,18 @@ class DropDown extends Component {
 
   render () {
     const { ...props } = this.props;
-
+    const displayName = (prov) => {
+      if (prov.displayName) {
+        return prov.displayName.split(' ')[0];
+      }
+      return '';
+    };
     return (
-      <div
-        className={style.list_container + ' dropdown-menu'}
-      >
+      <div className={style.list_container + ' dropdown-menu'}>
         <ul className={style.list_style} >
           <div className={style.saludo}>
-            <span>Bienvenido </span>
-            <span>{this.props[this.props.provider].displayName.split(' ')[0]}!</span>
+            <span>Bienvenido {displayName(this.props[this.props.provider])}!</span>
+            <span></span>
           </div>
           <MenuItem eventKey='1'>We</MenuItem>
           <MenuItem eventKey='2'>Are</MenuItem>
