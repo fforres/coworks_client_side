@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { actions as accountActions } from '../../../redux/modules/account';
+import { actions as accountActions } from '../../../redux/modules/account/account';
 import { Dropdown, Image } from 'react-bootstrap';
 import { actions as coworksActions } from '../../../redux/modules/coworks';
 import CustomMenu from './CustomMenu.js';
