@@ -8,7 +8,7 @@ const TOGGLE_LOGIN_FORM = 'TOGGLE_LOGIN_FORM';
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const toggleLoginForm = () => ({ type : TOGGLE_LOGIN_FORM});
+export const toggleLoginForm = () => ({ type: TOGGLE_LOGIN_FORM});
 export const actions = {
   toggleLoginForm
 };
@@ -17,7 +17,7 @@ export const actions = {
 // Reducer
 // ------------------------------------
 const initialState = {
-  logInFormShown : true
+  logInFormShown: true
 };
 export default createReducer(initialState, {
   [TOGGLE_LOGIN_FORM] (state) {

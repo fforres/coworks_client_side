@@ -3,22 +3,22 @@ import { connect } from 'react-redux';
 import { MenuItem } from 'react-bootstrap';
 import style from './CustomMenu.scss';
 import { actions as accountActions } from 'redux/modules/account/account';
-import { config } from 'utils/firebase/firebaseReduxSubscriber';
+import { Ref } from 'utils/firebase/firebaseComponent';
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn : state.account.loggedIn,
-    isModalShown : state.account.isModalShown,
-    userData : state.account.userData
+    loggedIn: state.account.loggedIn,
+    isModalShown: state.account.isModalShown,
+    userData: state.account.userData
   };
 };
 
 class DropDown extends Component {
   static propTypes = {
-    children : PropTypes.any,
-    provider : PropTypes.string,
-    profileImageURL : PropTypes.string,
-    displayName : PropTypes.string,
+    children: PropTypes.any,
+    provider: PropTypes.string,
+    profileImageURL: PropTypes.string,
+    displayName: PropTypes.string,
     logOut: PropTypes.func
   }
 
@@ -47,7 +47,7 @@ class DropDown extends Component {
           <MenuItem eventKey='2'>Are</MenuItem>
           <MenuItem eventKey='3' active>Options</MenuItem>
           <MenuItem eventKey='1'>To Choose</MenuItem>
-          <MenuItem  className={style.logOut} eventKey='1 ' onClick={()=>{this.logOut();}} >
+          <MenuItem className={style.logOut} eventKey='1 ' onClick={()=>{this.logOut();}} >
             <div className={style.logout_icon}>
               <span>Log Out</span>
               <span><i className='fa fa-fw fa-sign-out'/></span>
@@ -59,7 +59,7 @@ class DropDown extends Component {
   }
 
   logOut () {
-    config.ref.unauth();
+    Ref.unauth();
     this.props.logOut();
   }
 }

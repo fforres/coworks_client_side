@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { actions as accountActions } from '../../redux/modules/account/account';
 import { actions as modalActions } from '../../redux/modules/account/modal';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import style from './LoginModal.scss';
 import LoginForm from './LoginForm.js';
 import RegisterForm from './RegisterForm.js';
@@ -10,21 +10,21 @@ import { Ref } from 'utils/firebase/firebaseComponent';
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn : state.account.loggedIn,
-    isModalShown : state.account.isModalShown,
-    userData : state.account.userData,
-    logInFormShown : state.accountModal.logInFormShown
+    loggedIn: state.account.loggedIn,
+    isModalShown: state.account.isModalShown,
+    userData: state.account.userData,
+    logInFormShown: state.accountModal.logInFormShown
   };
 };
 
-class NavBar extends Component {
+class LoginModal extends Component {
   static propTypes = {
     isModalShown: PropTypes.bool,
     updateMapCenter: PropTypes.func,
     showLoginModal: PropTypes.func,
     hideLoginModal: PropTypes.func,
     toggleLoginForm: PropTypes.func,
-    logIn : PropTypes.func,
+    logIn: PropTypes.func,
     logInFormShown: PropTypes.bool
   }
 
@@ -35,9 +35,8 @@ class NavBar extends Component {
     const theForm = ()=>{
       if (this.props.logInFormShown) {
         return (<LoginForm/>);
-      } else {
-        return (<RegisterForm/>);
       }
+      return (<RegisterForm/>);
     };
 
     return (
@@ -52,13 +51,13 @@ class NavBar extends Component {
               <h3 className={style.omb_authTitle}>Ingresa con tus redes sociales </h3>
               <div className={style.omb_socialButtons + ' row '}>
                 <div className='col-xs-4'>
-                  <a onClick={()=>{this.doLogin('facebook');}} href='#' className={style['omb_btn-facebook'] + ' ' +  style.omb_socialLink + ' btn btn-lg btn-block'}>
+                  <a onClick={()=>{this.doLogin('facebook');}} href='#' className={style['omb_btn-facebook'] + ' ' + style.omb_socialLink + ' btn btn-lg btn-block'}>
                     <i className='fa fa-fw fa-facebook'></i>
                     <span className='hidden-xs'>Facebook</span>
                   </a>
                 </div>
                 <div className='col-xs-4'>
-                  <a onClick={()=>{this.doLogin('twitter');}} href='#' className={style['omb_btn-twitter'] + ' ' +  style.omb_socialLink + ' btn btn-lg btn-block'}>
+                  <a onClick={()=>{this.doLogin('twitter');}} href='#' className={style['omb_btn-twitter'] + ' ' + style.omb_socialLink + ' btn btn-lg btn-block'}>
                     <i className='fa fa-fw fa-twitter'></i>
                     <span className='hidden-xs'>Twitter</span>
                   </a>
@@ -97,6 +96,7 @@ class NavBar extends Component {
       </Modal>
     );
   }
+
   doLogin (provider) {
     const props = {...this.props};
     Ref.authWithOAuthPopup(provider, (err, data) => {
@@ -105,11 +105,14 @@ class NavBar extends Component {
       }
     });
   }
-  toggleLoginForm (e) {
+
+  toggleLoginForm () {
     this.props.toggleLoginForm();
   }
 }
 
 export default connect(mapStateToProps, modalActions)(
-  connect(mapStateToProps, accountActions)(NavBar)
+  connect(mapStateToProps, accountActions)(
+    LoginModal
+  )
 );

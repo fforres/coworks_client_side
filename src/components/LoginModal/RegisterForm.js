@@ -2,15 +2,16 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { actions as accountActions } from 'redux/modules/account/account';
 import { actions as modalActions } from 'redux/modules/account/modal';
-import { Modal, Button, Input } from 'react-bootstrap';
+import { actions as notificationsActions } from 'redux/modules/notifications';
+import { Input } from 'react-bootstrap';
 import style from './LoginModal.scss';
 import { Ref } from 'utils/firebase/firebaseComponent';
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn : state.account.loggedIn,
-    isModalShown : state.account.isModalShown,
-    userData : state.account.userData
+    loggedIn: state.account.loggedIn,
+    isModalShown: state.account.isModalShown,
+    userData: state.account.userData
   };
 };
 
@@ -19,7 +20,8 @@ class NavBar extends Component {
     isModalShown: PropTypes.bool,
     showLoginModal: PropTypes.func,
     hideLoginModal: PropTypes.func,
-    registerUser : PropTypes.func
+    registerUser: PropTypes.func,
+    addNotification: PropTypes.func
   }
 
   componentDidMount () {
@@ -46,9 +48,28 @@ class NavBar extends Component {
       password: this.refs.password.refs.input.value
     }, (error, userData) => {
       if (error) {
-        console.log('Error creating user: ', error);
+        switch (error.code) {
+        case 'EMAIL_TAKEN':
+          this.props.addNotification({
+            title:'Trouble in paradise!',
+            message:'El email que ingresaste ya está siendo usado. \n¿Seguro que no tienes una cuenta creada?',
+            level:'error'
+          });
+          break;
+        default:
+          this.props.addNotification({
+            title:'Houston!',
+            message:'Hay problemas al intentar crear tu cuenta. \nComunícate con el equipo de soporte para poder ayudarte',
+            level:'error'
+          });
+          break;
+        }
       } else {
-        console.log('Successfully created user account with uid: ', userData.uid);
+        this.props.addNotification({
+          title:'Yahoo!',
+          message:'Tu cuenta está creada! :D \n',
+          level:'success'
+        });
       }
     });
   }
@@ -56,5 +77,9 @@ class NavBar extends Component {
 }
 
 export default connect( mapStateToProps, modalActions)(
-  connect(mapStateToProps, accountActions)(NavBar)
+  connect(mapStateToProps, accountActions)(
+    connect(mapStateToProps, notificationsActions)(
+      NavBar
+    )
+  )
 );

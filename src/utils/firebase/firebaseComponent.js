@@ -1,20 +1,25 @@
 import React, { PropTypes } from 'react';
-import { config } from './firebaseReduxSubscriber';
-import Firebase       from 'firebase';
-import defaultConfig  from './config.js';
-
-const Ref = new Firebase(defaultConfig.appUrl);
+import { _Ref } from './config';
+import _Dispatch from 'redux/modules';
+import { connect } from 'react-redux';
 
 const theTypeOf = (a) => {
   return Object.prototype.toString.call(a).slice(8, -1).toLowerCase();
 };
 
-function fireBaseComponent (mapping, Component) {
+const fireBaseComponent = (mapping, Component) => {
+  const mapStateToProps = () => {
+    return {
+    };
+  };
   const StoreConnection = React.createClass({
+    propTypes: {
+      dispatch: PropTypes.any
+    },
     getInitialState () {
       return {
-        ref:Ref,
-        dispatch: config.dispatch
+        r: require('./config')._Ref,
+        d: require('./config')._Dispatch
       };
     },
     componentWillMount () {
@@ -23,26 +28,22 @@ function fireBaseComponent (mapping, Component) {
         state = mapping();
       }
       state.forEach((el)=>{
-        this.addListeners(el, config);
+        this.addListeners(el);
       });
-      window.postRef = Ref.child('coworks');
-      window.ref = Ref;
-    },
-    componentDidUpdate () {
-    },
-    componentWillUnmount () {
     },
     render () {
       return <Component {...this.props} />;
     },
-    addListeners ({address, action, type}, con) {
-      Ref.child(address).on(type, (data) => {
-        con.dispatch({type:action, payload:data.val()});
+    addListeners ({address, action, type}) {
+      const { dispatch } = this.props;
+      _Ref.child(address).on(type, (data) => {
+        dispatch({type: action, payload: data.val()});
       });
     }
   });
-  return StoreConnection;
-}
+  return connect(mapStateToProps)(StoreConnection);
+};
 
-exports.Ref = Ref;
-export default fireBaseComponent;
+exports.Dispatch = _Dispatch;
+exports.Ref = _Ref;
+exports.fireBaseComponent = fireBaseComponent;

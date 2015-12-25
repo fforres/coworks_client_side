@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { actions as accountActions } from '../../../redux/modules/account/account';
 import { Dropdown, Image } from 'react-bootstrap';
-import { actions as coworksActions } from '../../../redux/modules/coworks';
 import CustomMenu from './CustomMenu.js';
 import style from './UserNugget.scss';
 
@@ -11,9 +9,9 @@ const preventDefault = (e) => {
 
 class UserNugget extends Component {
   static propTypes = {
-    provider : PropTypes.string,
-    profileImageURL : PropTypes.string,
-    displayName : PropTypes.string
+    provider: PropTypes.string,
+    profileImageURL: PropTypes.string,
+    displayName: PropTypes.string
   }
 
   render () {
