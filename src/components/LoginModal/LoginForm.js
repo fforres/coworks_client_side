@@ -2,15 +2,16 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { actions as accountActions } from 'redux/modules/account/account';
 import { actions as modalActions } from 'redux/modules/account/modal';
+import { actions as notificationsActions } from 'redux/modules/notifications';
 import { Input } from 'react-bootstrap';
 import style from './LoginModal.scss';
 import { Ref } from 'utils/firebase/firebaseComponent';
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn : state.account.loggedIn,
-    isModalShown : state.account.isModalShown,
-    userData : state.account.userData
+    loggedIn: state.account.loggedIn,
+    isModalShown: state.account.isModalShown,
+    userData: state.account.userData
   };
 };
 
@@ -19,8 +20,9 @@ class NavBar extends Component {
     isModalShown: PropTypes.bool,
     showLoginModal: PropTypes.func,
     hideLoginModal: PropTypes.func,
-    registerUser : PropTypes.func,
-    loginLocal : PropTypes.func
+    registerUser: PropTypes.func,
+    loginLocal: PropTypes.func,
+    addNotification: PropTypes.func
   }
 
   componentWillMount () {
@@ -50,19 +52,39 @@ class NavBar extends Component {
       if (error) {
         switch (error.code) {
         case 'INVALID_EMAIL':
-          console.log('The specified user account email is invalid.');
+          this.props.addNotification({
+            title:'Wow!',
+            message:'El email ingresado es inválido :(',
+            level:'warning'
+          });
           break;
         case 'INVALID_PASSWORD':
-          console.log('The specified user account password is incorrect.');
+          this.props.addNotification({
+            title:'Wow!',
+            message:'Password Incorrecto! :(',
+            level:'warning'
+          });
           break;
         case 'INVALID_USER':
-          console.log('The specified user account does not exist.');
+          this.props.addNotification({
+            title:'Wow!',
+            message:'Esa cuenta de usuario no existe en nuestros registros.\n¿Seguro que está bien escrito?',
+            level:'warning'
+          });
           break;
         default:
-          console.log('Error logging user in:', error);
+          this.props.addNotification({
+            title:'Houston!',
+            message:'Hay problemas al intentar ingresar con tu cuenta. \nComunícate con el equipo de soporte para poder ayudarte',
+            level:'error'
+          });
         }
       } else {
-        console.log('Authenticated successfully with payload:', authData);
+        this.props.addNotification({
+          title:'Welcome!',
+          message:'Genial! Ya estás autenticado :D',
+          level:'success'
+        });
         this.props.loginLocal(authData);
       }
     });
@@ -70,5 +92,9 @@ class NavBar extends Component {
 }
 
 export default connect( mapStateToProps, modalActions)(
-  connect(mapStateToProps, accountActions)(NavBar)
+  connect(mapStateToProps, accountActions)(
+    connect(mapStateToProps, notificationsActions)(
+      NavBar
+    )
+  )
 );

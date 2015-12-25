@@ -8,7 +8,7 @@ const COUNTER_INCREMENT = 'COUNTER_INCREMENT';
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const increment = () => ({ type : COUNTER_INCREMENT });
+export const increment = () => ({ type: COUNTER_INCREMENT });
 export const actions = {
   increment
 };
@@ -18,5 +18,5 @@ export const actions = {
 // ------------------------------------
 const initialState = 0;
 export default createReducer(initialState, {
-  [COUNTER_INCREMENT] : (state) => state + 1
+  [COUNTER_INCREMENT]: (state) => state + 1
 });

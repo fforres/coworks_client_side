@@ -1,11 +1,11 @@
 import React from 'react';
 import 'styles/core.scss';
-import { NavBar, LoginModal, Notifications } from '../components';
+import { NavBar, LoginModal } from '../components';
 
 import styles from 'styles/core.scss';
 export default class CoreLayout extends React.Component {
   static propTypes = {
-    children : React.PropTypes.element
+    children: React.PropTypes.element
   }
 
   render () {
@@ -21,7 +21,6 @@ export default class CoreLayout extends React.Component {
           {this.props.children}
         </div>
         <LoginModal />
-        <Notifications />
       </div>
     );
   }

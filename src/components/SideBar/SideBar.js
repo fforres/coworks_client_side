@@ -8,18 +8,18 @@ import style from './SideBar.scss';
 
 const mapStateToProps = (state) => {
   return {
-    isShown : state.sideBar.isShown,
-    isDocked : state.sideBar.isDocked
+    isShown: state.sideBar.isShown,
+    isDocked: state.sideBar.isDocked
   };
 };
 
 class SideBar extends Component {
   static propTypes = {
-    isShown : PropTypes.bool,
-    isDocked : PropTypes.bool,
-    toggleSideBar : PropTypes.func,
-    hideSideBar : PropTypes.func,
-    showSideBar : PropTypes.func
+    isShown: PropTypes.bool,
+    isDocked: PropTypes.bool,
+    toggleSideBar: PropTypes.func,
+    hideSideBar: PropTypes.func,
+    showSideBar: PropTypes.func
   }
 
   componentDidMount () {

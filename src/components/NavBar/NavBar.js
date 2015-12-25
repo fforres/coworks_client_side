@@ -1,24 +1,24 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { actions as accountActions } from '../../redux/modules/account/account';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button } from 'react-bootstrap';
 import { actions as coworksActions } from '../../redux/modules/coworks';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button } from 'react-bootstrap';
 import UserNugget from './UserNugget/UserNugget.js';
 const mapStateToProps = (state) => {
   return {
-    loggedIn : state.account.loggedIn,
-    isModalShown : state.account.isModalShown,
-    userData : state.account.userData
+    loggedIn: state.account.loggedIn,
+    isModalShown: state.account.isModalShown,
+    userData: state.account.userData
   };
 };
 
 class NavBar extends Component {
   static propTypes = {
-    updateMapCenter   : PropTypes.func,
-    showLoginModal    : PropTypes.func,
-    userData          : PropTypes.object,
-    logIn             : PropTypes.func,
-    loggedIn          : PropTypes.bool.isRequired
+    updateMapCenter: PropTypes.func,
+    showLoginModal: PropTypes.func,
+    userData: PropTypes.object,
+    logIn: PropTypes.func,
+    loggedIn: PropTypes.bool.isRequired
   }
 
   render () {
@@ -31,11 +31,10 @@ class NavBar extends Component {
             }}> Ingresa </Button>
           </Navbar.Form>
         );
-      } else {
-        return (
-          <UserNugget {...this.props.userData} />
-        );
       }
+      return (
+        <UserNugget {...this.props.userData} />
+      );
     };
     return (
       <Navbar fixedTop>
@@ -89,7 +88,6 @@ class NavBar extends Component {
     }
   }
 }
-
 
 export default connect(mapStateToProps, coworksActions)(
   connect(mapStateToProps, accountActions)(

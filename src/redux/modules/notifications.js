@@ -3,10 +3,10 @@ import createReducer from 'utils/createReducer';
 // ------------------------------------
 // Constants
 // ------------------------------------
-const ADD_NOTIFICATION          =   'ADD_NOTIFICATION';
-const REMOVE_NOTIFICATION       =   'REMOVE_NOTIFICATION';
-const SHOWED_NOTIFICATION       =   'SHOWED_NOTIFICATION';
-const RESET_NOTIFICATIONS       =   'RESET_NOTIFICATIONS';
+const ADD_NOTIFICATION = 'ADD_NOTIFICATION';
+const REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION';
+const SHOWED_NOTIFICATION = 'SHOWED_NOTIFICATION';
+const RESET_NOTIFICATIONS = 'RESET_NOTIFICATIONS';
 
 // ------------------------------------
 // Actions
@@ -34,13 +34,16 @@ export const actions = {
 // Reducer
 // ------------------------------------
 const initialState = {
-  notifications : []
+  notifications: []
 };
 
 export default createReducer(initialState, {
   [ADD_NOTIFICATION] (state, payload = null) {
     if (payload !== null ) {
       payload.showed = false;
+      if (!payload.position) {
+        payload.position = 'br';
+      }
       return {...state, notifications: state.notifications.concat(payload) };
     }
     return state;
@@ -62,7 +65,7 @@ export default createReducer(initialState, {
     return state;
   },
   [RESET_NOTIFICATIONS] (state) {
-    const newState =  {...state, notifications: initialState.notifications };
+    const newState = {...state, notifications: initialState.notifications };
     return newState;
   }
 });

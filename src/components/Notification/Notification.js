@@ -5,7 +5,7 @@ import NotificationSystem from 'react-notification-system';
 
 const mapStateToProps = (state) => {
   return {
-    notifications : state.notifications.notifications
+    notifications: state.notifications.notifications
   };
 };
 
@@ -14,10 +14,17 @@ class NavBar extends Component {
     notifications: PropTypes.arrayOf(PropTypes.object),
     addNotification: PropTypes.func,
     removeNotification: PropTypes.func,
-    showedNotification: PropTypes.func
+    showedNotification: PropTypes.func,
+    clearNotification: PropTypes.func
   }
+
+  componentWillMount () {
+    this.props.clearNotification();
+  }
+
   componentDidMount () {
   }
+
   componentDidUpdate () {
     this.props.notifications.forEach((el, i) => {
       let element = el;
@@ -51,6 +58,7 @@ class NavBar extends Component {
     };
     return el;
   }
+
   insertRemoveCallBacks (el, i) {
     el.removeCallbacks = [];
     if (Object.prototype.toString.call(el.onRemove).slice(8, -1).toLowerCase() === 'function') {

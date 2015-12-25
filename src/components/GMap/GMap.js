@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
     center: state.coworks.map.center,
     defaultCenter: state.coworks.map.defaultCenter,
     zoom: state.coworks.map.zoom,
-    coworks : state.coworks.coworks,
+    coworks: state.coworks.coworks,
     selectedCowork: state.coworks.selected,
     hoveredCowork: state.coworks.hovered
   };
@@ -61,7 +61,7 @@ class GMap extends Component {
         return str.join(' ');
       })();
       return (
-        <div className={theClass} lat={Element.direccion.geo.lat} lng={Element.direccion.geo.lng}  id={_id} key={_id}>
+        <div className={theClass} lat={Element.direccion.geo.lat} lng={Element.direccion.geo.lng} id={_id} key={_id}>
            C
         </div>
       );

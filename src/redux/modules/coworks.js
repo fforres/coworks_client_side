@@ -3,12 +3,12 @@ import createReducer from 'utils/createReducer';
 // ------------------------------------
 // Constants
 // ------------------------------------
-const UPDATE_MAP_CENTER   =   'UPDATE_MAP_CENTER';
-const REQUEST_COWORKS     =   'REQUEST_COWORKS';
-const ADD_COWORK          =   'ADD_COWORK';
-const SELECT_COWORK       =   'SELECT_COWORK';
-const HOVER_ENTER_COWORK  =   'HOVER_ENTER_COWORK';
-const HOVER_LEAVE_COWORK  =   'HOVER_LEAVE_COWORK';
+const UPDATE_MAP_CENTER = 'UPDATE_MAP_CENTER';
+const REQUEST_COWORKS = 'REQUEST_COWORKS';
+const ADD_COWORK = 'ADD_COWORK';
+const SELECT_COWORK = 'SELECT_COWORK';
+const HOVER_ENTER_COWORK = 'HOVER_ENTER_COWORK';
+const HOVER_LEAVE_COWORK = 'HOVER_LEAVE_COWORK';
 
 // ------------------------------------
 // Actions

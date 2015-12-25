@@ -8,29 +8,29 @@ import { fireBaseComponent } from 'utils/firebase/firebaseComponent.js';
 
 const mapStateToProps = (state) => {
   return {
-    coworks : state.coworks.coworks,
-    selected : state.coworks.selected,
-    hovered : state.coworks.hovered
+    coworks: state.coworks.coworks,
+    selected: state.coworks.selected,
+    hovered: state.coworks.hovered
   };
 };
 
 const mapFireBaseEventsToStore = () => {
   return [{
-    address : 'coworks',
-    type : 'value',
-    action : coworksActions.addCowork().type
+    address: 'coworks',
+    type: 'value',
+    action: coworksActions.addCowork().type
   }];
 };
 
 class SideBarList extends Component {
   static propTypes = {
     coworks: PropTypes.any,
-    selected : PropTypes.string.isRequired,
-    hovered : PropTypes.string.isRequired,
-    hoverEnterCowork:PropTypes.func,
-    hoverLeaveCowork:PropTypes.func,
-    selectCowork:PropTypes.func,
-    updateMapCenter:PropTypes.func
+    selected: PropTypes.string.isRequired,
+    hovered: PropTypes.string.isRequired,
+    hoverEnterCowork: PropTypes.func,
+    hoverLeaveCowork: PropTypes.func,
+    selectCowork: PropTypes.func,
+    updateMapCenter: PropTypes.func
   }
   componentDidMount () {
   }

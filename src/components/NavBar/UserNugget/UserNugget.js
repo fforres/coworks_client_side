@@ -9,9 +9,9 @@ const preventDefault = (e) => {
 
 class UserNugget extends Component {
   static propTypes = {
-    provider : PropTypes.string,
-    profileImageURL : PropTypes.string,
-    displayName : PropTypes.string
+    provider: PropTypes.string,
+    profileImageURL: PropTypes.string,
+    displayName: PropTypes.string
   }
 
   render () {

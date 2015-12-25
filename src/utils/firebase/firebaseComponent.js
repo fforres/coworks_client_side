@@ -1,21 +1,28 @@
-import React            from 'react';
-import {_Ref, _Dispatch}  from './config';
+import React, { PropTypes } from 'react';
+import { _Ref } from './config';
+import _Dispatch from 'redux/modules';
+import { connect } from 'react-redux';
 
 const theTypeOf = (a) => {
   return Object.prototype.toString.call(a).slice(8, -1).toLowerCase();
 };
 
 const fireBaseComponent = (mapping, Component) => {
+  const mapStateToProps = () => {
+    return {
+    };
+  };
   const StoreConnection = React.createClass({
+    propTypes: {
+      dispatch: PropTypes.any
+    },
     getInitialState () {
-      debugger;
       return {
-        r : require('./config')._Ref,
-        d : require('./config')._Dispatch
+        r: require('./config')._Ref,
+        d: require('./config')._Dispatch
       };
     },
     componentWillMount () {
-      debugger;
       let state = mapping;
       if (theTypeOf(mapping) === 'function' ) {
         state = mapping();
@@ -24,26 +31,19 @@ const fireBaseComponent = (mapping, Component) => {
         this.addListeners(el);
       });
     },
-    componentDidUpdate () {
-    },
-    componentWillUnmount () {
-    },
     render () {
       return <Component {...this.props} />;
     },
     addListeners ({address, action, type}) {
+      const { dispatch } = this.props;
       _Ref.child(address).on(type, (data) => {
-        _Dispatch({type:action, payload:data.val()});
+        dispatch({type: action, payload: data.val()});
       });
     }
   });
-  return StoreConnection;
+  return connect(mapStateToProps)(StoreConnection);
 };
 
-exports.setDispatcher = ({dispatch}) => {
-  debugger;
-  OB._Dispatch = dispatch;
-};
 exports.Dispatch = _Dispatch;
 exports.Ref = _Ref;
 exports.fireBaseComponent = fireBaseComponent;

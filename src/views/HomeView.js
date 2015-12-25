@@ -11,12 +11,12 @@ import { NavBar } from '../components';
 // the component can be tested w/ and w/o being connected.
 // See: http://rackt.github.io/redux/docs/recipes/WritingTests.html
 const mapStateToProps = (state) => ({
-  counter : state.counter
+  counter: state.counter
 });
 export class HomeView extends React.Component {
   static propTypes = {
-    counter   : React.PropTypes.number,
-    requestCoworks   : React.PropTypes.func
+    counter: React.PropTypes.number,
+    requestCoworks: React.PropTypes.func
   }
 
   componentWillMount () {
