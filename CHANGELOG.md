@@ -3,6 +3,7 @@ Changelog
 0.1.6 (IN PROGRESS)
 -----
 #### FEATURE
+* Agregando Ruta de Perfil de usuario (/profile)
 
 #### FIX
 
