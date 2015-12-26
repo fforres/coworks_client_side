@@ -1,6 +1,6 @@
 {
-  "name": "Opensource Maps",
-  "version": "0.1.4",
+  "name": "opensource_map_geopositioning_info",
+  "version": "0.1.5",
   "description": "GeoLocated Data for everyone! Curated & social custom maps",
   "main": "index.js",
   "scripts": {
@@ -29,6 +29,7 @@
     "firebase": "^2.3.2",
     "google-map-react": "^0.9.3",
     "history": "1.13.1",
+    "re-notif": "^1.0.2",
     "react": "^0.14.0",
     "react-bootstrap": "^0.28.1",
     "react-dom": "^0.14.0",
@@ -37,6 +38,7 @@
     "react-router": "1.0.1",
     "react-sidebar": "^2.0.0",
     "redux": "^3.0.0",
+    "redux-persist": "^1.5.0",
     "redux-simple-router": "^1.0.0",
     "redux-thunk": "^1.0.0",
     "yargs": "^3.18.0"

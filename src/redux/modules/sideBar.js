@@ -13,12 +13,12 @@ const HIDE_SHOW = 'HIDE_SHOW';
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const toggleDock = () => ({ type : TOGGLE_DOCK });
-export const showDock = () => ({ type : SHOW_DOCK });
-export const hideDock = () => ({ type : HIDE_DOCK });
-export const toggleShow = () => ({ type : TOGGLE_SHOW });
-export const showShow = () => ({ type : SHOW_SHOW });
-export const hideShow = () => ({ type : HIDE_SHOW });
+export const toggleDock = () => ({ type: TOGGLE_DOCK });
+export const showDock = () => ({ type: SHOW_DOCK });
+export const hideDock = () => ({ type: HIDE_DOCK });
+export const toggleShow = () => ({ type: TOGGLE_SHOW });
+export const showShow = () => ({ type: SHOW_SHOW });
+export const hideShow = () => ({ type: HIDE_SHOW });
 
 export const actions = {
   toggleDock,
@@ -33,8 +33,8 @@ export const actions = {
 // Reducer
 // ------------------------------------
 const initialState = {
-  isShown:false,
-  isDocked:false
+  isShown: false,
+  isDocked: false
 };
 
 export default createReducer(initialState, {

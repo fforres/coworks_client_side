@@ -15,6 +15,11 @@
   padding-bottom:25px;
 
 }
+
+.show_in_modal{
+  z-index: 1060 !important !important !important;
+}
+
 .omb_authTitle {
   text-align: center !important;
   line-height: 300% !important;
@@ -43,23 +48,23 @@
   color: #aaa !important;
   margin-top: 1em !important;
   margin-bottom: 1em !important;
-  padding-top: 0.5em !important;
-  padding-bottom: 0.5em !important;
   .omb_hrOr {
     background-color: #cdcdcd !important;
-    height: 1px !important;
     margin-top: 0 !important !important;
     margin-bottom: 0 !important !important;
   }
   .omb_spanOr {
     display: block !important;
-    position: absolute !important;
-    left: 50% !important;
-    top: -0.6em !important;
-    margin-left: -1.5em !important;
     background-color: white !important;
-    width: 3em !important;
+    margin-bottom: 0.3em !important;
     text-align: center !important;
+  }
+  .omb_spanOr_sub{
+    font-size: 0.8em;
+    display: block !important;
+    margin-bottom: 1em !important;
+    text-align: center !important;
+    margin-bottom: 1em !important;
   }
   .omb_loginForm {
     .input-group.i {
@@ -70,6 +75,7 @@
     }
   }
 }
+
 @media (min-width: 768px) {
   .omb_forgotPwd {
     text-align: center !important;

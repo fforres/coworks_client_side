@@ -1,31 +1,24 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { actions as accountActions } from '../../redux/modules/account';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button, SplitButton, DropdownButton } from 'react-bootstrap';
+import { actions as accountActions } from '../../redux/modules/account/account';
 import { actions as coworksActions } from '../../redux/modules/coworks';
-import LoginModal from '../LoginModal/LoginModal.js';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button } from 'react-bootstrap';
 import UserNugget from './UserNugget/UserNugget.js';
 const mapStateToProps = (state) => {
   return {
-    loggedIn : state.account.loggedIn,
-    isModalShown : state.account.isModalShown,
-    userData : state.account.userData
+    loggedIn: state.account.loggedIn,
+    isModalShown: state.account.isModalShown,
+    userData: state.account.userData
   };
 };
 
-const mapStateToPropsActions = (state) => {
-  return {};
-};
-
-
 class NavBar extends Component {
   static propTypes = {
-    updateMapCenter : PropTypes.func,
-    showLoginModal  : PropTypes.func,
-    hideLoginModal  : PropTypes.func,
-    userData        : PropTypes.object,
-    logIn           : PropTypes.func,
-    loggedIn        : PropTypes.bool.isRequired
+    updateMapCenter: PropTypes.func,
+    showLoginModal: PropTypes.func,
+    userData: PropTypes.object,
+    logIn: PropTypes.func,
+    loggedIn: PropTypes.bool.isRequired
   }
 
   render () {
@@ -38,11 +31,10 @@ class NavBar extends Component {
             }}> Ingresa </Button>
           </Navbar.Form>
         );
-      } else {
-        return (
-          <UserNugget {...this.props.userData} />
-        );
       }
+      return (
+        <UserNugget {...this.props.userData} />
+      );
     };
     return (
       <Navbar fixedTop>
@@ -64,7 +56,7 @@ class NavBar extends Component {
             </NavDropdown>
           </Nav>
           <Nav pullRight>
-            <NavItem eventKey={1} href='#'>
+            <NavItem eventKey={1} href='/'>
                <i className='fa fa-fw fa-home'/>
             </NavItem>
             <NavItem eventKey={2} href='#' onClick={()=>{this.centerMe();}}>
@@ -76,7 +68,6 @@ class NavBar extends Component {
       </Navbar>
     );
   }
-
   centerMe () {
     if (navigator.geolocation) {
       const options = {
@@ -91,12 +82,12 @@ class NavBar extends Component {
         });
       };
       const error = (err) => {
+        console.log(err);
       };
       navigator.geolocation.getCurrentPosition(success, error, options);
     }
   }
 }
-
 
 export default connect(mapStateToProps, coworksActions)(
   connect(mapStateToProps, accountActions)(

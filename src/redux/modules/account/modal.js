@@ -3,20 +3,24 @@ import createReducer from 'utils/createReducer';
 // ------------------------------------
 // Constants
 // ------------------------------------
-const COUNTER_INCREMENT = 'COUNTER_INCREMENT';
+const TOGGLE_LOGIN_FORM = 'TOGGLE_LOGIN_FORM';
 
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const increment = () => ({ type: COUNTER_INCREMENT });
+export const toggleLoginForm = () => ({ type: TOGGLE_LOGIN_FORM});
 export const actions = {
-  increment
+  toggleLoginForm
 };
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = 0;
+const initialState = {
+  logInFormShown: true
+};
 export default createReducer(initialState, {
-  [COUNTER_INCREMENT]: (state) => state + 1
+  [TOGGLE_LOGIN_FORM] (state) {
+    return { ...state, logInFormShown: !state.logInFormShown };
+  }
 });
