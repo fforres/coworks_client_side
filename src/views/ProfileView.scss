@@ -1,0 +1,19 @@
+.counter {
+  font-weight: bold;
+}
+.counter--green {
+  composes: counter;
+  color: rgb(25,200,25);
+}
+.fullscreen {
+  height: 100%;
+  width: 100%;
+}
+.container-with-navbar {
+  height: 100%;
+  width: 100%;
+  padding: 50px;
+  display: flex;
+align-items: center;
+justify-content: center;
+}

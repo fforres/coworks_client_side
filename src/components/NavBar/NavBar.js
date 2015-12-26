@@ -56,7 +56,7 @@ class NavBar extends Component {
             </NavDropdown>
           </Nav>
           <Nav pullRight>
-            <NavItem eventKey={1} href='#'>
+            <NavItem eventKey={1} href='/'>
                <i className='fa fa-fw fa-home'/>
             </NavItem>
             <NavItem eventKey={2} href='#' onClick={()=>{this.centerMe();}}>

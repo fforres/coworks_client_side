@@ -43,7 +43,7 @@ class DropDown extends Component {
             <span>Bienvenido {displayName(this.props[this.props.provider])}!</span>
             <span></span>
           </div>
-          <MenuItem eventKey='1'>We</MenuItem>
+          <MenuItem href='/profile' >Perfil</MenuItem>
           <MenuItem eventKey='2'>Are</MenuItem>
           <MenuItem eventKey='3' active>Options</MenuItem>
           <MenuItem eventKey='1'>To Choose</MenuItem>
