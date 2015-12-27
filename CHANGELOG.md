@@ -4,8 +4,11 @@ Changelog
 -----
 #### FEATURE
 * Agregando Ruta de Perfil de usuario (/profile)
+* Agregando Ruta de Visualizacion por Item (/profile)
 
 #### FIX
+* Agregando más opciones a la api de FireBase (Agregando una api en caso de no poder utilizar un componente wrapper)
+
 
 0.1.5
 -----
