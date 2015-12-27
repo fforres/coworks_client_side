@@ -25,10 +25,8 @@ export class HomeView extends React.Component {
   render () {
     return (
       <div className={styles.fullscreen} >
-        <div className={styles['container-with-navbar']}>
           <SideBar/>
           <GMap/>
-        </div>
       </div>
     );
   }
