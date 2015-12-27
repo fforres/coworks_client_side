@@ -13,7 +13,6 @@ export default class Root extends React.Component {
   render () {
     const content = (
       <div>
-        <NavBar/>
         <Router history={this.props.history}>
           {this.props.routes}
         </Router>
