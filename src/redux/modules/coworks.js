@@ -11,6 +11,8 @@ const HOVER_ENTER_COWORK = 'HOVER_ENTER_COWORK';
 const HOVER_LEAVE_COWORK = 'HOVER_LEAVE_COWORK';
 const SET_CURRENT_COWORK = 'SET_CURRENT_COWORK';
 const UNSET_CURRENT_COWORK = 'UNSET_CURRENT_COWORK';
+const SET_MY_COWORKS = 'SET_MY_COWORKS';
+const UNSET_MY_COWORKS = 'UNSET_MY_COWORKS';
 
 // ------------------------------------
 // Actions
@@ -44,15 +46,35 @@ export const setCurrentCowork = (daya) => ({
 export const unsetCurrentCowork = () => ({
   type: UNSET_CURRENT_COWORK
 });
+
+export const setMyCoworks = (daya) => ({
+  type: SET_MY_COWORKS,
+  payload: daya
+});
+export const unsetMyCoworks = () => ({
+  type: UNSET_MY_COWORKS
+});
+
 export const actions = {
-  requestCoworks, selectCowork, hoverEnterCowork, hoverLeaveCowork, updateMapCenter, addCowork, setCurrentCowork, unsetCurrentCowork
+  requestCoworks,
+  selectCowork,
+  hoverEnterCowork,
+  hoverLeaveCowork,
+  updateMapCenter,
+  addCowork,
+  setCurrentCowork,
+  unsetCurrentCowork,
+  setMyCoworks,
+  unsetMyCoworks
 };
+
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
 const initialState = {
   coworks: {},
+  myCoworks: {},
   coworksFiltered: {},
   selected: '',
   hovered: '',
@@ -119,6 +141,21 @@ export default createReducer(initialState, {
   },
   [UNSET_CURRENT_COWORK] (state, payload) {
     return {...state, current: null};
+  },
+
+
+  [SET_MY_COWORKS] (state, payload) {
+    if (payload === null) {
+      return {...state, myCoworks: {}};
+    }
+    if (typeof payload === 'object') {
+      return {...state, myCoworks: payload};
+    }
+    return {...state, myCoworks: {}};
+  },
+  [UNSET_MY_COWORKS] (state, payload) {
+    return {...state, myCoworks: null};
   }
+
 
 });

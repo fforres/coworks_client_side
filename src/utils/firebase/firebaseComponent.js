@@ -46,11 +46,7 @@ const fireBaseComponent = (mapping, Component) => {
         r = r.equalTo(equalTo);
       }
       r.on(type, (data) => {
-        if (data.val()) {
-          dispatch({type: action.type, payload: data.val()});
-        } else {
-          dispatch({type: action.type, payload: data});
-        }
+        dispatch({type: action.type, payload: data.val()});
       });
     }
   });
@@ -76,11 +72,7 @@ const fireBaseMap = (arr) => {
       r = r.equalTo(equalTo);
     }
     r.on(type, (data) => {
-      if (data.val()) {
-        __Dispatch({type: action.type, payload: data.val()});
-      } else {
-        __Dispatch({type: action.type, payload: data});
-      }
+      __Dispatch({type: action.type, payload: data.val()});
     });
   });
 };
