@@ -1,41 +1,40 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { actions as coworksActions } from '../../../redux/modules/coworks';
-import style from './SideBarList.scss';
+import { actions as coworksActions } from 'redux/modules/coworks';
 import ToggleButton from '../ToggleButton/ToggleButton';
-import firebaseComponent from '../../../utils/firebase/firebaseComponent.js';
+import { fireBaseComponent } from 'utils/firebase/firebaseComponent.js';
+import { Link } from 'react-router';
+import style from './SideBarList.scss';
 
 
 const mapStateToProps = (state) => {
   return {
-    coworks : state.coworks.coworks,
-    selected : state.coworks.selected,
-    hovered : state.coworks.hovered
+    coworks: state.coworks.coworks,
+    selected: state.coworks.selected,
+    hovered: state.coworks.hovered
   };
 };
 
-const mapFireBaseEventsToStore = () => {
+const mapFireBaseEventsToStore = (props) => {
   return [{
-    address : 'coworks',
-    type : 'value',
-    action : coworksActions.addCowork().type
+    address: 'coworks',
+    type: 'value',
+    action: coworksActions.addCowork()
   }];
 };
 
 class SideBarList extends Component {
   static propTypes = {
     coworks: PropTypes.any,
-    selected : PropTypes.string.isRequired,
-    hovered : PropTypes.string.isRequired,
-    hoverEnterCowork:PropTypes.func,
-    hoverLeaveCowork:PropTypes.func,
-    selectCowork:PropTypes.func,
-    updateMapCenter:PropTypes.func
-  }
-  componentDidMount () {
+    selected: PropTypes.string.isRequired,
+    hovered: PropTypes.string.isRequired,
+    hoverEnterCowork: PropTypes.func,
+    hoverLeaveCowork: PropTypes.func,
+    selectCowork: PropTypes.func,
+    updateMapCenter: PropTypes.func
   }
   render () {
-    const cwrks = Object.keys(this.props.coworks).map((el, i, as)=>{
+    const cwrks = Object.keys(this.props.coworks).map((el, i)=>{
       const _id = el;
       const Element = this.props.coworks[el];
       // Play with classes to show who is selected or hovered
@@ -67,9 +66,12 @@ class SideBarList extends Component {
             <div className={style['item-header']}>
               <span className={style['item-text']}>{Element.nombre}</span>
               <div className={style['item-link']}>
-                <a href={Element.url} className={style['item-link-action']} target='_blank' >
+                <Link
+                  to={'/cowork/' + encodeURIComponent(Element.nombre)}
+                  className={style['item-link-action']}
+                  >
                   <i className='fa fa-fw fa-link'></i>
-                </a>
+                </Link>
               </div>
             </div>
             <div className={style['item-body']}>
@@ -96,6 +98,13 @@ class SideBarList extends Component {
                 </div>
               </div>
 
+              <div className={style['item-body-element']}>
+                <div>WebSite:</div>
+                <a href={Element.url}>
+                  <i className='fa fa-fw fa-globe'></i>
+                  <span></span>
+                </a>
+              </div>
             </div>
         </div>
       );
@@ -134,4 +143,6 @@ class SideBarList extends Component {
     }
   }
 }
-export default connect(mapStateToProps, coworksActions)(firebaseComponent(mapFireBaseEventsToStore, SideBarList));
+export default connect(mapStateToProps, coworksActions)(
+  fireBaseComponent(mapFireBaseEventsToStore, SideBarList)
+);

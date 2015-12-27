@@ -1,15 +1,24 @@
 import React, { PropTypes } from 'react';
-import { config } from './firebaseReduxSubscriber';
+import { connect } from 'react-redux';
+import { _Ref } from './config';
+let _Dispatch = null;
 const theTypeOf = (a) => {
   return Object.prototype.toString.call(a).slice(8, -1).toLowerCase();
 };
 
-function fireBaseComponent (mapping, Component) {
+const fireBaseComponent = (mapping, Component) => {
+  const mapStateToProps = (state) => {
+    return {
+    };
+  };
   const StoreConnection = React.createClass({
+    propTypes: {
+      dispatch: PropTypes.any
+    },
     getInitialState () {
       return {
-        ref:config.ref,
-        dispatch: config.dispatch
+        r: require('./config')._Ref,
+        d: require('./config')._Dispatch
       };
     },
     componentWillMount () {
@@ -17,26 +26,57 @@ function fireBaseComponent (mapping, Component) {
       if (theTypeOf(mapping) === 'function' ) {
         state = mapping();
       }
+      if (_Dispatch === null) {
+        _Dispatch = this.props.dispatch;
+      }
       state.forEach((el)=>{
-        this.addListeners(el, config);
+        this.addListeners(el);
       });
-      window.postRef = config.ref.child('coworks');
-      window.ref = config.ref;
-    },
-    componentDidUpdate () {
-    },
-    componentWillUnmount () {
     },
     render () {
       return <Component {...this.props} />;
     },
-    addListeners ({address, action, type}, con) {
-      con.ref.child(address).on(type, (data) => {
-        con.dispatch({type:action, payload:data.val()});
+    addListeners ({address, action, type, orderByChild, equalTo}) {
+      const { dispatch } = this.props;
+      let r = _Ref.child(address);
+      if (orderByChild) {
+        r = r.orderByChild(orderByChild);
+      }
+      if (equalTo) {
+        r = r.equalTo(equalTo);
+      }
+      r.on(type, (data) => {
+        dispatch({type: action.type, payload: data.val()});
       });
     }
   });
-  return StoreConnection;
-}
+  return connect(mapStateToProps)(StoreConnection);
+};
 
-export default fireBaseComponent;
+const fireBaseMap = (arr) => {
+  let CurrentArray = arr;
+  if (theTypeOf(arr) === 'object') {
+    CurrentArray = [];
+    CurrentArray.push(arr);
+  }
+  const __Ref = require('./config')._Ref;
+  const __Dispatch = (_Dispatch) ? _Dispatch : require('./config')._Dispatch;
+
+  CurrentArray.forEach((el) => {
+    const {address, action, type, orderByChild, equalTo} = el;
+    let r = __Ref.child(address);
+    if (orderByChild) {
+      r = r.orderByChild(orderByChild);
+    }
+    if (equalTo) {
+      r = r.equalTo(equalTo);
+    }
+    r.on(type, (data) => {
+      __Dispatch({type: action.type, payload: data.val()});
+    });
+  });
+};
+exports.fireBaseMap = fireBaseMap;
+exports.Dispatch = _Dispatch;
+exports.Ref = _Ref;
+exports.fireBaseComponent = fireBaseComponent;

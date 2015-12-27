@@ -1,19 +1,23 @@
-import React        from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
-import { Router }   from 'react-router';
+import { Router } from 'react-router';
+import { Notifications, NavBar } from 'components';
 
 export default class Root extends React.Component {
   static propTypes = {
-    history : React.PropTypes.object.isRequired,
-    routes  : React.PropTypes.element.isRequired,
-    store   : React.PropTypes.object.isRequired
+    history: React.PropTypes.object.isRequired,
+    routes: React.PropTypes.element.isRequired,
+    store: React.PropTypes.object.isRequired
   }
 
   render () {
     const content = (
-      <Router history={this.props.history}>
-        {this.props.routes}
-      </Router>
+      <div>
+        <Router history={this.props.history}>
+          {this.props.routes}
+        </Router>
+        <Notifications store={this.props.store} />
+      </div>
     );
 
     if (__DEBUG__ && !__DEBUG_NW__) {
@@ -27,12 +31,11 @@ export default class Root extends React.Component {
           </div>
         </Provider>
       );
-    } else {
-      return (
-        <Provider store={this.props.store}>
-          {content}
-        </Provider>
-      );
     }
+    return (
+      <Provider store={this.props.store}>
+        {content}
+      </Provider>
+    );
   }
 }

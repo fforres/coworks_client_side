@@ -1,22 +1,18 @@
 import React from 'react';
 import 'styles/core.scss';
 import { NavBar, LoginModal } from '../components';
+
 import styles from 'styles/core.scss';
 export default class CoreLayout extends React.Component {
   static propTypes = {
-    children : React.PropTypes.element
+    children: React.PropTypes.element
   }
 
   render () {
-    let theNav = <span></span>;
-    const a = false;
-    if (a) {
-      theNav = <NavBar/>;
-    }
     return (
-      <div className={styles.fullviewport + ' page-container '}>
-        {theNav}
-        <div className={styles.fullscreen}>
+      <div id='coreLayout'>
+        <NavBar/>
+        <div>
           {this.props.children}
         </div>
         <LoginModal />

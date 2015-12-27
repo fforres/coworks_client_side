@@ -7,6 +7,18 @@
   border-bottom-style: solid;
   border-width: 1px;
 }
+.logOut{
+  padding-top: 5px;
+  margin-top: 5px;
+  border-top-color: $table-border-color;
+  border-top-style: solid;
+  border-width: 1px;
+}
+.logout_icon{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .list_container{
   @include fadeInDown(
     $duration: 400ms

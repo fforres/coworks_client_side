@@ -1,7 +1,34 @@
 Changelog
 =========
-0.1.5 (IN PROGRESS)
+0.1.7 (IN PROGRESS)
 -----
+#### FEATURE
+#### FIX
+
+0.1.6
+-----
+#### FEATURE
+* Agregando Ruta de Perfil de usuario (/profile)
+* Agregando Ruta de Visualizacion por Item (/profile)
+* Cambio de estructura de app, agregando un segundo Template.
+* Added - Visualizacion de Coworks creados por mi perfil
+
+#### FIX
+* Agregando más opciones a la api de FireBase (Agregando una api en caso de no poder utilizar un componente wrapper)
+* Cambiando Anchor tags a Links de React Router
+* Cambiando Blacklist de multiples stores, por whitelist de solo una.
+
+
+
+0.1.5
+-----
+#### FEATURE
+* Agregando WrapperComponent de notificaciones
+* Agregando store para notificaciones
+* Agregando notificaciones para registro y login/logout de usuarios.
+
+#### FIX
+* Bug donde el modal de login/registro impedía interactuar con los inputs de registro/ingreso.
 
 0.1.4
 -----
@@ -10,9 +37,9 @@ Changelog
 * Agregando nugget de usuario cuando el usuario está registrado
 * Agregando Persistencia del estado.
 * Agregando sesion.
+
 #### FIX
 * Limpiando proyecto, eliminando local Data.
-
 
 0.1.3
 -----
@@ -22,15 +49,16 @@ Changelog
 <<<<<<< HEAD
 * Implementación de FireBase
 * Migración del backend a Firebase
+
 #### FIX
 * Cambio de identificación de Coworks
-=======
 
 0.1.2
 -----
 #### FEATURE
 * Agregado topbar
 * Agregado Estilo por SASS
+
 #### FIX
 * Creando Component ToggleButton, separando la lógica de mueste/cierre de sidebar
 * Cambio de Algunos CSS a FlexBox.
@@ -44,8 +72,6 @@ Changelog
 * Fix dependencias de redux-devtools, removiendo beta.
 * Fix Package.json, name, versions, repos y demas
 * Fix CHANGELOG.md
-
-
 
 0.1.0
 -----

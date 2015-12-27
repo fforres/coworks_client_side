@@ -1,0 +1,19 @@
+.title{
+  font-size: 2.9em;
+}
+.bajada{
+  font-size: 1.2em;
+}
+
+.capitalize{
+  text-transform: capitalize;
+}
+.calle{
+  composes: capitalize;
+}
+.ciudad{
+  composes: capitalize;
+}
+.pais{
+  composes: capitalize;
+}

@@ -10,12 +10,12 @@ import styles from './DefaultView.scss';
 // the component can be tested w/ and w/o being connected.
 // See: http://rackt.github.io/redux/docs/recipes/WritingTests.html
 const mapStateToProps = (state) => ({
-  counter : state.counter
+  counter: state.counter
 });
 export class DefaultView extends React.Component {
   static propTypes = {
-    increment : React.PropTypes.func,
-    counter   : React.PropTypes.number
+    increment: React.PropTypes.func,
+    counter: React.PropTypes.number
   }
 
   render () {
