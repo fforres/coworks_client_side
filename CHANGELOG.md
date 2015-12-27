@@ -1,15 +1,23 @@
 Changelog
 =========
-0.1.6 (IN PROGRESS)
+0.1.7 (IN PROGRESS)
+-----
+#### FEATURE
+#### FIX
+
+0.1.6
 -----
 #### FEATURE
 * Agregando Ruta de Perfil de usuario (/profile)
 * Agregando Ruta de Visualizacion por Item (/profile)
 * Cambio de estructura de app, agregando un segundo Template.
+* Added - Visualizacion de Coworks creados por mi perfil
 
 #### FIX
 * Agregando más opciones a la api de FireBase (Agregando una api en caso de no poder utilizar un componente wrapper)
 * Cambiando Anchor tags a Links de React Router
+* Cambiando Blacklist de multiples stores, por whitelist de solo una.
+
 
 
 0.1.5

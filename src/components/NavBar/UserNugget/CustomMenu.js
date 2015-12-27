@@ -45,9 +45,11 @@ class DropDown extends Component {
             <span></span>
           </div>
           <li role='presentation' className='' >
-            <Link to='/profile' tabIndex='-1' >Perfil</Link>
+            <Link to='/profile' tabIndex='-1' >Mi Perfil</Link>
           </li>
-          <MenuItem eventKey='2'>Are</MenuItem>
+          <li role='presentation' className='' >
+            <Link to='/coworks' tabIndex='-1' >Mis Lugares</Link>
+          </li>
           <MenuItem eventKey='3' active>Options</MenuItem>
           <MenuItem eventKey='1'>To Choose</MenuItem>
           <MenuItem className={style.logOut} eventKey='1 ' onClick={()=>{this.logOut();}} >
