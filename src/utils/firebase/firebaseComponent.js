@@ -1,14 +1,13 @@
 import React, { PropTypes } from 'react';
-import { _Ref } from './config';
-import _Dispatch from 'redux/modules';
 import { connect } from 'react-redux';
-
+import { _Ref } from './config';
+let _Dispatch = null;
 const theTypeOf = (a) => {
   return Object.prototype.toString.call(a).slice(8, -1).toLowerCase();
 };
 
 const fireBaseComponent = (mapping, Component) => {
-  const mapStateToProps = () => {
+  const mapStateToProps = (state) => {
     return {
     };
   };
@@ -27,6 +26,9 @@ const fireBaseComponent = (mapping, Component) => {
       if (theTypeOf(mapping) === 'function' ) {
         state = mapping();
       }
+      if (_Dispatch === null) {
+        _Dispatch = this.props.dispatch;
+      }
       state.forEach((el)=>{
         this.addListeners(el);
       });
@@ -34,16 +36,47 @@ const fireBaseComponent = (mapping, Component) => {
     render () {
       return <Component {...this.props} />;
     },
-    addListeners ({address, action, type}) {
+    addListeners ({address, action, type, orderByChild, equalTo}) {
       const { dispatch } = this.props;
-      _Ref.child(address).on(type, (data) => {
-        dispatch({type: action, payload: data.val()});
+      let r = _Ref.child(address);
+      if (orderByChild) {
+        r = r.orderByChild(orderByChild);
+      }
+      if (equalTo) {
+        r = r.equalTo(equalTo);
+      }
+      r.on(type, (data) => {
+        dispatch({type: action.type, payload: data.val()});
       });
     }
   });
   return connect(mapStateToProps)(StoreConnection);
 };
 
+const fireBaseMap = (arr) => {
+  let CurrentArray = arr;
+  if (theTypeOf(arr) === 'object') {
+    CurrentArray = [];
+    CurrentArray.push(arr);
+  }
+  const __Ref = require('./config')._Ref;
+  const __Dispatch = (_Dispatch) ? _Dispatch : require('./config')._Dispatch;
+
+  CurrentArray.forEach((el) => {
+    const {address, action, type, orderByChild, equalTo} = el;
+    let r = __Ref.child(address);
+    if (orderByChild) {
+      r = r.orderByChild(orderByChild);
+    }
+    if (equalTo) {
+      r = r.equalTo(equalTo);
+    }
+    r.on(type, (data) => {
+      __Dispatch({type: action.type, payload: data.val()});
+    });
+  });
+};
+exports.fireBaseMap = fireBaseMap;
 exports.Dispatch = _Dispatch;
 exports.Ref = _Ref;
 exports.fireBaseComponent = fireBaseComponent;

@@ -1,8 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { actions as accountActions } from '../../redux/modules/account/account';
-import { actions as coworksActions } from '../../redux/modules/coworks';
+import { Link } from 'react-router';
+import { actions as accountActions } from 'redux/modules/account/account';
+import { actions as coworksActions } from 'redux/modules/coworks';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button } from 'react-bootstrap';
+
 import UserNugget from './UserNugget/UserNugget.js';
 const mapStateToProps = (state) => {
   return {
@@ -40,7 +42,9 @@ class NavBar extends Component {
       <Navbar fixedTop>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href='#'>Coworks.cl</a>
+            <Link to='/' className=''>
+            Coworks.cl
+            </Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
@@ -56,9 +60,11 @@ class NavBar extends Component {
             </NavDropdown>
           </Nav>
           <Nav pullRight>
-            <NavItem eventKey={1} href='#'>
-               <i className='fa fa-fw fa-home'/>
-            </NavItem>
+            <li role='presentation'>
+              <Link to='/' className=''>
+                <i className='fa fa-fw fa-home' ></i>
+              </Link>
+            </li>
             <NavItem eventKey={2} href='#' onClick={()=>{this.centerMe();}}>
               <i className='fa fa-fw fa-location-arrow'/>
             </NavItem>

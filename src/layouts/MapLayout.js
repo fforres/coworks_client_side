@@ -9,10 +9,15 @@ export default class CoreLayout extends React.Component {
   }
 
   render () {
+    let theNav = <span></span>;
+    const a = false;
+    if (a) {
+      theNav = <NavBar/>;
+    }
     return (
-      <div id='coreLayout'>
+      <div className={styles.fullviewport} id='mapLayout'>
         <NavBar/>
-        <div>
+        <div className={styles.fullscreen}>
           {this.props.children}
         </div>
         <LoginModal />

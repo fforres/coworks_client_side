@@ -9,8 +9,7 @@ import { getStoredState, persistStore } from 'redux-persist';
 import { setDispatcher } from './utils/firebase/config';
 
 const persistConfig = {
-  skipRestore: true,
-  blacklist: ['notifications']
+  whitelist: ['account']
 };
 // Render the React application to the DOM
 getStoredState(persistConfig, (err, initialState) => {

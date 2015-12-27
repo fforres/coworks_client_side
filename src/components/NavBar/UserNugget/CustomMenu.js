@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { MenuItem } from 'react-bootstrap';
 import style from './CustomMenu.scss';
 import { actions as accountActions } from 'redux/modules/account/account';
@@ -43,8 +44,12 @@ class DropDown extends Component {
             <span>Bienvenido {displayName(this.props[this.props.provider])}!</span>
             <span></span>
           </div>
-          <MenuItem eventKey='1'>We</MenuItem>
-          <MenuItem eventKey='2'>Are</MenuItem>
+          <li role='presentation' className='' >
+            <Link to='/profile' tabIndex='-1' >Mi Perfil</Link>
+          </li>
+          <li role='presentation' className='' >
+            <Link to='/coworks' tabIndex='-1' >Mis Lugares</Link>
+          </li>
           <MenuItem eventKey='3' active>Options</MenuItem>
           <MenuItem eventKey='1'>To Choose</MenuItem>
           <MenuItem className={style.logOut} eventKey='1 ' onClick={()=>{this.logOut();}} >
