@@ -3,6 +3,7 @@ Changelog
 0.1.7 (IN PROGRESS)
 -----
 #### FEATURE
+* Added deep freeze for objects inside redux stores.
 #### FIX
 
 0.1.6
