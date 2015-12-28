@@ -26,6 +26,7 @@
   "dependencies": {
     "cssnano": "^3.3.2",
     "debug": "^2.2.0",
+    "deep-freeze": "0.0.1",
     "dotenv": "^1.2.0",
     "firebase": "^2.3.2",
     "google-map-react": "^0.9.3",

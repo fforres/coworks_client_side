@@ -1,4 +1,5 @@
 import createReducer from 'utils/createReducer';
+import deepFreeze from 'deep-freeze';
 
 // ------------------------------------
 // Constants
@@ -40,6 +41,7 @@ export default createReducer(initialState, {
     return initialState;
   },
   [SHOW_LOGIN_MODAL]  (state) {
+    deepFreeze(state);
     const ob = {};
     if (!state.loggedIn) {
       ob.isModalShown = true;
@@ -49,17 +51,20 @@ export default createReducer(initialState, {
     return Object.assign({}, {...state}, {...ob});
   },
   [HIDE_LOGIN_MODAL]  (state) {
+    deepFreeze(state);
     const ob = {};
     ob.isModalShown = false;
     return Object.assign({}, {...state}, {...ob});
   },
   [LOG_IN] (state, payload = null) {
+    deepFreeze(state);
     if (payload !== null ) {
       return { ...state, loggedIn: true, isModalShown: false, userData: {...payload}};
     }
     return state;
   },
   [LOGIN_LOCAL] (state, payload = null) {
+    deepFreeze(state);
     if (payload !== null ) {
       return { ...state, loggedIn: true, isModalShown: false, userData: {...payload}};
     }

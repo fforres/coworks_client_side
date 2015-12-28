@@ -1,4 +1,5 @@
 import createReducer from 'utils/createReducer';
+import deepFreeze from 'deep-freeze';
 
 // ------------------------------------
 // Constants
@@ -39,6 +40,7 @@ const initialState = {
 
 export default createReducer(initialState, {
   [ADD_NOTIFICATION] (state, payload = null) {
+    deepFreeze(state);
     if (payload !== null ) {
       payload.showed = false;
       if (!payload.position) {
@@ -49,22 +51,26 @@ export default createReducer(initialState, {
     return state;
   },
   [REMOVE_NOTIFICATION] (state, payload = null) {
+    deepFreeze(state);
     if (payload !== null && state.notifications[payload]) {
-      const newNotif = state.notifications;
+      const newNotif = [...state.notifications];
       newNotif.splice(payload, 1);
       return {...state, notifications: newNotif };
     }
     return state;
   },
   [SHOWED_NOTIFICATION] (state, payload = null) {
+    deepFreeze(state);
     if (payload !== null ) {
-      const newNotif = state.notifications;
-      newNotif[payload].showed = true;
-      return {...state, notifications: newNotif };
+      const Notif = {...state.notifications[payload], showed:true};
+      const Notifications = [...state.notifications];
+      Notifications[payload] = Notif;
+      return {...state, notifications: Notifications };
     }
     return state;
   },
   [RESET_NOTIFICATIONS] (state) {
+    deepFreeze(state);
     const newState = {...state, notifications: initialState.notifications };
     return newState;
   }

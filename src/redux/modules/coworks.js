@@ -1,4 +1,5 @@
 import createReducer from 'utils/createReducer';
+import deepFreeze from 'deep-freeze';
 
 // ------------------------------------
 // Constants
@@ -94,36 +95,42 @@ const initialState = {
 
 export default createReducer(initialState, {
   [REQUEST_COWORKS] (state, payload = null) {
+    deepFreeze(state);
     if (payload !== null ) {
       return { ...state, coworks: payload };
     }
     return state;
   },
   [ADD_COWORK] (state, payload = null) {
+    deepFreeze(state);
     if (payload !== null ) {
       return { ...state, coworks: Object.assign({}, {...state.coworks}, {...payload})};
     }
     return state;
   },
   [SELECT_COWORK] (state, payload) {
+    deepFreeze(state);
     if (payload === state.selected) {
       return {...state, selected: initialState.selected};
     }
     return {...state, selected: payload};
   },
   [HOVER_ENTER_COWORK] (state, payload) {
+    deepFreeze(state);
     if (payload !== state.hovered) {
       return {...state, hovered: payload};
     }
     return state;
   },
   [HOVER_LEAVE_COWORK] (state, payload) {
+    deepFreeze(state);
     if (payload !== state.hovered) {
       return state;
     }
     return {...state, hovered: initialState.hovered};
   },
   [UPDATE_MAP_CENTER] (state, payload) {
+    deepFreeze(state);
     const clone = JSON.parse(JSON.stringify(state));
     clone.map.center = payload;
     return clone;
@@ -131,6 +138,7 @@ export default createReducer(initialState, {
 
 
   [SET_CURRENT_COWORK] (state, payload) {
+    deepFreeze(state);
     if (payload === null) {
       return {...state, current: 'notExistent'};
     }
@@ -140,6 +148,7 @@ export default createReducer(initialState, {
     return state;
   },
   [UNSET_CURRENT_COWORK] (state, payload) {
+    deepFreeze(state);
     return {...state, current: null};
   },
 
