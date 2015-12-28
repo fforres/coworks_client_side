@@ -46,7 +46,8 @@ export default createReducer(initialState, {
       if (!payload.position) {
         payload.position = 'br';
       }
-      return {...state, notifications: state.notifications.concat(payload) };
+      const middleState = {...state, notifications: state.notifications.concat(payload) };
+      return {...middleState};
     }
     return state;
   },
