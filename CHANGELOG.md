@@ -5,6 +5,7 @@ Changelog
 #### FEATURE
 * Added deep freeze for objects inside redux stores.
 #### FIX
+* Removing red screen of death and sidebar to track states
 
 0.1.6
 -----
