@@ -47,8 +47,8 @@ Aportar Con Desarrollo
 ##### TODO  (Queda por realizar)
 - **Production**
   - [ ] Make Responsive Better
-  - [ ] Remove debug bar
-  - [ ] Remove Red-Screen-Of-Death
+  - [x] ~~Remove debug bar~~
+  - [x] ~~Remove Red-Screen-Of-Death~~
 - **Sidebar**
   - [ ] Cambiar SideBar
   - [ ] Agregar Categorías (Y categorías de Pins)
