@@ -8,7 +8,7 @@ ____________
  ### Disclaimer:
 
 > Este proyecto es open-source, actualment desarrollado/mantenido por
-[@fforres](https://www.twitter.com/fforres). 
+[@fforres](https://www.twitter.com/fforres).
 
 > La idea es mantener información centralizada sobre coworks en el mundo (Además del test de React y su ecosistema en aplicaciones un poco más grandes). (El estado actual de la app está en [Coworks.cl](http://coworks.cl) )
 
@@ -64,7 +64,7 @@ Aportar Con Desarrollo
 - **GLOBAL**
   - [ ] Fix "Loading Screens"
   - [ ] Make Responsive Better
-  - [ ] ** Revisar inmutabilidad de los estados **
+  - [x] ~~Revisar inmutabilidad de los estados~~
 
 ###### also:
 - [x] ~~Recargar Condensadores de flujo~~
