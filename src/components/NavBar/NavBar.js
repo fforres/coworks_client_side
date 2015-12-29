@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { actions as accountActions } from 'redux/modules/account/account';
-import { actions as coworksActions } from 'redux/modules/coworks';
+import { actions as coworksActions } from 'redux/modules/coworks/coworks';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button } from 'react-bootstrap';
 
 import UserNugget from './UserNugget/UserNugget.js';

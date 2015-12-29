@@ -104,6 +104,9 @@ export default createReducer(initialState, {
   [ADD_COWORK] (state, payload = null) {
     deepFreeze(state);
     if (payload !== null ) {
+      Object.keys(payload).forEach((el)=>{
+        payload[el].id = el;
+      });
       return { ...state, coworks: Object.assign({}, {...state.coworks}, {...payload})};
     }
     return state;
@@ -143,6 +146,7 @@ export default createReducer(initialState, {
       return {...state, current: 'notExistent'};
     }
     if (typeof payload === 'object') {
+      payload[Object.keys(payload)[0]].id = Object.keys(payload)[0];
       return {...state, current: payload[Object.keys(payload)[0]]};
     }
     return state;

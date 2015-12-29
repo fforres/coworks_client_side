@@ -24,7 +24,7 @@ export class HomeView extends React.Component {
   }
   render () {
     return (
-      <div className={styles['container-with-navbar']}>
+      <div className={styles.centered_vertical_and_horizontal}>
         <UserProfile/>
       </div>
     );
