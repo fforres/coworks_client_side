@@ -3,7 +3,6 @@ import _debug from 'debug';
 const debug = _debug('kit:config');
 debug('Create configuration.');
 import base from './_base';
-
 debug(`Apply environment overrides for NODE_ENV "${base.env}".`);
 let overrides;
 try {

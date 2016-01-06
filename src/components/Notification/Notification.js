@@ -27,10 +27,9 @@ class NavBar extends Component {
 
   componentDidUpdate () {
     this.props.notifications.forEach((el, i) => {
-      let element = el;
-      element = el;
-      element = this.insertAddCallBacks(el, i);
-      element = this.insertRemoveCallBacks(el, i);
+      let element = {...el};
+      element = this.insertAddCallBacks(element, i);
+      element = this.insertRemoveCallBacks(element, i);
       if (el && !el.showed) {
         this.refs.notificationSystem.addNotification(element);
       }

@@ -22,19 +22,23 @@ const fireBaseComponent = (mapping, Component) => {
       };
     },
     componentWillMount () {
-      let state = mapping;
-      if (theTypeOf(mapping) === 'function' ) {
-        state = mapping();
+      const react = React;
+      if (theTypeOf(mapping) === 'function' && theTypeOf(Component) !== 'undefined') {
+        const state = mapping();
+        if (_Dispatch === null) {
+          _Dispatch = this.props.dispatch;
+        }
+        state.forEach((el)=>{
+          this.addListeners(el);
+        });
       }
-      if (_Dispatch === null) {
-        _Dispatch = this.props.dispatch;
-      }
-      state.forEach((el)=>{
-        this.addListeners(el);
-      });
     },
     render () {
-      return <Component {...this.props} />;
+      if (Component) {
+        return <Component {...this.props} />;
+      } else {
+        return <mapping {...this.props} />;
+      }
     },
     addListeners ({address, action, type, orderByChild, equalTo}) {
       const { dispatch } = this.props;

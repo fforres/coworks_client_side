@@ -12,7 +12,7 @@ export default class CoreLayout extends React.Component {
     return (
       <div id='coreLayout'>
         <NavBar/>
-        <div>
+        <div className={styles['container-with-navbar']}>
           {this.props.children}
         </div>
         <LoginModal />
