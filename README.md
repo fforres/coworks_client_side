@@ -62,6 +62,7 @@ Aportar Con Desarrollo
 - **API**
   - [ ] Agregar roles de usuario (ACL)
 - **GLOBAL**
+  - [x] Agregar edición de data para Items
   - [ ] Fix "Loading Screens"
   - [ ] Make Responsive Better
   - [x] ~~Revisar inmutabilidad de los estados~~

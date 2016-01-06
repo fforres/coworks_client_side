@@ -1,6 +1,6 @@
 {
   "name": "opensource_map_geopositioning_info",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "GeoLocated Data for everyone! Curated & social custom maps",
   "main": "index.js",
   "scripts": {
