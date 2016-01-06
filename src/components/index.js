@@ -4,7 +4,6 @@ export SideBar from './SideBar/SideBar';
 export LoginModal from './LoginModal/LoginModal';
 export Notifications from './Notification/Notification';
 export UserProfile from './UserProfile/UserProfile';
-export CoworkProfile from './Cowork/CoworkProfile';
-export CoworkCards from './Cowork/CoworkCard';
+export {CoworkProfile, CoworkProfileEditable, CoworkCards} from './Cowork';
 export Loading from './Loading/Loading';
 export Error404 from './Errors/404';

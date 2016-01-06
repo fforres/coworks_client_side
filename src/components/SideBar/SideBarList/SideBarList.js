@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { actions as coworksActions } from 'redux/modules/coworks';
+import { actions as coworksActions } from 'redux/modules/coworks/coworks';
 import ToggleButton from '../ToggleButton/ToggleButton';
 import { fireBaseComponent } from 'utils/firebase/firebaseComponent.js';
 import { Link } from 'react-router';

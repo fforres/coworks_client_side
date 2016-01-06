@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { actions as coworksActions } from 'redux/modules/coworks';
+import { actions as coworksActions } from 'redux/modules/coworks/coworks';
 import styles from './ProfileView.scss';
 import { CoworkCards } from 'components';
 import { fireBaseComponent, fireBaseMap } from 'utils/firebase/firebaseComponent.js';
@@ -41,7 +41,7 @@ export class HomeView extends Component {
     const { myCoworks } = this.props;
     const coworkCards = () => {
       return Object.keys(myCoworks).map((el) => {
-        return (<CoworkCards {...myCoworks[el]} key={el}/>);
+        return (<CoworkCards cowork={myCoworks[el]} key={el}/>);
       });
     };
 
@@ -52,11 +52,9 @@ export class HomeView extends Component {
     } else {
       if (myCoworks !== 'notExistent') {
         return (
-          <div className={styles['container-with-navbar']}>
-            <div className='container'>
-              <div className='row'>
-                {coworkCards()}
-              </div>
+          <div className='container'>
+            <div className='row'>
+              {coworkCards()}
             </div>
           </div>
         );
