@@ -1,42 +1,29 @@
 import React, { Component, PropTypes } from 'react';
-import shouldPureComponentUpdate from 'react-pure-render/function';
-import { connect } from 'react-redux';
-import { actions as coworksActions } from 'redux/modules/coworks/coworks';
 import style from './Pin.scss';
 
-
-const mapStateToProps = (state) => {
-  return {
-    selectedCowork: state.coworks.selected,
-    hoveredCowork: state.coworks.hovered
-  };
-};
-
-class MyPin extends Component {
+export default class MyPin extends Component {
   static propTypes = {
-    text: PropTypes.any.isRequired,
-    identificator: PropTypes.any.isRequired,
-    selectedCowork: PropTypes.number.isRequired,
-    hoveredCowork: PropTypes.number.isRequired
+    className: PropTypes.string,
+    lat: PropTypes.number,
+    lng: PropTypes.number,
+    id: PropTypes.string,
+    key: PropTypes.string,
+    children: PropTypes.any
   };
 
   constructor (props) {
     super(props);
   }
 
-  shouldComponentUpdate = shouldPureComponentUpdate;
-
   render () {
-    const theClass = (() => {
-      const str = [style.pin];
-      return str.join(' ');
-    })();
     return (
-      <div className={theClass} >
-         {this.props.text}
+      <div {...this.props}>
+         {this.props.children}
       </div>
     );
   }
-}
 
-export default connect(mapStateToProps, coworksActions)(MyPin);
+  hoveringPin (e) {
+    console.log(e);
+  }
+}

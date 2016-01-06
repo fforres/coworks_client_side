@@ -3,6 +3,7 @@ import shouldPureComponentUpdate from 'react-pure-render/function';
 import { connect } from 'react-redux';
 import { actions as coworksActions } from 'redux/modules/coworks/coworks';
 import GoogleMap from 'google-map-react';
+import Pin from './Pin.js';
 import style from './Pin.scss';
 import styleGMap from './GMap.scss';
 
@@ -35,16 +36,6 @@ class GMap extends Component {
     hoveredCowork: PropTypes.string.isRequired
   };
 
-  constructor (props) {
-    super(props);
-  }
-
-  componentDidMount () {
-    // props.updateMapCenter();
-  }
-
-  shouldComponentUpdate = shouldPureComponentUpdate;
-
   render () {
     const { props } = this;
     const allPins = Object.keys(props.coworks).map((el) => {
@@ -61,9 +52,9 @@ class GMap extends Component {
         return str.join(' ');
       })();
       return (
-        <div className={theClass} lat={Element.direccion.geo.lat} lng={Element.direccion.geo.lng} id={_id} key={_id}>
+        <Pin onMouseOver={(e)=>{ this.hoverPin(e);  }} className={theClass} lat={Element.direccion.geo.lat} lng={Element.direccion.geo.lng} id={_id} key={_id}>
            C
-        </div>
+        </Pin>
       );
     });
     return (
@@ -78,6 +69,10 @@ class GMap extends Component {
         </GoogleMap>
       </div>
     );
+  }
+
+  hoverPin (e) {
+    console.log(e);
   }
 
 }
