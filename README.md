@@ -1,15 +1,18 @@
-Coworks.cl
-=======================
-(Based on the cool framework [react-redux-starter-kit](https://github.com/davezuko/react-redux-starter-kit) by [@davezuko](https://github.com/davezuko))
+Coworks.cl [ ![Codeship Status for fforres/coworks_client_side](https://codeship.com/projects/088f2330-8320-0133-e49d-425351b234ba/status?branch=master)](https://codeship.com/projects/121731) [![dependencies](https://david-dm.org/fforres/coworks_client_side.svg)](https://david-dm.org/fforres/coworks_client_side) [![devDependencyStatus](https://david-dm.org/fforres/coworks_client_side/dev-status.svg)](https://david-dm.org/fforres/coworks_client_side#info=devDependencies/)
 
-[![dependencies](https://david-dm.org/fforres/coworks_client_side.svg)](https://david-dm.org/fforres/coworks_client_side)
-[![devDependency Status](https://david-dm.org/fforres/coworks_client_side/dev-status.svg)](https://david-dm.org/fforres/coworks_client_side#info=devDependencies)
+> (Based on the cool framework [react-redux-starter-kit](https://github.com/davezuko/react-redux-starter-kit) by [@davezuko](https://github.com/davezuko))
+____________
+> (Actualmente en búsqueda de alguna ayuda con el diseño)
 
 
-> ## Coworks.cl :) !
-> Porque tenemos la necesidad de información sobre los distintos coworks disponibles para trabajar.
+ ### Disclaimer:
 
-> Si tienes alguna sugerencia, comentario, felicitaciones o reclamos, acá una pequeña lista de...
+> Este proyecto es open-source, actualment desarrollado/mantenido por
+[@fforres](https://www.twitter.com/fforres).
+
+> La idea es mantener información centralizada sobre coworks en el mundo (Además del test de React y su ecosistema en aplicaciones un poco más grandes). (El estado actual de la app está en [Coworks.cl](http://coworks.cl) )
+
+> Si tienes alguna sugerencia, comentario, felicitaciones o reclamos, acá una pequeña lista de como ayudar.
 
 Como ayudar
 ----------------
@@ -28,8 +31,6 @@ Como ayudar
 
 
 
-
-
 Aportar Con Contenido
 ---------------
 ¿Tienes algun comentario sobre como hacer hacer este proyecto *mucho más mejor*?
@@ -41,11 +42,13 @@ O en su defecto
 - [Si quieres donarnos algo para mantener vivo el proyecto o los servidores](https://flattr.com/profile/fforres)
 
 
-
 Aportar Con Desarrollo
 ---------------
-
 ##### TODO  (Queda por realizar)
+- **Production**
+  - [ ] Make Responsive Better
+  - [x] ~~Remove debug bar~~
+  - [x] ~~Remove Red-Screen-Of-Death~~
 - **Sidebar**
   - [ ] Cambiar SideBar
   - [ ] Agregar Categorías (Y categorías de Pins)
@@ -59,25 +62,10 @@ Aportar Con Desarrollo
 - **API**
   - [ ] Agregar roles de usuario (ACL)
 - **GLOBAL**
+  - [x] Agregar edición de data para Items
+  - [ ] Fix "Loading Screens"
   - [ ] Make Responsive Better
-  - [ ] ** Revisar inmutabilidad de los estados **
-
-
-##### Ya hecho (Aunque se puede mejorar)
-- **API**
-- [x] ~~Migrar a API a FireBase~~
-- **GLOBAL**
-- [x] ~~Agregar usuarios y sesión~~
-- [x] ~~Agregar persistencia de Estado~~
-- [x] ~~Agregar TopBar(?)~~
-- **MAPA**
-- [x] ~~Cambiar números por Identificador.~~
-- [x] ~~Centrado del mapa al clickear un pin~~
-- [x] ~~Agregar desplegable con información de cowork seleccionado~~
-- **Sidebar**
-- [x] ~~Agregar boton de cerrado~~
-- [x] ~~Agregar scrolling vertical~~
-- [x] ~~Agregar información por coworks (Quizá un area desplegable?)~~
+  - [x] ~~Revisar inmutabilidad de los estados~~
 
 ###### also:
 - [x] ~~Recargar Condensadores de flujo~~

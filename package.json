@@ -1,14 +1,14 @@
 {
   "name": "opensource_map_geopositioning_info",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "GeoLocated Data for everyone! Curated & social custom maps",
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf dist",
     "lint": "eslint ./src/**/*.js",
     "lint:tests": "eslint ./tests/**/*.spec.js",
-    "compile": "NODE_ENV=development && npm install && NODE_ENV=production && node -r dotenv/config --harmony bin/compile",
-    "compile-windows": "set NODE_ENV=production&&node -r dotenv/config --harmony bin/compile",
+    "compile": "NODE_ENV=production && node -r dotenv/config --harmony bin/compile dotenv_config_path=./.env_prod ",
+    "compile-windows": "set NODE_ENV=production&&node -r dotenv/config --harmony bin/compile dotenv_config_path=./.env_prod",
     "start": "npm run dev:nw",
     "dev": "node -r dotenv/config bin/server --hot",
     "dev:nw": "npm run dev -- --nw",
@@ -26,6 +26,7 @@
   "dependencies": {
     "cssnano": "^3.3.2",
     "debug": "^2.2.0",
+    "deep-freeze": "0.0.1",
     "dotenv": "^1.2.0",
     "firebase": "^2.3.2",
     "google-map-react": "^0.9.3",
@@ -33,6 +34,7 @@
     "re-notif": "^1.0.2",
     "react": "^0.14.0",
     "react-bootstrap": "^0.28.1",
+    "react-contenteditable": "^1.0.1",
     "react-dom": "^0.14.0",
     "react-notification-system": "^0.2.6",
     "react-pure-render": "^1.0.2",
@@ -43,6 +45,7 @@
     "redux-persist": "^1.5.0",
     "redux-simple-router": "^1.0.0",
     "redux-thunk": "^1.0.0",
+    "underscore": "^1.8.3",
     "yargs": "^3.18.0"
   },
   "devDependencies": {
