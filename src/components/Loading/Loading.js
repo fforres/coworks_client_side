@@ -11,10 +11,12 @@ const mapStateToProps = (state) => {
 class Loading extends Component {
   render () {
     return (
-      <center>
-        <h1><i className='fa fa-spinner fa-spin' /> </h1>
-        <h1> Loading... </h1>
-      </center>
+      <div>
+        <center>
+          <h1><i className='fa fa-spinner fa-spin' /> </h1>
+          <h1> Loading... </h1>
+        </center>
+      </div>
     );
   }
 }
