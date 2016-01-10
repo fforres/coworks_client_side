@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { actions as currentCoworksActions } from 'redux/modules/coworks/currentCowork';
 import style from './CoworkProfile.scss';
-import { Input, Button } from 'react-bootstrap';
+import { Input, Button, Tabs, Tab, Col } from 'react-bootstrap';
 import { Ref } from 'utils/firebase/firebaseComponent.js';
 
 const mapStateToProps = (state) => {
@@ -23,6 +23,13 @@ class ProfileView extends Component {
     coworkUpdating: PropTypes.func,
     coworkUpdated: PropTypes.func
   };
+
+  constructor () {
+    super();
+    this.state = {
+      currentTab: 1
+    };
+  }
 
   componentWillUpdate () {
   }
@@ -73,40 +80,90 @@ class ProfileView extends Component {
                   onChange={this.handleURL.bind(this)}
                 />
 
-                <hr className='col-sm-10 col-sm-offset-2'/>
-                <h3 className={'col-sm-12'}>Dirección</h3>
-                <Input
-                  value={newCowork.direccion.ciudad}
-                  type='input'
-                  label='Ciudad'
-                  labelClassName='col-sm-2'
-                  wrapperClassName='col-sm-10'
-                  onChange={this.handleDireccionCiudad.bind(this)}
-                />
-                <Input
-                  value={newCowork.direccion.pais}
-                  type='input'
-                  label='Pais'
-                  labelClassName='col-sm-2'
-                  wrapperClassName='col-sm-10'
-                  onChange={this.handleDireccionPais.bind(this)}
-                />
-                <Input
-                  value={newCowork.direccion.calle}
-                  type='input'
-                  label='Calle'
-                  labelClassName='col-sm-2'
-                  wrapperClassName='col-sm-10'
-                  onChange={this.handleDireccionCalle.bind(this)}
-                />
-                <Input
-                  value={newCowork.direccion.numero}
-                  type='input'
-                  label='Numero'
-                  labelClassName='col-sm-2'
-                  wrapperClassName='col-sm-10'
-                  onChange={this.handleDireccionNumero.bind(this)}
-                />
+                <br/><br/>
+                <Tabs activeKey={this.state.currentTab} onSelect={this.handleTabSelect}>
+                  <br/><br/>
+                  <Tab eventKey={1} title='Dirección'>
+                    <Col sm={10} smOffset={1}>
+                      <Input
+                      value={newCowork.direccion.ciudad}
+                      type='input'
+                      label='Ciudad'
+                      labelClassName='col-sm-2'
+                      wrapperClassName='col-sm-10'
+                      onChange={this.handleDireccionCiudad.bind(this)}
+                      />
+                      <Input
+                      value={newCowork.direccion.pais}
+                      type='input'
+                      label='Pais'
+                      labelClassName='col-sm-2'
+                      wrapperClassName='col-sm-10'
+                      onChange={this.handleDireccionPais.bind(this)}
+                      />
+                      <Input
+                      value={newCowork.direccion.calle}
+                      type='input'
+                      label='Calle'
+                      labelClassName='col-sm-2'
+                      wrapperClassName='col-sm-10'
+                      onChange={this.handleDireccionCalle.bind(this)}
+                      />
+                      <Input
+                      value={newCowork.direccion.numero}
+                      type='input'
+                      label='Numero'
+                      labelClassName='col-sm-2'
+                      wrapperClassName='col-sm-10'
+                      onChange={this.handleDireccionNumero.bind(this)}
+                      />
+                    </Col>
+                  </Tab>
+                  <Tab eventKey={2} title='Servicios'>
+                    <Input
+                      type='checkbox'
+                      label='24/7'
+                      checked={newCowork.servicios['24_7']}
+                      onChange={() => { this.toggleServicios('24_7'); }}
+                    />
+                    <Input
+                      type='checkbox'
+                      label='Cafeteria'
+                      checked={newCowork.servicios.cafeteria}
+                      onChange={() => { this.toggleServicios('cafeteria'); }}
+                    />
+                    <Input
+                      type='checkbox'
+                      label='Espacios Públicos'
+                      checked={newCowork.servicios.espacios_publicos}
+                      onChange={() => { this.toggleServicios('24_7'); }}
+                    />
+                    <Input
+                      type='checkbox'
+                      label='Mentorias'
+                      checked={newCowork.servicios.mentorias}
+                      onChange={() => { this.toggleServicios('mentorias'); }}
+                    />
+                    <Input
+                      type='checkbox'
+                      label='Sala de Reuniones'
+                      checked={newCowork.servicios.salas_de_reuniones}
+                      onChange={() => { this.toggleServicios('salas_de_reuniones'); }}
+                    />
+                    <Input
+                      type='checkbox'
+                      label='Wifi'
+                      checked={newCowork.servicios.wifi}
+                      onChange={() => { this.toggleServicios('wifi'); }}
+                    />
+                  </Tab>
+                  <Tab eventKey={3} title='Horarios' disabled>
+                    <div>:(</div>
+                  </Tab>
+                  <Tab eventKey={4} title='Valores' disabled>
+                    <div>:(</div>
+                  </Tab>
+                </Tabs>
 
 
                 <hr className='col-sm-10 col-sm-offset-2'/>
@@ -127,6 +184,12 @@ class ProfileView extends Component {
       );
     }
   }
+
+  handleTabSelect = (key) => {
+    this.setState({
+      currentTab: key
+    });
+  };
 
   handleDescripcionLarga (evt) {
     const { newCowork } = Object.assign({}, this.props);
@@ -166,6 +229,11 @@ class ProfileView extends Component {
   handleDireccionNumero (evt) {
     const { newCowork } = Object.assign({}, this.props);
     newCowork.direccion.numero = evt.target.value;
+    this.handleChange();
+  }
+  toggleServicios (Nombre) {
+    const { newCowork } = Object.assign({}, this.props);
+    newCowork.servicios[Nombre] = !newCowork.servicios[Nombre];
     this.handleChange();
   }
 

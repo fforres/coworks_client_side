@@ -22,7 +22,6 @@ export class HomeView extends Component {
   };
 
   componentWillMount () {
-    console.log(this.props.uid);
     fireBaseMap({
       address: 'coworks',
       orderByChild: 'creator',

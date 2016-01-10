@@ -29,7 +29,6 @@ describe('(Component) Loading', function () {
 
     _component = shallowRenderWithProps(_props);
     _rendered = renderWithProps(_props);
-    console.log(_rendered);
   });
 
   it('Should render as a <div>.', function () {
