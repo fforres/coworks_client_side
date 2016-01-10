@@ -1,13 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router';
 import style from './Errors.scss';
-
-const mapStateToProps = (state) => {
-  return {
-    isShown: state.sideBar.isShown,
-    isDocked: state.sideBar.isDocked
-  };
-};
 
 class Error404 extends Component {
   render () {

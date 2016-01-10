@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { SideBar } from '../components';
 import { actions as coworksActions } from '../redux/modules/coworks';
 import styles from './ProfileView.scss';
 import { UserProfile } from '../components';
@@ -17,7 +16,7 @@ export class HomeView extends React.Component {
   static propTypes = {
     counter: React.PropTypes.number,
     requestCoworks: React.PropTypes.func
-  }
+  };
 
   componentWillMount () {
     // this.props.requestCoworks();

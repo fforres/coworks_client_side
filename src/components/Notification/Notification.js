@@ -16,7 +16,7 @@ class NavBar extends Component {
     removeNotification: PropTypes.func,
     showedNotification: PropTypes.func,
     clearNotification: PropTypes.func
-  }
+  };
 
   componentWillMount () {
     this.props.clearNotification();

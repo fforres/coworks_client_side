@@ -1,6 +1,6 @@
 {
   "name": "opensource_map_geopositioning_info",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "GeoLocated Data for everyone! Curated & social custom maps",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "compile-windows": "set NODE_ENV=production&&node -r dotenv/config --harmony bin/compile dotenv_config_path=./.env_prod",
     "start": "npm run dev:nw",
     "dev": "node -r dotenv/config bin/server --hot",
-    "dev:nw": "npm run dev -- --nw",
+    "dev:nw": "npm run dev -- --nw && npm run test:dev",
     "dev:no-debug": "npm run dev -- --no_debug",
     "test": "node -r dotenv/config ./node_modules/karma/bin/karma start bin/karma.js",
     "test:dev": "npm run test -- --watch",
@@ -41,6 +41,7 @@
     "react-redux": "^4.0.0",
     "react-router": "1.0.1",
     "react-sidebar": "^2.0.0",
+    "react-toggle": "^2.0.1",
     "redux": "^3.0.0",
     "redux-persist": "^1.5.0",
     "redux-simple-router": "^1.0.0",
@@ -55,6 +56,7 @@
     "babel-plugin-add-module-exports": "^0.1.1",
     "babel-plugin-react-transform": "^2.0.0-beta1",
     "babel-plugin-transform-runtime": "^6.3.13",
+    "babel-polyfill": "^6.3.14",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",

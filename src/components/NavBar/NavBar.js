@@ -21,7 +21,7 @@ class NavBar extends Component {
     userData: PropTypes.object,
     logIn: PropTypes.func,
     loggedIn: PropTypes.bool.isRequired
-  }
+  };
 
   render () {
     const logInSnippet = () => {
@@ -88,7 +88,7 @@ class NavBar extends Component {
         });
       };
       const error = (err) => {
-        console.log(err);
+        console.error(err);
       };
       navigator.geolocation.getCurrentPosition(success, error, options);
     }

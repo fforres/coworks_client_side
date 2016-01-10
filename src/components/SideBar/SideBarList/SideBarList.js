@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
 import { actions as coworksActions } from 'redux/modules/coworks/coworks';
 import ToggleButton from '../ToggleButton/ToggleButton';
 import { fireBaseComponent } from 'utils/firebase/firebaseComponent.js';
@@ -7,15 +6,7 @@ import { Link } from 'react-router';
 import style from './SideBarList.scss';
 
 
-const mapStateToProps = (state) => {
-  return {
-    coworks: state.coworks.coworks,
-    selected: state.coworks.selected,
-    hovered: state.coworks.hovered
-  };
-};
-
-const mapFireBaseEventsToStore = (props) => {
+const mapFireBaseEventsToStore = () => {
   return [{
     address: 'coworks',
     type: 'value',
@@ -28,11 +19,12 @@ class SideBarList extends Component {
     coworks: PropTypes.any,
     selected: PropTypes.string.isRequired,
     hovered: PropTypes.string.isRequired,
+
     hoverEnterCowork: PropTypes.func,
     hoverLeaveCowork: PropTypes.func,
     selectCowork: PropTypes.func,
     updateMapCenter: PropTypes.func
-  }
+  };
   render () {
     const cwrks = Object.keys(this.props.coworks).map((el, i)=>{
       const _id = el;
@@ -143,6 +135,6 @@ class SideBarList extends Component {
     }
   }
 }
-export default connect(mapStateToProps, coworksActions)(
-  fireBaseComponent(mapFireBaseEventsToStore, SideBarList)
-);
+
+exports.SideBarListTest = SideBarList;
+export default fireBaseComponent(mapFireBaseEventsToStore, SideBarList);

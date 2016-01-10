@@ -23,7 +23,7 @@ class NavBar extends Component {
     registerUser: PropTypes.func,
     loginLocal: PropTypes.func,
     addNotification: PropTypes.func
-  }
+  };
 
   componentWillMount () {
   }

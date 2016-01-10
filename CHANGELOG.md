@@ -6,12 +6,15 @@ Changelog
 * Added deep freeze for objects inside redux stores.
 * Added form edition and form status controlled redux
 * Updated Data to be editable only by the owner.
+* Added Tabs Cowork Data form edition
 
 #### FIX
 * Removing red screen of death and sidebar to track states
 * Fixed a bug where loading a cowork profile send an error whenever the data was taking to long
 * Fixed cowork profile component to be presentational, moved logic into coworks view
 * Fixed a bug where a duplicated entry was added into the history during navigation
+* Fixed Gmap and Sidebar to be presentational components
+
 
 0.1.6
 -----

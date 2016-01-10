@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { actions as coworksActions } from 'redux/modules/coworks/coworks';
-import styles from './ProfileView.scss';
 import { CoworkCards } from 'components';
 import { fireBaseComponent, fireBaseMap } from 'utils/firebase/firebaseComponent.js';
 import { Loading, Error404 } from 'components';
@@ -12,7 +11,7 @@ const mapStateToProps = (state) => {
     uid: state.account.userData.uid
   };
 };
-const mapFireBaseEventsToStore = (props) => {
+const mapFireBaseEventsToStore = () => {
   return [];
 };
 export class HomeView extends Component {
@@ -20,10 +19,9 @@ export class HomeView extends Component {
     myCoworks: PropTypes.any,
     uid: PropTypes.string,
     unsetMyCoworks: PropTypes.func
-  }
+  };
 
   componentWillMount () {
-    console.log(this.props.uid);
     fireBaseMap({
       address: 'coworks',
       orderByChild: 'creator',
@@ -49,21 +47,19 @@ export class HomeView extends Component {
       return (
         <Loading />
       );
-    } else {
-      if (myCoworks !== 'notExistent') {
-        return (
-          <div className='container'>
-            <div className='row'>
-              {coworkCards()}
-            </div>
-          </div>
-        );
-      } else {
-        return (
-          <Error404 />
-        );
-      }
     }
+    if (myCoworks !== 'notExistent') {
+      return (
+        <div className='container'>
+          <div className='row'>
+            {coworkCards()}
+          </div>
+        </div>
+      );
+    }
+    return (
+      <Error404 />
+    );
   }
 }
 
