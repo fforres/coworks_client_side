@@ -17,7 +17,6 @@ class SideBar extends Component {
   componentDidMount () {
   }
   render () {
-    console.log(this.props);
     return (
       <Sidebar
         sidebar={<SideBarList {...this.props}/>}

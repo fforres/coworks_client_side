@@ -41,7 +41,6 @@ describe('(Component) SidebarList', function () {
   it('Should render as a <div>.', function () {
     _component = shallowRenderWithProps(defaultProps);
     expect(_component.type).to.equal('div');
-    console.log(_rendered);
   });
 
   it('Should not render if no props ar passed', () => {
