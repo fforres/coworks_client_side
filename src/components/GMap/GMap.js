@@ -1,38 +1,27 @@
 import React, { Component, PropTypes } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
-import { connect } from 'react-redux';
-import { actions as coworksActions } from 'redux/modules/coworks/coworks';
 import GoogleMap from 'google-map-react';
 import style from './Pin.scss';
 import styleGMap from './GMap.scss';
 
-const mapStateToProps = (state) => {
-  return {
-    center: state.coworks.map.center,
-    defaultCenter: state.coworks.map.defaultCenter,
-    zoom: state.coworks.map.zoom,
-    coworks: state.coworks.coworks,
-    selectedCowork: state.coworks.selected,
-    hoveredCowork: state.coworks.hovered
-  };
-};
-
 class GMap extends Component {
   static propTypes = {
-    center: PropTypes.shape({
-      lat: PropTypes.number.isRequired,
-      lng: PropTypes.number.isRequired
-    }),
-    defaultCenter: PropTypes.shape({
-      lat: PropTypes.number.isRequired,
-      lng: PropTypes.number.isRequired
+    map: PropTypes.shape({
+      center: PropTypes.shape({
+        lat: PropTypes.number.isRequired,
+        lng: PropTypes.number.isRequired
+      }),
+      defaultCenter: PropTypes.shape({
+        lat: PropTypes.number.isRequired,
+        lng: PropTypes.number.isRequired
+      }).isRequired
     }),
     zoom: PropTypes.number,
     coworks: PropTypes.any,
-    requestCoworks: PropTypes.func,
-    updateMapCenter: PropTypes.func,
-    selectedCowork: PropTypes.string.isRequired,
-    hoveredCowork: PropTypes.string.isRequired
+    requestCoworks: PropTypes.func.isRequired,
+    updateMapCenter: PropTypes.func.isRequired,
+    selected: PropTypes.string,
+    hovered: PropTypes.string
   };
 
   constructor (props) {
@@ -47,9 +36,11 @@ class GMap extends Component {
 
   render () {
     const { props } = this;
+    console.log(props);
     const allPins = Object.keys(props.coworks).map((el) => {
       const _id = el;
       const Element = props.coworks[el];
+      console.log(Element);
       const theClass = (() => {
         const str = [style.pin];
         if (_id === props.hoveredCowork) {
@@ -69,10 +60,9 @@ class GMap extends Component {
     return (
       <div className={styleGMap.map}>
         <GoogleMap
-          defaultCenter={props.defaultCenter}
-          onChildClick={this._onChildClick}
-          defaultZoom={props.zoom}
-          center={props.center}
+          defaultCenter={props.map.defaultCenter}
+          defaultZoom={props.map.zoom}
+          center={props.map.center}
           >
           {allPins}
         </GoogleMap>
@@ -81,4 +71,4 @@ class GMap extends Component {
   }
 
 }
-export default connect(mapStateToProps, coworksActions)(GMap);
+export default GMap;

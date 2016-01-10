@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { GMap, SideBar } from '../components';
-import { actions as coworksActions } from '../redux/modules/coworks';
+import { actions as coworksActions } from 'redux/modules/coworks/coworks';
 import styles from './HomeView.scss';
 import { NavBar } from '../components';
 
@@ -10,13 +10,14 @@ import { NavBar } from '../components';
 // export the decorated component after the main class definition so
 // the component can be tested w/ and w/o being connected.
 // See: http://rackt.github.io/redux/docs/recipes/WritingTests.html
-const mapStateToProps = (state) => ({
-  counter: state.counter
-});
-export class HomeView extends React.Component {
+const mapStateToProps = (state) => {
+  return {
+    cowork: state.coworks
+  };
+};
+class HomeView extends Component {
   static propTypes = {
-    counter: React.PropTypes.number,
-    requestCoworks: React.PropTypes.func
+    cowork: PropTypes.object
   };
 
   componentWillMount () {
@@ -26,10 +27,10 @@ export class HomeView extends React.Component {
     return (
       <div className={styles.fullscreen} >
           <SideBar/>
-          <GMap/>
+          <GMap {...this.props.cowork} {...coworksActions}/>
       </div>
     );
   }
 }
-
+export { HomeView };
 export default connect(mapStateToProps, coworksActions)(HomeView);

@@ -1,13 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import style from './Loading.scss';
 
-const mapStateToProps = (state) => {
-  return {
-    isShown: state.sideBar.isShown,
-    isDocked: state.sideBar.isDocked
-  };
-};
-
 class Loading extends Component {
   render () {
     return (
@@ -20,4 +13,5 @@ class Loading extends Component {
     );
   }
 }
+export { Loading };
 export default Loading;

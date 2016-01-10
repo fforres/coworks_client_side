@@ -1,6 +1,6 @@
 import React        from 'react';
 import TestUtils    from 'react-addons-test-utils';
-import { Loading }  from 'components';
+import { Loading }  from 'components/Loading/Loading.js';
 
 function shallowRender (component) {
   const renderer = TestUtils.createRenderer();
