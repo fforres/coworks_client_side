@@ -27,7 +27,8 @@ class ProfileView extends Component {
   constructor () {
     super();
     this.state = {
-      currentTab: 1
+      currentTab: 1,
+      isCalculating: false
     };
   }
 
@@ -70,6 +71,14 @@ class ProfileView extends Component {
                   labelClassName='col-sm-2'
                   wrapperClassName='col-sm-10'
                   onChange={this.handleTelefono.bind(this)}
+                />
+                <Input
+                  value={newCowork.pais}
+                  type='text'
+                  label='Pais'
+                  labelClassName='col-sm-2'
+                  wrapperClassName='col-sm-10'
+                  onChange={this.handlePais.bind(this)}
                 />
                 <Input
                   value={newCowork.url}
@@ -116,6 +125,29 @@ class ProfileView extends Component {
                       labelClassName='col-sm-2'
                       wrapperClassName='col-sm-10'
                       onChange={this.handleDireccionNumero.bind(this)}
+                      />
+                      <Button
+                        bsStyle='primary'
+                        disabled={this.state.isCalculating}
+                        onClick={!this.state.isCalculating ? ()=>{ this.fetchGeoCode();} : null}>
+                        {isUpdating ? 'Guardando...' : 'Calcular posición'}
+                      </Button>
+                      <hr/>
+                      <Input
+                      value={newCowork.direccion.geo.lat || ''}
+                      type='input'
+                      label='Latitud'
+                      labelClassName='col-sm-2'
+                      wrapperClassName='col-sm-10'
+                      onChange={this.handleDireccionLatitud.bind(this)}
+                      />
+                      <Input
+                      value={newCowork.direccion.geo.lng || ''}
+                      type='input'
+                      label='Longitud'
+                      labelClassName='col-sm-2'
+                      wrapperClassName='col-sm-10'
+                      onChange={this.handleDireccionLongitud.bind(this)}
                       />
                     </Col>
                   </Tab>
@@ -191,6 +223,25 @@ class ProfileView extends Component {
     });
   };
 
+  fetchGeoCode () {
+    const { newCowork } = Object.assign({}, this.props);
+    const { numero, calle, ciudad, comuna, pais } = newCowork.direccion;
+    const completeAddress = numero + ' ' + calle + ', ' + comuna + ', ' + ciudad + ', ' + pais;
+    fetch('https://maps.googleapis.com/maps/api/geocode/json?address=' + completeAddress)
+      .then((res)=>{
+        if (res && res.headers.get('content-type').indexOf('application/json') !== -1) {
+          res.json().then((data)=>{
+            if (data.results[0]) {
+              const { lat, lng } = data.results[0].geometry.location;
+              newCowork.direccion.geo.lat = lat;
+              newCowork.direccion.geo.lng = lng;
+              this.handleChange();
+            }
+          });
+        }
+      });
+  }
+
   handleDescripcionLarga (evt) {
     const { newCowork } = Object.assign({}, this.props);
     newCowork.descripcion.larga = evt.target.value;
@@ -204,6 +255,11 @@ class ProfileView extends Component {
   handleTelefono (evt) {
     const { newCowork } = Object.assign({}, this.props);
     newCowork.telefono = evt.target.value;
+    this.handleChange();
+  }
+  handlePais (evt) {
+    const { newCowork } = Object.assign({}, this.props);
+    newCowork.pais = evt.target.value;
     this.handleChange();
   }
   handleURL (evt) {
@@ -231,6 +287,18 @@ class ProfileView extends Component {
     newCowork.direccion.numero = evt.target.value;
     this.handleChange();
   }
+
+  handleDireccionLatitud (evt) {
+    const { newCowork } = Object.assign({}, this.props);
+    newCowork.direccion.geo.latitud = evt.target.value;
+    this.handleChange();
+  }
+  handleDireccionLongitud (evt) {
+    const { newCowork } = Object.assign({}, this.props);
+    newCowork.direccion.geo.longitud = evt.target.value;
+    this.handleChange();
+  }
+
   toggleServicios (Nombre) {
     const { newCowork } = Object.assign({}, this.props);
     newCowork.servicios[Nombre] = !newCowork.servicios[Nombre];
