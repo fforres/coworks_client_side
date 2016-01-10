@@ -36,11 +36,9 @@ class GMap extends Component {
 
   render () {
     const { props } = this;
-    console.log(props);
     const allPins = Object.keys(props.coworks).map((el) => {
       const _id = el;
       const Element = props.coworks[el];
-      console.log(Element);
       const theClass = (() => {
         const str = [style.pin];
         if (_id === props.hoveredCowork) {

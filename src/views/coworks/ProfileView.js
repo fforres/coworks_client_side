@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { actions as coworksActions } from 'redux/modules/coworks/currentCowork';
-import styles from './ProfileView.scss';
 import { CoworkProfile, CoworkProfileEditable } from 'components';
 import { fireBaseComponent, fireBaseMap } from 'utils/firebase/firebaseComponent.js';
 import { Loading, Error404 } from 'components';
@@ -13,7 +12,7 @@ const mapStateToProps = (state) => {
     userId: state.account.userData.uid
   };
 };
-const mapFireBaseEventsToStore = (props) => {
+const mapFireBaseEventsToStore = () => {
   return [];
 };
 
@@ -36,23 +35,21 @@ class HomeView extends Component {
     });
   }
   render () {
-    const { current, updated } = this.props;
+    const { current } = this.props;
     if (current === null || !current || current.nombre !== this.props.params.name) {
       return (
         <Loading />
       );
-    } else {
-      if (current) {
-        if (current.creator === this.props.userId) {
-          return (<CoworkProfileEditable />);
-        } else {
-          return (<CoworkProfile cowork={current} />);
-        }
-      }
-      return (
-        <Error404 />
-      );
     }
+    if (current) {
+      if (current.creator === this.props.userId) {
+        return (<CoworkProfileEditable />);
+      }
+      return (<CoworkProfile cowork={current} />);
+    }
+    return (
+      <Error404 />
+    );
   }
 }
 

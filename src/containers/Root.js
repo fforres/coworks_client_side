@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
-import { Notifications, NavBar } from 'components';
+import { Notifications } from 'components';
 
 export default class Root extends React.Component {
   static propTypes = {

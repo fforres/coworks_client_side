@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { SideBar } from '../components';
 import { actions as coworksActions } from '../redux/modules/coworks';
 import styles from './ProfileView.scss';
 import { UserProfile } from '../components';

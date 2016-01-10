@@ -4,7 +4,6 @@ import { actions as coworksActions } from 'redux/modules/coworks/coworks';
 import style from './CoworkCard.scss';
 import { Link } from 'react-router';
 import { Loading, Error404 } from 'components';
-import { fireBaseComponent } from 'utils/firebase/firebaseComponent.js';
 
 const mapStateToProps = (state) => {
   return {
@@ -32,33 +31,31 @@ class CoworkCard extends Component {
       return (
         <Loading />
       );
-    } else {
-      if (cowork) {
-        return (
-          <div className='col-sm-4 col-md-3 '>
-            <div className={style.card}>
-              <div className={style['card-image-container']}>
-                <img className={style['card-image'] + ' img-responsive'} src='http://material-design.storage.googleapis.com/publish/v_2/material_ext_publish/0Bx4BSt6jniD7TDlCYzRROE84YWM/materialdesign_introduction.png'/>
-                <span className={style['card-title']}></span>
-              </div>
-              <div className={style['card-user']}>
-                <img className={style['user-pic'] + ' img-responsive'} src='http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50'/>
-              </div>
-              <div className={style['card-content']}>
-                <p className={style['card-content-text']}>{cowork.nombre}</p>
-              </div>
-              <div className={style['card-action']}>
-                <Link to={'/cowork/' + cowork.nombre} className={style['card-action-link']}>Perfil</Link>
-              </div>
+    }
+    if (cowork) {
+      return (
+        <div className='col-sm-4 col-md-3 '>
+          <div className={style.card}>
+            <div className={style['card-image-container']}>
+              <img className={style['card-image'] + ' img-responsive'} src='http://material-design.storage.googleapis.com/publish/v_2/material_ext_publish/0Bx4BSt6jniD7TDlCYzRROE84YWM/materialdesign_introduction.png'/>
+              <span className={style['card-title']}></span>
+            </div>
+            <div className={style['card-user']}>
+              <img className={style['user-pic'] + ' img-responsive'} src='http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50'/>
+            </div>
+            <div className={style['card-content']}>
+              <p className={style['card-content-text']}>{cowork.nombre}</p>
+            </div>
+            <div className={style['card-action']}>
+              <Link to={'/cowork/' + cowork.nombre} className={style['card-action-link']}>Perfil</Link>
             </div>
           </div>
-        );
-      } else {
-        return (
-          <Error404 />
-        );
-      }
+        </div>
+      );
     }
+    return (
+      <Error404 />
+    );
   }
 }
 

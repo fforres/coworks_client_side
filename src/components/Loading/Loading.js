@@ -1,5 +1,4 @@
-import React, { Component, PropTypes } from 'react';
-import style from './Loading.scss';
+import React, { Component } from 'react';
 
 class Loading extends Component {
   render () {

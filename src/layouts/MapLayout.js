@@ -9,11 +9,6 @@ export default class CoreLayout extends React.Component {
   };
 
   render () {
-    let theNav = <span></span>;
-    const a = false;
-    if (a) {
-      theNav = <NavBar/>;
-    }
     return (
       <div className={styles.fullviewport} id='mapLayout'>
         <NavBar/>

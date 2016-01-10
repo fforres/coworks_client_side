@@ -46,7 +46,7 @@ class NavBar extends Component {
     Ref.createUser({
       email: this.refs.username.refs.input.value,
       password: this.refs.password.refs.input.value
-    }, (error, userData) => {
+    }, (error) => {
       if (error) {
         switch (error.code) {
         case 'EMAIL_TAKEN':

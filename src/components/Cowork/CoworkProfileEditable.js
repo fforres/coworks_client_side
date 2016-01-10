@@ -2,11 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { actions as currentCoworksActions } from 'redux/modules/coworks/currentCowork';
 import style from './CoworkProfile.scss';
-import { Link } from 'react-router';
-import ContentEditable from 'react-contenteditable';
 import { Input, Button } from 'react-bootstrap';
-import { fireBaseComponent, fireBaseMap, Ref } from 'utils/firebase/firebaseComponent.js';
-
+import { Ref } from 'utils/firebase/firebaseComponent.js';
 
 const mapStateToProps = (state) => {
   return {
@@ -28,7 +25,6 @@ class ProfileView extends Component {
   };
 
   componentWillUpdate () {
-    console.log(this.props.newCowork.direccion.numero);
   }
 
   render () {
@@ -178,7 +174,7 @@ class ProfileView extends Component {
     updateCurrentCowork(Object.assign({}, newCowork));
   }
 
-  saveData ({newCowork, coworkUpdating, coworkUpdated, id}) {
+  saveData ({newCowork, coworkUpdating, coworkUpdated}) {
     coworkUpdating();
     Ref.child('coworks/' + newCowork.id).update(newCowork, ()=>{
       coworkUpdated();
@@ -186,8 +182,6 @@ class ProfileView extends Component {
   }
 }
 
-const mapFireBaseEventsToStore = (props) => { return []; };
-// fireBaseComponent(mapFireBaseEventsToStore, ProfileView)
 export default connect(mapStateToProps, currentCoworksActions)(
   ProfileView
 );

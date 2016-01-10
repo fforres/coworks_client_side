@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import Sidebar from 'react-sidebar';
 import { connect } from 'react-redux';
 import { actions as sideBarActions } from '../../redux/modules/sideBar';
 

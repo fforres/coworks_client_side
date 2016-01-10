@@ -7,7 +7,7 @@ const theTypeOf = (a) => {
 };
 
 const fireBaseComponent = (mapping, Component) => {
-  const mapStateToProps = (state) => {
+  const mapStateToProps = () => {
     return {
     };
   };
@@ -22,7 +22,6 @@ const fireBaseComponent = (mapping, Component) => {
       };
     },
     componentWillMount () {
-      const react = React;
       if (theTypeOf(mapping) === 'function' && theTypeOf(Component) !== 'undefined') {
         const state = mapping();
         if (_Dispatch === null) {
@@ -36,9 +35,8 @@ const fireBaseComponent = (mapping, Component) => {
     render () {
       if (Component) {
         return <Component {...this.props} />;
-      } else {
-        return <mapping {...this.props} />;
       }
+      return <mapping {...this.props} />;
     },
     addListeners ({address, action, type, orderByChild, equalTo}) {
       const { dispatch } = this.props;
