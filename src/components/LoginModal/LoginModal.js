@@ -26,7 +26,7 @@ class LoginModal extends Component {
     toggleLoginForm: PropTypes.func,
     logIn: PropTypes.func,
     logInFormShown: PropTypes.bool
-  };
+  }
 
   componentDidMount () {
   }

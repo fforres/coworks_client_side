@@ -1,14 +1,14 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
-import { Notifications } from 'components';
+import { Notifications, NavBar } from 'components';
 
 export default class Root extends React.Component {
   static propTypes = {
     history: React.PropTypes.object.isRequired,
     routes: React.PropTypes.element.isRequired,
     store: React.PropTypes.object.isRequired
-  };
+  }
 
   render () {
     const content = (
@@ -34,9 +34,7 @@ export default class Root extends React.Component {
     }
     return (
       <Provider store={this.props.store}>
-        <div>
-          {content}
-        </div>
+        {content}
       </Provider>
     );
   }
