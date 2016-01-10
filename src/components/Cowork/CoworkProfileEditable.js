@@ -25,7 +25,7 @@ class ProfileView extends Component {
     updateCurrentCowork: PropTypes.func,
     coworkUpdating: PropTypes.func,
     coworkUpdated: PropTypes.func
-  }
+  };
 
   componentWillUpdate () {
     console.log(this.props.newCowork.direccion.numero);

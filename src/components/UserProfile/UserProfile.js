@@ -14,7 +14,7 @@ class SideBar extends Component {
   static propTypes = {
     image: PropTypes.string,
     displayName: PropTypes.string
-  }
+  };
 
   componentDidMount () {
   }

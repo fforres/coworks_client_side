@@ -25,7 +25,7 @@ class HomeView extends Component {
     current: PropTypes.any,
     updated: PropTypes.any,
     userId: PropTypes.string
-  }
+  };
   componentDidMount () {
     fireBaseMap({
       address: 'coworks',

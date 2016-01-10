@@ -32,7 +32,7 @@ class SideBarList extends Component {
     hoverLeaveCowork: PropTypes.func,
     selectCowork: PropTypes.func,
     updateMapCenter: PropTypes.func
-  }
+  };
   render () {
     const cwrks = Object.keys(this.props.coworks).map((el, i)=>{
       const _id = el;

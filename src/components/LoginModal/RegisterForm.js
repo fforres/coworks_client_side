@@ -22,7 +22,7 @@ class NavBar extends Component {
     hideLoginModal: PropTypes.func,
     registerUser: PropTypes.func,
     addNotification: PropTypes.func
-  }
+  };
 
   componentDidMount () {
   }

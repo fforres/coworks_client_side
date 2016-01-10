@@ -21,7 +21,7 @@ class NavBar extends Component {
     userData: PropTypes.object,
     logIn: PropTypes.func,
     loggedIn: PropTypes.bool.isRequired
-  }
+  };
 
   render () {
     const logInSnippet = () => {

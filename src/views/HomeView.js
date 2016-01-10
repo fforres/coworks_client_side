@@ -17,7 +17,7 @@ export class HomeView extends React.Component {
   static propTypes = {
     counter: React.PropTypes.number,
     requestCoworks: React.PropTypes.func
-  }
+  };
 
   componentWillMount () {
     // this.props.requestCoworks();

@@ -16,7 +16,7 @@ export class DefaultView extends React.Component {
   static propTypes = {
     increment: React.PropTypes.func,
     counter: React.PropTypes.number
-  }
+  };
 
   render () {
     return (

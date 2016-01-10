@@ -21,7 +21,7 @@ class DropDown extends Component {
     profileImageURL: PropTypes.string,
     displayName: PropTypes.string,
     logOut: PropTypes.func
-  }
+  };
 
   constructor (...args) {
     super(...args);

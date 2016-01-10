@@ -20,7 +20,7 @@ export class HomeView extends Component {
     myCoworks: PropTypes.any,
     uid: PropTypes.string,
     unsetMyCoworks: PropTypes.func
-  }
+  };
 
   componentWillMount () {
     console.log(this.props.uid);

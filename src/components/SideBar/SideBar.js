@@ -20,7 +20,7 @@ class SideBar extends Component {
     toggleSideBar: PropTypes.func,
     hideSideBar: PropTypes.func,
     showSideBar: PropTypes.func
-  }
+  };
 
   componentDidMount () {
   }
