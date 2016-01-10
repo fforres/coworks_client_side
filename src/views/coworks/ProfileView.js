@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { actions as coworksActions } from 'redux/modules/coworks/currentCowork';
+import styles from './ProfileView.scss';
 import { CoworkProfile, CoworkProfileEditable } from 'components';
 import { fireBaseComponent, fireBaseMap } from 'utils/firebase/firebaseComponent.js';
 import { Loading, Error404 } from 'components';
@@ -12,7 +13,7 @@ const mapStateToProps = (state) => {
     userId: state.account.userData.uid
   };
 };
-const mapFireBaseEventsToStore = () => {
+const mapFireBaseEventsToStore = (props) => {
   return [];
 };
 
@@ -24,7 +25,7 @@ class HomeView extends Component {
     current: PropTypes.any,
     updated: PropTypes.any,
     userId: PropTypes.string
-  };
+  }
   componentDidMount () {
     fireBaseMap({
       address: 'coworks',
@@ -35,21 +36,23 @@ class HomeView extends Component {
     });
   }
   render () {
-    const { current } = this.props;
+    const { current, updated } = this.props;
     if (current === null || !current || current.nombre !== this.props.params.name) {
       return (
         <Loading />
       );
-    }
-    if (current) {
-      if (current.creator === this.props.userId) {
-        return (<CoworkProfileEditable />);
+    } else {
+      if (current) {
+        if (current.creator === this.props.userId) {
+          return (<CoworkProfileEditable />);
+        } else {
+          return (<CoworkProfile cowork={current} />);
+        }
       }
-      return (<CoworkProfile cowork={current} />);
+      return (
+        <Error404 />
+      );
     }
-    return (
-      <Error404 />
-    );
   }
 }
 

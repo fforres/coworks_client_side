@@ -151,7 +151,7 @@ export default createReducer(initialState, {
     }
     return state;
   },
-  [UNSET_CURRENT_COWORK] (state) {
+  [UNSET_CURRENT_COWORK] (state, payload) {
     deepFreeze(state);
     return {...state, current: null};
   },
@@ -166,7 +166,7 @@ export default createReducer(initialState, {
     }
     return {...state, myCoworks: {}};
   },
-  [UNSET_MY_COWORKS] (state) {
+  [UNSET_MY_COWORKS] (state, payload) {
     return {...state, myCoworks: null};
   }
 

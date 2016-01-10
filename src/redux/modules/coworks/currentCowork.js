@@ -1,4 +1,5 @@
 import createReducer from 'utils/createReducer';
+import deepFreeze from 'deep-freeze';
 
 // ------------------------------------
 // Constants
@@ -66,13 +67,13 @@ export default createReducer(initialState, {
     }
     return state;
   },
-  [UNSET_CURRENT_COWORK] (state) {
+  [UNSET_CURRENT_COWORK] (state, payload) {
     return {...state, current: null};
   },
-  [COWORK_UPDATING] (state) {
+  [COWORK_UPDATING] (state, payload) {
     return {...state, isUpdating: true};
   },
-  [COWORK_UPDATED] (state) {
+  [COWORK_UPDATED] (state, payload) {
     return {...state, isUpdating: false};
   }
 });

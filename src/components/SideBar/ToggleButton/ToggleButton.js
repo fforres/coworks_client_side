@@ -18,7 +18,7 @@ class SideBar extends Component {
     toggleShow: PropTypes.func,
     showShow: PropTypes.func,
     hideShow: PropTypes.func
-  };
+  }
 
   componentDidMount () {
   }

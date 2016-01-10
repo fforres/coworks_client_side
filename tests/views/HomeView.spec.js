@@ -1,4 +1,3 @@
-/*
 import React                  from 'react';
 import TestUtils              from 'react-addons-test-utils';
 import { bindActionCreators } from 'redux';
@@ -18,4 +17,3 @@ function renderWithProps (props = {}) {
 function shallowRenderWithProps (props = {}) {
   return shallowRender(<HomeView {...props} />);
 }
-*/

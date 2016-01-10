@@ -12,7 +12,7 @@ class UserNugget extends Component {
     provider: PropTypes.string,
     profileImageURL: PropTypes.string,
     displayName: PropTypes.string
-  };
+  }
 
   render () {
     return (

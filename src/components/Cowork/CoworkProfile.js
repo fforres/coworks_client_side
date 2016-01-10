@@ -1,5 +1,10 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { actions as coworksActions } from 'redux/modules/coworks/coworks';
 import style from './CoworkProfile.scss';
+import { Link } from 'react-router';
+import { fireBaseComponent, fireBaseMap } from 'utils/firebase/firebaseComponent.js';
+import { Loading, Error404 } from 'components';
 
 class ProfileView extends Component {
   static propTypes = {

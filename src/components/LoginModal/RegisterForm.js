@@ -22,7 +22,7 @@ class NavBar extends Component {
     hideLoginModal: PropTypes.func,
     registerUser: PropTypes.func,
     addNotification: PropTypes.func
-  };
+  }
 
   componentDidMount () {
   }
@@ -46,7 +46,7 @@ class NavBar extends Component {
     Ref.createUser({
       email: this.refs.username.refs.input.value,
       password: this.refs.password.refs.input.value
-    }, (error) => {
+    }, (error, userData) => {
       if (error) {
         switch (error.code) {
         case 'EMAIL_TAKEN':
