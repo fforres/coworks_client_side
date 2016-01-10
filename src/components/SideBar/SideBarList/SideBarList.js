@@ -19,6 +19,7 @@ class SideBarList extends Component {
     coworks: PropTypes.any,
     selected: PropTypes.string.isRequired,
     hovered: PropTypes.string.isRequired,
+
     hoverEnterCowork: PropTypes.func,
     hoverLeaveCowork: PropTypes.func,
     selectCowork: PropTypes.func,
@@ -135,4 +136,5 @@ class SideBarList extends Component {
   }
 }
 
+exports.SideBarListTest = SideBarList;
 export default fireBaseComponent(mapFireBaseEventsToStore, SideBarList);

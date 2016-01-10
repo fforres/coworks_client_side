@@ -1,6 +1,6 @@
-import React        from 'react';
-import TestUtils    from 'react-addons-test-utils';
-import { Loading }  from 'components/Loading/Loading.js';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
+import { Loading } from 'components/Loading/Loading.js';
 
 function shallowRender (component) {
   const renderer = TestUtils.createRenderer();
@@ -18,7 +18,7 @@ function shallowRenderWithProps (props = {}) {
 }
 
 describe('(Component) Loading', function () {
-  let _component, _rendered, _props, _child;
+  let _component, _child, _props, _rendered;
 
   beforeEach(function () {
     _child = <h1 className='child'>Child</h1>;
@@ -28,7 +28,8 @@ describe('(Component) Loading', function () {
     };
 
     _component = shallowRenderWithProps(_props);
-    _rendered  = renderWithProps(_props);
+    _rendered = renderWithProps(_props);
+    console.log(_rendered);
   });
 
   it('Should render as a <div>.', function () {
