@@ -24,6 +24,7 @@
   "author": "Felipe Torres <felipe.torressepulveda@gmail.com> (http://fforr.es)",
   "license": "MIT",
   "dependencies": {
+    "babel-polyfill": "^6.3.14",
     "cssnano": "^3.3.2",
     "debug": "^2.2.0",
     "deep-freeze": "0.0.1",

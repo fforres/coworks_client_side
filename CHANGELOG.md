@@ -1,6 +1,12 @@
 Changelog
 =========
-0.1.7 (IN PROGRESS)
+0.1.8 (IN PROGRESS)
+#### FEATURE
+* Added geoloc Data.
+#### FIX
+
+
+0.1.7
 -----
 #### FEATURE
 * Added deep freeze for objects inside redux stores.
