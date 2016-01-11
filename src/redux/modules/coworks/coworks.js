@@ -77,6 +77,10 @@ const initialState = {
   coworks: {},
   myCoworks: {},
   coworksFiltered: {},
+  images: {
+    profile:'',
+    background:''
+  },
   selected: '',
   hovered: '',
   current: null,

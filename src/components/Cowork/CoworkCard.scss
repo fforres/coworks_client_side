@@ -1,3 +1,4 @@
+@import '../../styles/core.scss';
 .card {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   margin-top: 10px;
@@ -56,8 +57,25 @@
   float: right;
 }
 .user-pic {
-    border-radius: 1000px !important;
-    border: 5px solid white;
-    bottom: 47px;
-    position: relative;
+  border-radius: 1000px !important;
+  border: 5px solid white;
+  bottom: 47px;
+  position: relative;
+
+  @media screen and (max-width: $screen-xs) {
+    width:120px;
+    height:120px;
+  }
+  @media screen and (min-width: $screen-xs+1) and (max-width: $screen-sm) {
+    width:140px;
+    height:140px;
+  }
+  @media screen and (min-width: $screen-sm+1) and (max-width: $screen-md) {
+    width:90px;
+    height:90px;
+  }
+  @media screen and (min-width: $screen-md+1) {
+    width:90px;
+    height:90px;
+  }
 }

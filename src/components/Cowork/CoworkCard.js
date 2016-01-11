@@ -1,23 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { actions as coworksActions } from 'redux/modules/coworks/coworks';
 import style from './CoworkCard.scss';
 import { Link } from 'react-router';
 import { Loading, Error404 } from 'components';
 
-const mapStateToProps = (state) => {
-  return {
-    myCoworks: state.coworks.myCoworks,
-    uid: state.account.userData.uid
-  };
-};
-
 class CoworkCard extends Component {
   static propTypes = {
-    myCoworks: PropTypes.any,
     cowork: PropTypes.obj,
-    uid: PropTypes.string,
-    unsetMyCoworks: PropTypes.func,
     nombre: PropTypes.string
   };
 
@@ -33,6 +21,15 @@ class CoworkCard extends Component {
       );
     }
     if (cowork) {
+      if (!cowork.images) {
+        cowork.images = {};
+        if (!cowork.images.profile) {
+          cowork.images.profile = 'http://epho.com.au/wp-content/uploads/2014/01/media_dummy-user-800x0.jpg';
+        }
+        if (!cowork.images.background) {
+          cowork.images.background = 'http://epho.com.au/wp-content/uploads/2014/01/media_dummy-user-800x0.jpg';
+        }
+      }
       return (
         <div className='col-sm-4 col-md-3 '>
           <div className={style.card}>
@@ -41,7 +38,7 @@ class CoworkCard extends Component {
               <span className={style['card-title']}></span>
             </div>
             <div className={style['card-user']}>
-              <img className={style['user-pic'] + ' img-responsive'} src='http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50'/>
+              <img className={style['user-pic'] + ' img-responsive'} src={cowork.images.profile}/>
             </div>
             <div className={style['card-content']}>
               <p className={style['card-content-text']}>{cowork.nombre}</p>
@@ -59,6 +56,4 @@ class CoworkCard extends Component {
   }
 }
 
-export default connect(mapStateToProps, coworksActions)(
-  CoworkCard
-);
+export default CoworkCard;

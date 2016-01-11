@@ -3,7 +3,9 @@ Changelog
 0.1.8 (IN PROGRESS)
 #### FEATURE
 * Added geoloc Data.
+* Added Profile Image upload.
 #### FIX
+* Fixes on visualization of images in list of coworks.
 
 
 0.1.7
