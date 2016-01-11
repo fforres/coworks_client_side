@@ -4,6 +4,7 @@ import { actions as currentCoworksActions } from 'redux/modules/coworks/currentC
 import style from './CoworkProfile.scss';
 import { Input, Button, Tabs, Tab, Col } from 'react-bootstrap';
 import { Ref } from 'utils/firebase/firebaseComponent.js';
+import Dropzone from 'react-dropzone';
 
 const mapStateToProps = (state) => {
   return {
@@ -37,16 +38,49 @@ class ProfileView extends Component {
 
   render () {
     const { newCowork, isUpdating } = this.props;
+    /* TODO:
+        Remove this hack the for images.
+        Add a new viw for the Profile Editabe.
+        Add a new route "cowork/id/edit" for edit data.
+        Add button for edit on profile.
+    */
+    if (!newCowork.images) {
+      newCowork.images = {};
+      if (!newCowork.images.profile) {
+        newCowork.images.profile = 'http://epho.com.au/wp-content/uploads/2014/01/media_dummy-user-800x0.jpg';
+      }
+      if (!newCowork.images.background) {
+        newCowork.images.background = 'http://epho.com.au/wp-content/uploads/2014/01/media_dummy-user-800x0.jpg';
+      }
+    }
     if (newCowork) {
       return (
         <div className='container'>
           <div className='col-xs-12'>
             <form className='form-horizontal'>
               <center>
+
                 <img
-                  src='https://scontent.xx.fbcdn.net/hprofile-xaf1/v/t1.0-1/p100x100/11760213_10153471274488114_5851841921286907723_n.jpg?oh=945d7d94f41eb3e88c42130389edb08d&amp;oe=571F0EFF'
-                  className='img-responsive img-circle'
+                  src={newCowork.images.profile}
+                  className={style.image + ' img-responsive img-circle'}
+                  onClick={()=>{this.refs.dropzone.open();}}
                 />
+                <Button
+                  bsStyle='primary'
+                  disabled={this.state.isCalculating}
+                  onClick={()=>{this.refs.dropzone.open();}}
+                >
+                  Cambiar Foto
+                </Button>
+                <Dropzone
+                  ref='dropzone'
+                  onDrop={this.handleFileDrop}
+                  multiple={false}
+                  className={style.dropZoneImage}
+                  accept='image/gif,image/jpeg,image/png'
+                  >
+                  <p>a</p>
+                </Dropzone>
                 <h1 className={style.title + ' col-sm-12'}>{newCowork.nombre}</h1>
                 <Input
                   value={newCowork.descripcion.larga}
@@ -130,7 +164,7 @@ class ProfileView extends Component {
                         bsStyle='primary'
                         disabled={this.state.isCalculating}
                         onClick={!this.state.isCalculating ? ()=>{ this.fetchGeoCode();} : null}>
-                        {isUpdating ? 'Guardando...' : 'Calcular posición'}
+                        {this.state.isCalculating ? 'Calculando...' : 'Calcular posición'}
                       </Button>
                       <hr/>
                       <Input
@@ -198,8 +232,8 @@ class ProfileView extends Component {
                 </Tabs>
 
 
-                <hr className='col-sm-10 col-sm-offset-2'/>
-                <div className={style['no-padding-left'] + ' col-sm-10 col-sm-offset-2'}>
+                <hr className='col-sm-12'/>
+                <div className={style['no-padding-left'] + ' col-sm-10 col-sm-offset-1'}>
                   <Button
                     bsStyle='primary'
                     disabled={isUpdating}
@@ -207,7 +241,6 @@ class ProfileView extends Component {
                     {isUpdating ? 'Guardando...' : 'Guardar'}
                   </Button>
                 </div>
-
 
               </center>
             </form>
@@ -217,6 +250,18 @@ class ProfileView extends Component {
     }
   }
 
+  handleFileDrop = (files) => {
+    if (files.length) {
+      const { newCowork } = Object.assign({}, this.props);
+      const reader = new window.FileReader();
+      reader.readAsDataURL(files[0]);
+      reader.onloadend = () => {
+        newCowork.images.profile = reader.result;
+        this.handleChange();
+      };
+    }
+  };
+
   handleTabSelect = (key) => {
     this.setState({
       currentTab: key
@@ -225,16 +270,18 @@ class ProfileView extends Component {
 
   fetchGeoCode () {
     const { newCowork } = Object.assign({}, this.props);
+    this.setState({isCalculating:true});
     const { numero, calle, ciudad, comuna, pais } = newCowork.direccion;
     const completeAddress = numero + ' ' + calle + ', ' + comuna + ', ' + ciudad + ', ' + pais;
     fetch('https://maps.googleapis.com/maps/api/geocode/json?address=' + completeAddress)
-      .then((res)=>{
+      .then((res) => {
         if (res && res.headers.get('content-type').indexOf('application/json') !== -1) {
-          res.json().then((data)=>{
+          res.json().then((data) => {
             if (data.results[0]) {
               const { lat, lng } = data.results[0].geometry.location;
               newCowork.direccion.geo.lat = lat;
               newCowork.direccion.geo.lng = lng;
+              this.setState({isCalculating:false});
               this.handleChange();
             }
           });

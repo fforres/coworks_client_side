@@ -4,7 +4,16 @@
 .bajada{
   font-size: 1.2em;
 }
-
+.image{
+  width: 12em;
+  height: 12em;
+  cursor: pointer;
+}
+.dropZoneImage{
+  border-color: transparent;
+  border-style: none;
+  display: none;
+}
 .capitalize{
   text-transform: capitalize;
 }

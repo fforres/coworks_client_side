@@ -12,13 +12,22 @@ class ProfileView extends Component {
   render () {
     const { cowork } = this.props;
     if (cowork) {
+      if (!cowork.images) {
+        cowork.images = {};
+        if (!cowork.images.profile) {
+          cowork.images.profile = 'http://epho.com.au/wp-content/uploads/2014/01/media_dummy-user-800x0.jpg';
+        }
+        if (!cowork.images.background) {
+          cowork.images.background = 'http://epho.com.au/wp-content/uploads/2014/01/media_dummy-user-800x0.jpg';
+        }
+      }
       return (
         <div className='col-xs-12'>
           <center>
             <div className='col-md-8 col-md-offset-2'>
               <img
-                src='https://scontent.xx.fbcdn.net/hprofile-xaf1/v/t1.0-1/p100x100/11760213_10153471274488114_5851841921286907723_n.jpg?oh=945d7d94f41eb3e88c42130389edb08d&amp;oe=571F0EFF'
-                className='img-responsive img-circle'
+                src={cowork.images.profile}
+                className={style.image + ' img-responsive img-circle'}
                 />
               <h1 className={style.title + ' col-xs-12'}>{cowork.nombre}</h1>
               <p className={style.bajada + ' col-xs-12'}>{cowork.descripcion.larga}</p>
