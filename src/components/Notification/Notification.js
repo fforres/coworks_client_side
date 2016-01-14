@@ -27,7 +27,7 @@ class NavBar extends Component {
 
   componentDidUpdate () {
     this.props.notifications.forEach((el, i) => {
-      let element = {...el};
+      let element = { ...el };
       element = this.insertAddCallBacks(element, i);
       element = this.insertRemoveCallBacks(element, i);
       if (el && !el.showed) {
@@ -36,42 +36,44 @@ class NavBar extends Component {
     });
   }
 
-  render () {
-    return (
-      <NotificationSystem ref='notificationSystem' />
-    );
-  }
-
   insertAddCallBacks (el, i) {
-    el.addCallBacks = [];
+    const newEl = Object.assign({}, el);
+    newEl.addCallBacks = [];
     if (Object.prototype.toString.call(el.onAdd).slice(8, -1).toLowerCase() === 'function') {
       el.addCallBacks.concat(el.onAdd);
     }
-    el.addCallBacks.push(() => {
+    newEl.addCallBacks.push(() => {
       this.props.showedNotification(i);
     });
-    el.onAdd = function () {
+    newEl.onAdd = function () {
       this.addCallBacks.forEach((callbacks) => {
         callbacks();
       });
     };
-    return el;
+    return newEl;
   }
 
   insertRemoveCallBacks (el, i) {
-    el.removeCallbacks = [];
+    const newEl = Object.assign({}, el);
+    newEl.removeCallbacks = [];
     if (Object.prototype.toString.call(el.onRemove).slice(8, -1).toLowerCase() === 'function') {
       el.removeCallbacks.concat(el.onRemove);
     }
-    el.removeCallbacks.push(() => {
+    newEl.removeCallbacks.push(() => {
       this.props.removeNotification(i);
     });
-    el.onRemove = function () {
+    newEl.onRemove = function () {
       this.removeCallbacks.forEach((callbacks) => {
         callbacks();
       });
     };
-    return el;
+    return newEl;
+  }
+
+  render () {
+    return (
+      <NotificationSystem ref='notificationSystem' />
+    );
   }
 }
 

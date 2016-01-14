@@ -28,7 +28,7 @@ class ProfileView extends Component {
               <img
                 src={cowork.images.profile}
                 className={style.image + ' img-responsive img-circle'}
-                />
+              />
               <h1 className={style.title + ' col-xs-12'}>{cowork.nombre}</h1>
               <p className={style.bajada + ' col-xs-12'}>{cowork.descripcion.larga}</p>
             </div>

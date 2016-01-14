@@ -61,7 +61,7 @@ class GMap extends Component {
           defaultCenter={props.map.defaultCenter}
           defaultZoom={props.map.zoom}
           center={props.map.center}
-          >
+        >
           {allPins}
         </GoogleMap>
       </div>

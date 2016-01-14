@@ -100,32 +100,33 @@ const initialState = {
 export default createReducer(initialState, {
   [REQUEST_COWORKS] (state, payload = null) {
     deepFreeze(state);
-    if (payload !== null ) {
+    if (payload !== null) {
       return { ...state, coworks: payload };
     }
     return state;
   },
-  [ADD_COWORK] (state, payload = null) {
+  [ADD_COWORK] (state, pl = null) {
+    const payload = Object.assign({}, pl);
     deepFreeze(state);
-    if (payload !== null ) {
-      Object.keys(payload).forEach((el)=>{
+    if (payload !== null) {
+      Object.keys(payload).forEach((el) => {
         payload[el].id = el;
       });
-      return { ...state, coworks: Object.assign({}, {...state.coworks}, {...payload})};
+      return { ...state, coworks: Object.assign({}, { ...state.coworks }, { ...payload }) };
     }
     return state;
   },
   [SELECT_COWORK] (state, payload) {
     deepFreeze(state);
     if (payload === state.selected) {
-      return {...state, selected: initialState.selected};
+      return { ...state, selected: initialState.selected };
     }
-    return {...state, selected: payload};
+    return { ...state, selected: payload };
   },
   [HOVER_ENTER_COWORK] (state, payload) {
     deepFreeze(state);
     if (payload !== state.hovered) {
-      return {...state, hovered: payload};
+      return { ...state, hovered: payload };
     }
     return state;
   },
@@ -134,7 +135,7 @@ export default createReducer(initialState, {
     if (payload !== state.hovered) {
       return state;
     }
-    return {...state, hovered: initialState.hovered};
+    return { ...state, hovered: initialState.hovered };
   },
   [UPDATE_MAP_CENTER] (state, payload) {
     deepFreeze(state);
@@ -144,34 +145,35 @@ export default createReducer(initialState, {
   },
 
 
-  [SET_CURRENT_COWORK] (state, payload) {
+  [SET_CURRENT_COWORK] (state, pl) {
+    const payload = Object.assign({}, pl);
     deepFreeze(state);
     if (payload === null) {
-      return {...state, current: 'notExistent'};
+      return { ...state, current: 'notExistent' };
     }
     if (typeof payload === 'object') {
       payload[Object.keys(payload)[0]].id = Object.keys(payload)[0];
-      return {...state, current: payload[Object.keys(payload)[0]]};
+      return { ...state, current: payload[Object.keys(payload)[0]] };
     }
     return state;
   },
   [UNSET_CURRENT_COWORK] (state) {
     deepFreeze(state);
-    return {...state, current: null};
+    return { ...state, current: null };
   },
 
 
   [SET_MY_COWORKS] (state, payload) {
     if (payload === null) {
-      return {...state, myCoworks: {}};
+      return { ...state, myCoworks: {} };
     }
     if (typeof payload === 'object') {
-      return {...state, myCoworks: payload};
+      return { ...state, myCoworks: payload };
     }
-    return {...state, myCoworks: {}};
+    return { ...state, myCoworks: {} };
   },
   [UNSET_MY_COWORKS] (state) {
-    return {...state, myCoworks: null};
+    return { ...state, myCoworks: null };
   }
 
 

@@ -39,21 +39,21 @@ const initialState = {
 
 export default createReducer(initialState, {
   [TOGGLE_DOCK] (state) {
-    return {...state, isDocked: !state.isDocked};
+    return { ...state, isDocked: !state.isDocked };
   },
   [SHOW_DOCK] (state) {
-    return {...state, isDocked: true};
+    return { ...state, isDocked: true };
   },
   [HIDE_DOCK] (state) {
-    return {...state, isDocked: false};
+    return { ...state, isDocked: false };
   },
   [TOGGLE_SHOW] (state) {
-    return {...state, isShown: !state.isShown};
+    return { ...state, isShown: !state.isShown };
   },
   [SHOW_SHOW] (state) {
-    return {...state, isShown: true};
+    return { ...state, isShown: true };
   },
   [HIDE_SHOW] (state) {
-    return {...state, isShown: false};
+    return { ...state, isShown: false };
   }
 });

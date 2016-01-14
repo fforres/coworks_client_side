@@ -23,14 +23,34 @@ class NavBar extends Component {
     loggedIn: PropTypes.bool.isRequired
   };
 
+  centerMe () {
+    if (navigator.geolocation) {
+      const options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      };
+      const success = (pos) => {
+        this.props.updateMapCenter({
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude
+        });
+      };
+      const error = (err) => {
+        console.error(err);
+      };
+      navigator.geolocation.getCurrentPosition(success, error, options);
+    }
+  }
   render () {
     const logInSnippet = () => {
       if (!this.props.loggedIn) {
         return (
           <Navbar.Form pullLeft>
-            <Button onClick={()=>{
+            <Button onClick={() => {
               this.props.showLoginModal();
-            }}> Ingresa </Button>
+            }}
+            > Ingresa </Button>
           </Navbar.Form>
         );
       }
@@ -65,7 +85,7 @@ class NavBar extends Component {
                 <i className='fa fa-fw fa-home' ></i>
               </Link>
             </li>
-            <NavItem eventKey={2} href='#' onClick={()=>{this.centerMe();}}>
+            <NavItem eventKey={2} href='#' onClick={() => {this.centerMe();}}>
               <i className='fa fa-fw fa-location-arrow'/>
             </NavItem>
             {logInSnippet()}
@@ -74,25 +94,7 @@ class NavBar extends Component {
       </Navbar>
     );
   }
-  centerMe () {
-    if (navigator.geolocation) {
-      const options = {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0
-      };
-      const success = (pos) => {
-        this.props.updateMapCenter({
-          lat: pos.coords.latitude,
-          lng: pos.coords.longitude
-        });
-      };
-      const error = (err) => {
-        console.error(err);
-      };
-      navigator.geolocation.getCurrentPosition(success, error, options);
-    }
-  }
+
 }
 
 export default connect(mapStateToProps, coworksActions)(

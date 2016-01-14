@@ -27,21 +27,6 @@ class NavBar extends Component {
   componentDidMount () {
   }
 
-  render () {
-    const userIcon = (<i className='fa fa-fw fa-user'/>);
-    const lockIcon = (<i className='fa fa-fw fa-lock'/>);
-    return (
-      <form>
-        <Input type='text' placeholder='Usuario' wrapperClassName={style.show_in_modal} addonBefore={userIcon} ref='username' />
-        <Input type='password' placeholder='Contraseña' wrapperClassName={style.show_in_modal} addonBefore={lockIcon} ref='password' />
-        <button className='btn btn-lg btn-primary btn-block' onClick={(e)=>{
-          e.preventDefault();
-          this.localRegister();
-        }}>Regístrate</button>
-      </form>
-    );
-  }
-
   localRegister () {
     Ref.createUser({
       email: this.refs.username.refs.input.value,
@@ -49,20 +34,20 @@ class NavBar extends Component {
     }, (error) => {
       if (error) {
         switch (error.code) {
-        case 'EMAIL_TAKEN':
-          this.props.addNotification({
-            title:'Trouble in paradise!',
-            message:'El email que ingresaste ya está siendo usado. \n¿Seguro que no tienes una cuenta creada?',
-            level:'error'
-          });
-          break;
-        default:
-          this.props.addNotification({
-            title:'Houston!',
-            message:'Hay problemas al intentar crear tu cuenta. \nComunícate con el equipo de soporte para poder ayudarte',
-            level:'error'
-          });
-          break;
+          case 'EMAIL_TAKEN':
+            this.props.addNotification({
+              title:'Trouble in paradise!',
+              message:'El email que ingresaste ya está siendo usado. \n¿Seguro que no tienes una cuenta creada?',
+              level:'error'
+            });
+            break;
+          default:
+            this.props.addNotification({
+              title:'Houston!',
+              message:'Hay problemas al intentar crear tu cuenta. \nComunícate con el equipo de soporte para poder ayudarte',
+              level:'error'
+            });
+            break;
         }
       } else {
         this.props.addNotification({
@@ -73,10 +58,28 @@ class NavBar extends Component {
       }
     });
   }
-
+  render () {
+    const userIcon = (<i className='fa fa-fw fa-user'/>);
+    const lockIcon = (<i className='fa fa-fw fa-lock'/>);
+    return (
+      <form>
+        <Input type='text' placeholder='Usuario' wrapperClassName={style.show_in_modal} addonBefore={userIcon} ref='username' />
+        <Input type='password' placeholder='Contraseña' wrapperClassName={style.show_in_modal} addonBefore={lockIcon} ref='password' />
+        <button
+          className='btn btn-lg btn-primary btn-block'
+          onClick={(e) => {
+            e.preventDefault();
+            this.localRegister();
+          }}
+        >
+        Regístrate
+        </button>
+      </form>
+    );
+  }
 }
 
-export default connect( mapStateToProps, modalActions)(
+export default connect(mapStateToProps, modalActions)(
   connect(mapStateToProps, accountActions)(
     connect(mapStateToProps, notificationsActions)(
       NavBar

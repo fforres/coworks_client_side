@@ -25,12 +25,26 @@ class SideBarList extends Component {
     selectCowork: PropTypes.func,
     updateMapCenter: PropTypes.func
   };
+
+  clickedItem (el, id) {
+    this.props.selectCowork(id);
+  }
+  centerMap (el, cwrk) {
+    this.props.updateMapCenter(this.props.coworks[cwrk].direccion.geo);
+  }
+  hoveredItem (el, id, isEnter) {
+    if (isEnter) {
+      this.props.hoverEnterCowork(id);
+    } else {
+      this.props.hoverLeaveCowork(id);
+    }
+  }
   render () {
-    const cwrks = Object.keys(this.props.coworks).map((el, i)=>{
+    const cwrks = Object.keys(this.props.coworks).map((el, i) => {
       const _id = el;
       const Element = this.props.coworks[el];
       // Play with classes to show who is selected or hovered
-      const theClass = (()=>{
+      const theClass = (() => {
         const str = [style.item];
         if (this.props.selected === _id) {
           str.push(style['item--selected']);
@@ -44,24 +58,24 @@ class SideBarList extends Component {
         <div
           key={_id}
           className={theClass}
-          onMouseEnter={()=>{
+          onMouseEnter={() => {
             this.hoveredItem(this, _id, true);
           }}
-          onMouseLeave={()=>{
+          onMouseLeave={() => {
             this.hoveredItem(this, _id, false);
           }}
-          onClick={()=>{
+          onClick={() => {
             this.clickedItem(this, _id);
             this.centerMap(this, el);
           }}
-          >
+        >
             <div className={style['item-header']}>
               <span className={style['item-text']}>{Element.nombre}</span>
               <div className={style['item-link']}>
                 <Link
                   to={'/cowork/' + encodeURIComponent(Element.nombre)}
                   className={style['item-link-action']}
-                  >
+                >
                   <i className='fa fa-fw fa-link'></i>
                 </Link>
               </div>
@@ -119,20 +133,6 @@ class SideBarList extends Component {
           </div>
         </div>
     );
-  }
-
-  clickedItem (el, id) {
-    this.props.selectCowork(id);
-  }
-  centerMap (el, cwrk) {
-    this.props.updateMapCenter(this.props.coworks[cwrk].direccion.geo);
-  }
-  hoveredItem (el, id, isEnter) {
-    if (isEnter) {
-      this.props.hoverEnterCowork(id);
-    } else {
-      this.props.hoverLeaveCowork(id);
-    }
   }
 }
 
