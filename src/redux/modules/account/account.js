@@ -48,25 +48,25 @@ export default createReducer(initialState, {
     } else {
       ob.isModalShown = false;
     }
-    return Object.assign({}, {...state}, {...ob});
+    return Object.assign({}, { ...state }, { ...ob });
   },
   [HIDE_LOGIN_MODAL]  (state) {
     deepFreeze(state);
     const ob = {};
     ob.isModalShown = false;
-    return Object.assign({}, {...state}, {...ob});
+    return Object.assign({}, { ...state }, { ...ob });
   },
   [LOG_IN] (state, payload = null) {
     deepFreeze(state);
-    if (payload !== null ) {
-      return { ...state, loggedIn: true, isModalShown: false, userData: {...payload}};
+    if (payload !== null) {
+      return { ...state, loggedIn: true, isModalShown: false, userData: { ...payload } };
     }
     return state;
   },
   [LOGIN_LOCAL] (state, payload = null) {
     deepFreeze(state);
-    if (payload !== null ) {
-      return { ...state, loggedIn: true, isModalShown: false, userData: {...payload}};
+    if (payload !== null) {
+      return { ...state, loggedIn: true, isModalShown: false, userData: { ...payload } };
     }
     return state;
   }

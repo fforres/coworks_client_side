@@ -26,8 +26,10 @@ export class DefaultView extends React.Component {
           Sample Counter:&nbsp;
           <span className={styles['counter--green']}>{this.props.counter}</span>
         </h2>
-        <button className='btn btn-default'
-                onClick={this.props.increment}>
+        <button
+          className='btn btn-default'
+          onClick={this.props.increment}
+        >
           Increment
         </button>
         <hr />

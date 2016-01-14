@@ -41,13 +41,14 @@ const initialState = {
 export default createReducer(initialState, {
   [ADD_NOTIFICATION] (state, payload = null) {
     deepFreeze(state);
-    if (payload !== null ) {
-      payload.showed = false;
+    if (payload !== null) {
+      const newPayload = Object.assign({}, payload);
+      newPayload.showed = false;
       if (!payload.position) {
-        payload.position = 'br';
+        newPayload.position = 'br';
       }
-      const middleState = {...state, notifications: state.notifications.concat(payload) };
-      return {...middleState};
+      const middleState = { ...state, notifications: state.notifications.concat(newPayload) };
+      return { ...middleState };
     }
     return state;
   },
@@ -56,23 +57,23 @@ export default createReducer(initialState, {
     if (payload !== null && state.notifications[payload]) {
       const newNotif = [...state.notifications];
       newNotif.splice(payload, 1);
-      return {...state, notifications: newNotif };
+      return { ...state, notifications: newNotif };
     }
     return state;
   },
   [SHOWED_NOTIFICATION] (state, payload = null) {
     deepFreeze(state);
-    if (payload !== null ) {
-      const Notif = {...state.notifications[payload], showed:true};
+    if (payload !== null) {
+      const Notif = { ...state.notifications[payload], showed:true };
       const Notifications = [...state.notifications];
       Notifications[payload] = Notif;
-      return {...state, notifications: Notifications };
+      return { ...state, notifications: Notifications };
     }
     return state;
   },
   [RESET_NOTIFICATIONS] (state) {
     deepFreeze(state);
-    const newState = {...state, notifications: initialState.notifications };
+    const newState = { ...state, notifications: initialState.notifications };
     return newState;
   }
 });

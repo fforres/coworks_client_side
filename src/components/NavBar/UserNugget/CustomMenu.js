@@ -27,6 +27,12 @@ class DropDown extends Component {
     super(...args);
     this.state = { value: '' };
     this.onChange = e => this.setState({ value: e.target.value });
+    this.logOut = this.logOut.bind(this);
+  }
+
+  logOut () {
+    Ref.unauth();
+    this.props.logOut();
   }
 
   render () {
@@ -52,7 +58,7 @@ class DropDown extends Component {
           </li>
           <MenuItem eventKey='3' active>Options</MenuItem>
           <MenuItem eventKey='1'>To Choose</MenuItem>
-          <MenuItem className={style.logOut} eventKey='1 ' onClick={()=>{this.logOut();}} >
+          <MenuItem className={style.logOut} eventKey='1 ' onClick={this.logOut} >
             <div className={style.logout_icon}>
               <span>Log Out</span>
               <span><i className='fa fa-fw fa-sign-out'/></span>
@@ -63,10 +69,6 @@ class DropDown extends Component {
     );
   }
 
-  logOut () {
-    Ref.unauth();
-    this.props.logOut();
-  }
 }
 export default DropDown;
 export default connect(mapStateToProps, accountActions)(DropDown);

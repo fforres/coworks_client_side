@@ -24,7 +24,8 @@ class SideBar extends Component {
         <center>
           <img
             src={this.props.image}
-            name='aboutme' width='140' height='140' border='0' className='img-circle'/>
+            name='aboutme' width='140' height='140' border='0' className='img-circle'
+          />
           <h3 className=''> {this.props.displayName}</h3>
         </center>
         <hr/>

@@ -23,7 +23,7 @@ class SideBar extends Component {
         docked={this.props.isDocked}
         open={this.props.isShown}
         onSetOpen={this.onSetSidebarOpen}
-        >
+      >
         <div className={style['add-sidebar-margin']}>
           <ToggleButton />
         </div>

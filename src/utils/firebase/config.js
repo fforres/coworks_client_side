@@ -3,7 +3,7 @@ const firebaseURL = 'https://coworkscl.firebaseio.com';
 const Ref = new FirebaseMaker(firebaseURL);
 let Dispatch = null;
 
-exports.setDispatcher = ({dispatch}) => {
+exports.setDispatcher = ({ dispatch }) => {
   Dispatch = dispatch;
 };
 exports._Ref = Ref;

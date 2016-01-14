@@ -51,28 +51,28 @@ const initialState = {
 export default createReducer(initialState, {
   [SET_CURRENT_COWORK] (state, payload) {
     if (payload === null) {
-      return {...state, current: 'notExistent'};
+      return { ...state, current: 'notExistent' };
     }
     if (typeof payload === 'object') {
       const cowork = payload[Object.keys(payload)[0]];
       cowork.id = Object.keys(payload)[0];
-      return {...state, current: cowork, newCowork: cowork};
+      return { ...state, current: cowork, newCowork: cowork };
     }
     return state;
   },
   [UPDATE_CURRENT_COWORK] (state, payload) {
     if (payload !== null) {
-      return {...state, newCowork:payload};
+      return { ...state, newCowork:payload };
     }
     return state;
   },
   [UNSET_CURRENT_COWORK] (state) {
-    return {...state, current: null};
+    return { ...state, current: null };
   },
   [COWORK_UPDATING] (state) {
-    return {...state, isUpdating: true};
+    return { ...state, isUpdating: true };
   },
   [COWORK_UPDATED] (state) {
-    return {...state, isUpdating: false};
+    return { ...state, isUpdating: false };
   }
 });
