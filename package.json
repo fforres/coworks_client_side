@@ -28,7 +28,7 @@
     "cssnano": "^3.3.2",
     "debug": "^2.2.0",
     "deep-freeze": "0.0.1",
-    "dotenv": "^1.2.0",
+    "dotenv": "^2.0.0",
     "firebase": "^2.3.2",
     "google-map-react": "^0.10.0",
     "history": "1.17.0",
