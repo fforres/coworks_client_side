@@ -77,7 +77,7 @@
     "express": "^4.13.3",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.4",
-    "html-webpack-plugin": "^2.7.1",
+    "html-webpack-plugin": "^2.8.2",
     "isparta-loader": "^2.0.0",
     "karma": "^0.13.8",
     "karma-chai": "^0.1.0",
