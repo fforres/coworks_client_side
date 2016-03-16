@@ -24,6 +24,13 @@
   color: #f44336;
   z-index: 10;
 }
+
+.pin-hover-overlay{
+  display: block !important;
+  z-index: 11 !important;
+  height: 200px !important;
+  width: 200px !important;
+}
 .pin-selected{
   border: 5px solid #06A119;
   color: #f44336;

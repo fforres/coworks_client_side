@@ -14,7 +14,8 @@ const mapStateToProps = (state) => {
     zoom: state.coworks.map.zoom,
     coworks: state.coworks.coworks,
     selectedCowork: state.coworks.selected,
-    hoveredCowork: state.coworks.hovered
+    hoveredCowork: state.coworks.hovered,
+    showHover: state.coworks.showHover
   };
 };
 
@@ -33,7 +34,11 @@ class GMap extends Component {
     requestCoworks: PropTypes.func,
     updateMapCenter: PropTypes.func,
     selectedCowork: PropTypes.string.isRequired,
-    hoveredCowork: PropTypes.string.isRequired
+    hoveredCowork: PropTypes.string.isRequired,
+    hoverEnterCowork: PropTypes.func.isRequired,
+    hoverLeaveCowork: PropTypes.func.isRequired,
+    selectCowork: PropTypes.func.isRequired,
+    toggleHoverOverlay: PropTypes.func.isRequired
   };
 
   render () {
@@ -52,8 +57,14 @@ class GMap extends Component {
         return str.join(' ');
       })();
       return (
-        <Pin onMouseOver={(e)=>{ this.hoverPin(e);  }} className={theClass} lat={Element.direccion.geo.lat} lng={Element.direccion.geo.lng} id={_id} key={_id}>
-           C
+        <Pin
+          onMouseEnter={(e)=>{ this.hoveredItem(e, _id, true);  }}
+          onMouseLeave={(e)=>{ this.hoveredItem(e, _id, false);  }}
+          showHoverOverlay={_id === props.showHover}
+          onClick={(e)=>{ this.clickedItem(e, _id);  }}
+          className={theClass} lat={Element.direccion.geo.lat}
+          lng={Element.direccion.geo.lng} id={_id} key={_id}>
+          C
         </Pin>
       );
     });
@@ -71,8 +82,17 @@ class GMap extends Component {
     );
   }
 
-  hoverPin (e) {
-    console.log(e);
+  hoveredItem (el, id, isEnter) {
+    if (isEnter) {
+      this.props.hoverEnterCowork(id);
+    } else {
+      this.props.hoverLeaveCowork(id);
+    }
+  }
+
+  clickedItem (el, id) {
+    this.props.selectCowork(id);
+    this.props.toggleHoverOverlay(id);
   }
 
 }

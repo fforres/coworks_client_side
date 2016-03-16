@@ -14,6 +14,9 @@ const SET_CURRENT_COWORK = 'SET_CURRENT_COWORK';
 const UNSET_CURRENT_COWORK = 'UNSET_CURRENT_COWORK';
 const SET_MY_COWORKS = 'SET_MY_COWORKS';
 const UNSET_MY_COWORKS = 'UNSET_MY_COWORKS';
+const SHOW_HOVER_OVERLAY = 'SHOW_HOVER_OVERLAY';
+const HIDE_HOVER_OVERLAY = 'HIDE_HOVER_OVERLAY';
+const TOGGLE_HOVER_OVERLAY = 'TOGGLE_HOVER_OVERLAY';
 
 // ------------------------------------
 // Actions
@@ -26,6 +29,18 @@ export const addCowork = () => ({
 });
 export const selectCowork = (id) => ({
   type: SELECT_COWORK,
+  payload: id
+});
+export const showHoverOverlay = (id) => ({
+  type: SHOW_HOVER_OVERLAY,
+  payload: id
+});
+export const hideHoverOverlay = (id) => ({
+  type: HIDE_HOVER_OVERLAY,
+  payload: id
+});
+export const toggleHoverOverlay = (id) => ({
+  type: TOGGLE_HOVER_OVERLAY,
   payload: id
 });
 export const hoverEnterCowork = (id) => ({
@@ -59,6 +74,9 @@ export const unsetMyCoworks = () => ({
 export const actions = {
   requestCoworks,
   selectCowork,
+  showHoverOverlay,
+  hideHoverOverlay,
+  toggleHoverOverlay,
   hoverEnterCowork,
   hoverLeaveCowork,
   updateMapCenter,
@@ -79,6 +97,7 @@ const initialState = {
   coworksFiltered: {},
   selected: '',
   hovered: '',
+  showHover: '',
   current: null,
   map: {
     zoom: 9,
@@ -117,6 +136,27 @@ export default createReducer(initialState, {
       return {...state, selected: initialState.selected};
     }
     return {...state, selected: payload};
+  },
+  [SHOW_HOVER_OVERLAY] (state, payload) {
+    deepFreeze(state);
+    if (payload === state.showHover) {
+      return {...state, showHover: initialState.showHover};
+    }
+    return {...state, showHover: payload};
+  },
+  [HIDE_HOVER_OVERLAY] (state, payload) {
+    deepFreeze(state);
+    if (payload === state.showHover) {
+      return state;
+    }
+    return {...state, showHover: initialState.showHover};
+  },
+  [TOGGLE_HOVER_OVERLAY] (state, payload) {
+    deepFreeze(state);
+    if (payload === state.showHover) {
+      return {...state, showHover: initialState.showHover};
+    }
+    return {...state, showHover: payload};
   },
   [HOVER_ENTER_COWORK] (state, payload) {
     deepFreeze(state);
