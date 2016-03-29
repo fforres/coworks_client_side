@@ -38,7 +38,7 @@
     "react": "^0.14.0",
     "react-bootstrap": "^0.28.1",
     "react-contenteditable": "^1.0.1",
-    "react-dom": "^0.14.0",
+    "react-dom": "^0.14.8",
     "react-dropzone": "^3.3.0",
     "react-notification-system": "^0.2.6",
     "react-pure-render": "^1.0.2",
