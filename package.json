@@ -43,7 +43,7 @@
     "react-notification-system": "^0.2.6",
     "react-pure-render": "^1.0.2",
     "react-redux": "^4.0.0",
-    "react-router": "1.0.3",
+    "react-router": "2.1.0",
     "react-sidebar": "^2.0.0",
     "react-toggle": "^2.0.1",
     "redux": "^3.0.0",
