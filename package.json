@@ -30,7 +30,7 @@
     "deep-freeze": "0.0.1",
     "dotenv": "^2.0.0",
     "firebase": "^2.3.2",
-    "google-map-react": "^0.10.0",
+    "google-map-react": "^0.14.1",
     "history": "1.17.0",
     "imgur": "^0.1.7",
     "json-loader": "^0.5.4",
